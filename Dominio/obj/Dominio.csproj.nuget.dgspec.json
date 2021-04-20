@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\sebastian.piazza\\source\\repos\\ObligatorioProg2\\Dominio\\Dominio.csproj": {}
+    "C:\\Repos\\N2B-Prog2-ORT\\Obligatorio\\ObligatorioProg2\\Dominio\\Dominio.csproj": {}
   },
   "projects": {
-    "C:\\Users\\sebastian.piazza\\source\\repos\\ObligatorioProg2\\Dominio\\Dominio.csproj": {
+    "C:\\Repos\\N2B-Prog2-ORT\\Obligatorio\\ObligatorioProg2\\Dominio\\Dominio.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\sebastian.piazza\\source\\repos\\ObligatorioProg2\\Dominio\\Dominio.csproj",
+        "projectUniqueName": "C:\\Repos\\N2B-Prog2-ORT\\Obligatorio\\ObligatorioProg2\\Dominio\\Dominio.csproj",
         "projectName": "Dominio",
-        "projectPath": "C:\\Users\\sebastian.piazza\\source\\repos\\ObligatorioProg2\\Dominio\\Dominio.csproj",
+        "projectPath": "C:\\Repos\\N2B-Prog2-ORT\\Obligatorio\\ObligatorioProg2\\Dominio\\Dominio.csproj",
         "packagesPath": "C:\\Users\\sebastian.piazza\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\sebastian.piazza\\source\\repos\\ObligatorioProg2\\Dominio\\obj\\",
+        "outputPath": "C:\\Repos\\N2B-Prog2-ORT\\Obligatorio\\ObligatorioProg2\\Dominio\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\sebastian.piazza\\AppData\\Roaming\\NuGet\\NuGet.Config",
