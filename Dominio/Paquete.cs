@@ -25,6 +25,8 @@ namespace Dominio
         private int Id;
         public string Nombre { get; set; }
 
+        public string Pepe { get; set; }
+        //nueva comentario
         //depende de la clase que se este (por herencia)
         private TipoPaquete tipoPaquete;
         public TipoPaquete TipoPaquete { get; }
