@@ -3,7 +3,22 @@ using System.Collections.Generic;
 
 namespace Dominio
 {
-    public class Paquete
+
+    public class PaqueteSD : Paquete
+    {
+        public PaqueteSD(string nombre, bool promocion, decimal precioBase) : base(nombre, promocion, precioBase)
+        {
+        }
+    }
+
+    public class PaqueteHD : Paquete
+    {
+        public PaqueteHD(string nombre, bool promocion, decimal precioBase) : base(nombre, promocion, precioBase)
+        {
+        }
+    }
+
+    public abstract class Paquete
     {
         //id autogenerado
         private static int internalID;
