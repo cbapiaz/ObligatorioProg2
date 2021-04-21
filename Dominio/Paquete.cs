@@ -43,7 +43,7 @@ namespace Dominio
         
         public bool Promocion { get; set; }
         public decimal PrecioBase { get; set; }
-
+        //hola esto es un cambio cambio
 
         public Paquete(string nombre, bool promocion, decimal precioBase)
         {

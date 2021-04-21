@@ -12,7 +12,7 @@ namespace Dominio
         public bool MultiLenguaje { get; set; }
         public decimal Precio { get; set; }
 
-        public Canal(string nombre,Resolucion resolucion,bool multilenguaje,decimal precio )
+        public Canal(string nombre, Resolucion resolucion, bool multilenguaje, decimal precio)
         {
             Id = ++internalID;
             Nombre = nombre;
@@ -22,18 +22,16 @@ namespace Dominio
         }
 
 
-        /*LO hace ceci
-            public static bool ValidarPrecio()
-            {
-            }
 
-            public static bool ValidarNombre()
-            {
-            }
+        public static bool ValidarPrecio(decimal precio)
+        {
+            return precio > 0;
+        }
 
-        public static bool 
-
-        */
+        public static bool ValidarNombre(string nombre)
+        {
+            return nombre.Length > 3;
+        }
 
         public override string ToString()
         {
