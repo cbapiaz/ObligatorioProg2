@@ -1,11 +1,13 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio Version 16
-VisualStudioVersion = 16.0.30517.126
+# Visual Studio 15
+VisualStudioVersion = 15.0.28307.1433
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ObligatorioProg2", "ObligatorioProg2\ObligatorioProg2.csproj", "{13E0809D-423A-411F-A3DB-06EFC74FCEFE}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Dominio", "Dominio\Dominio.csproj", "{F603214B-E8E8-4EA5-939E-792F7AEEEFC9}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Dominio", "Dominio\Dominio.csproj", "{F603214B-E8E8-4EA5-939E-792F7AEEEFC9}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Consola", "ObligatorioProg2\Consola.csproj", "{B6BB1B50-777C-451A-881B-B944346C4F8D}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -21,6 +23,10 @@ Global
 		{F603214B-E8E8-4EA5-939E-792F7AEEEFC9}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{F603214B-E8E8-4EA5-939E-792F7AEEEFC9}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{F603214B-E8E8-4EA5-939E-792F7AEEEFC9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B6BB1B50-777C-451A-881B-B944346C4F8D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B6BB1B50-777C-451A-881B-B944346C4F8D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B6BB1B50-777C-451A-881B-B944346C4F8D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B6BB1B50-777C-451A-881B-B944346C4F8D}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
