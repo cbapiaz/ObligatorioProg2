@@ -24,7 +24,7 @@ namespace Dominio
         private static int internalID;
         private int Id;
         public string Nombre { get; set; }
-
+        //cambio prueba 2
         public string Pepe { get; set; }
         //nueva comentario
         //depende de la clase que se este (por herencia)
