@@ -4,6 +4,7 @@ namespace Dominio
 {
     public class Canal
     {
+        #region atributos
         private static int internalID;
         private int Id;
 
@@ -11,6 +12,7 @@ namespace Dominio
         public Resolucion Resolucion { get; set; }
         public bool MultiLenguaje { get; set; }
         public decimal Precio { get; set; }
+        #endregion atributos
 
         public Canal(string nombre, Resolucion resolucion, bool multilenguaje, decimal precio)
         {
@@ -21,6 +23,22 @@ namespace Dominio
             Precio = precio;
         }
 
+        public Canal(int id, string nombre, Resolucion resolucion, bool multilenguaje, decimal precio)
+        {
+            Id = ++internalID;
+            Nombre = nombre;
+            Resolucion = resolucion;
+            MultiLenguaje = multilenguaje;
+            Precio = precio;
+        }
+
+        public Canal ClonarCanal()
+        {
+            Canal canalAux = new Canal(Id, Nombre, Resolucion, MultiLenguaje, Precio);
+
+            return canalAux;
+
+        }
 
 
         public static bool ValidarPrecio(decimal precio)
