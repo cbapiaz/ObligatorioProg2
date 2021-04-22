@@ -23,6 +23,22 @@ namespace Dominio
             Precio = precio;
         }
 
+        public Canal(int id, string nombre, Resolucion resolucion, bool multilenguaje, decimal precio)
+        {
+            Id = ++internalID;
+            Nombre = nombre;
+            Resolucion = resolucion;
+            MultiLenguaje = multilenguaje;
+            Precio = precio;
+        }
+
+        public Canal ClonarCanal()
+        {
+            Canal canalAux = new Canal(Id, Nombre, Resolucion, MultiLenguaje, Precio);
+
+            return canalAux;
+
+        }
 
 
         public static bool ValidarPrecio(decimal precio)
