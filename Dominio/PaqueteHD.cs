@@ -45,7 +45,7 @@ namespace Dominio
             {
                 return PrecioBase + CostoFijo / 2;
             }
-            return 0;
+            return PrecioBase ;
         }
     
 
