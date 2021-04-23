@@ -6,9 +6,33 @@ namespace Dominio
 {
     public class PaqueteSD : Paquete
     {
-        public PaqueteSD(string nombre, bool promocion, decimal precioBase) : base(nombre, promocion, precioBase)
+        public bool MejoraImagen { get; set; }
+        public PaqueteSD(string nombre, bool promocion, decimal precioBase,List<Canal> canales, bool mejoraimagen) 
+            : base(nombre, promocion, precioBase, canales)
         {
             tipoPaquete = TipoPaquete.SD;
+            MejoraImagen = mejoraimagen;
+        }
+        public PaqueteSD(string nombre, bool promocion, decimal precioBase, List<Canal> canales, int id, bool mejoraImagen)
+             : base(nombre, promocion, precioBase, canales,id)
+        {
+            tipoPaquete = TipoPaquete.SD;
+            MejoraImagen = mejoraImagen;
+        }
+
+        public override Paquete ClonarPaquete()
+        {
+            return new PaqueteSD(Nombre,Promocion,PrecioBase,Canales,Id,MejoraImagen);
+        }
+
+        public override decimal DefinirPrecio()
+        {
+            throw new NotImplementedException();
+        }
+
+        public override bool ValidarResolucion()
+        {
+            throw new NotImplementedException();
         }
     }
 }

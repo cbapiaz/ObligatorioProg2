@@ -3,6 +3,13 @@
 ##
 ## Get latest from https://github.com/github/gitignore/blob/master/VisualStudio.gitignore
 
+*.dll
+*.exe
+ObligatorioProg2/bin/Debug/*.dll
+ObligatorioProg2/bin/Debug/*.exe
+Dominio/bin/Debug/netstandard2.0/*.dll
+Dominio/bin/Debug/netstandard2.0/*.exe
+
 # User-specific files
 *.rsuser
 *.suo

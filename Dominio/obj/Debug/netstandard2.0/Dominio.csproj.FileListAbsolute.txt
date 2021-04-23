@@ -10,7 +10,6 @@ C:\Users\cecil\Desktop\carpetas varias\rto\s2\rg 2\RepositorioObligatorio1\Domin
 C:\Repos\N2B-Prog2-ORT\Obligatorio\ObligatorioProg2\Dominio\bin\Debug\netstandard2.0\Dominio.deps.json
 C:\Repos\N2B-Prog2-ORT\Obligatorio\ObligatorioProg2\Dominio\bin\Debug\netstandard2.0\Dominio.dll
 C:\Repos\N2B-Prog2-ORT\Obligatorio\ObligatorioProg2\Dominio\bin\Debug\netstandard2.0\Dominio.pdb
-C:\Repos\N2B-Prog2-ORT\Obligatorio\ObligatorioProg2\Dominio\obj\Debug\netstandard2.0\Dominio.csprojAssemblyReference.cache
 C:\Repos\N2B-Prog2-ORT\Obligatorio\ObligatorioProg2\Dominio\obj\Debug\netstandard2.0\Dominio.AssemblyInfoInputs.cache
 C:\Repos\N2B-Prog2-ORT\Obligatorio\ObligatorioProg2\Dominio\obj\Debug\netstandard2.0\Dominio.AssemblyInfo.cs
 C:\Repos\N2B-Prog2-ORT\Obligatorio\ObligatorioProg2\Dominio\obj\Debug\netstandard2.0\Dominio.csproj.CoreCompileInputs.cache

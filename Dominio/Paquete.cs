@@ -9,7 +9,7 @@ namespace Dominio
         #region atributos
 
         private static int internalID;
-        private int Id;
+        protected int Id;
         public string Nombre { get; set; }
 
         protected TipoPaquete tipoPaquete;
@@ -22,9 +22,9 @@ namespace Dominio
         public decimal PrecioBase { get; set; }
         #endregion
 
-        public Paquete(string nombre, bool promocion, decimal precioBase)
+        public Paquete(string nombre, bool promocion, decimal precioBase,List<Canal> canales)
         {
-            canales = new List<Canal>();
+            this.canales = canales;
             Id = ++internalID;
 
             Nombre = nombre;
@@ -33,11 +33,22 @@ namespace Dominio
 
         }
 
+        public Paquete(string nombre, bool promocion, decimal precioBase, List<Canal> canales, int id)
+        {
+            this.canales = canales;
+            Id = id;
+            Nombre = nombre;
+            Promocion = promocion;
+            PrecioBase = precioBase;
+        }
+
         public bool IngresarCanal(Canal c)
         {
             canales.Add(c);
             return true;
         }
+
+        public abstract Paquete ClonarPaquete();
 
         public abstract decimal DefinirPrecio();
 
@@ -48,8 +59,6 @@ namespace Dominio
             return canales.Count > 0;
         }
         
-
-        //
         public override string ToString()
         {
             return $"Nombre : {Nombre} | Promocion : {Promocion} | Precio Base : {PrecioBase}";

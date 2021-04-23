@@ -5,13 +5,13 @@ namespace Dominio
     public class Canal
     {
         #region atributos
-        private static int internalID;
-        private int Id;
+            private static int internalID;
+            private int Id;
 
-        public string Nombre { get; set; }
-        public Resolucion Resolucion { get; set; }
-        public bool MultiLenguaje { get; set; }
-        public decimal Precio { get; set; }
+            public string Nombre { get; set; }
+            public Resolucion Resolucion { get; set; }
+            public bool MultiLenguaje { get; set; }
+            public decimal Precio { get; set; }
         #endregion atributos
 
         public Canal(string nombre, Resolucion resolucion, bool multilenguaje, decimal precio)
