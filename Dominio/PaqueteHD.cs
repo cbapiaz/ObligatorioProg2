@@ -6,14 +6,31 @@ namespace Dominio
 {
     public class PaqueteHD : Paquete
     {
-        public PaqueteHD(string nombre, bool promocion, decimal precioBase,List<Canal> canales) : base(nombre, promocion, precioBase,canales)
+        #region atributos
+        //atributos y propiedades EN UNA LINEA SOLA
+        public bool GrabacionNube { get; set; }
+        public decimal CostoFijo { get; set; }
+        #endregion
+
+        public PaqueteHD(string nombre, bool promocion, decimal precioBase,List<Canal> canales, bool grabacionNube, decimal costoFijo) : base(nombre, promocion, precioBase,canales)
         {
             tipoPaquete = TipoPaquete.HD;
+            GrabacionNube = grabacionNube;
+            CostoFijo = costoFijo;
         }
+
+        public PaqueteHD(string nombre, bool promocion, decimal precioBase, List<Canal> canales, int id, bool grabacionNube, decimal costoFijo) : base(nombre, promocion, precioBase, canales, id)
+        {
+            tipoPaquete = TipoPaquete.HD;
+            GrabacionNube = grabacionNube;
+            CostoFijo = costoFijo;
+        }
+
+        
 
         public override Paquete ClonarPaquete()
         {
-            throw new NotImplementedException();
+            return new PaqueteHD(Nombre, Promocion, PrecioBase, Canales, Id, GrabacionNube, CostoFijo);
         }
 
         public override decimal DefinirPrecio()
