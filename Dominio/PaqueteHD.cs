@@ -6,6 +6,7 @@ namespace Dominio
 {
     public class PaqueteHD : Paquete
     {
+
         #region atributos
         //atributos y propiedades EN UNA LINEA SOLA
         public bool GrabacionNube { get; set; }
@@ -33,10 +34,20 @@ namespace Dominio
             return new PaqueteHD(Nombre, Promocion, PrecioBase, Canales, Id, GrabacionNube, CostoFijo);
         }
 
-        public override decimal DefinirPrecio()
+       public override decimal DefinirPrecio()//
         {
-            throw new NotImplementedException();
+            if (GrabacionNube == true && Promocion == false) 
+            {
+                return PrecioBase + CostoFijo;
+
+            }
+            if (GrabacionNube == true && Promocion == true) 
+            {
+                return PrecioBase + CostoFijo / 2;
+            }
+            return 0;
         }
+    
 
         public override bool ValidarResolucion()
         {
