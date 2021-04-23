@@ -3,47 +3,24 @@ using System.Collections.Generic;
 
 namespace Dominio
 {
-
-    public class PaqueteSD : Paquete
-    {
-        public PaqueteSD(string nombre, bool promocion, decimal precioBase) : base(nombre, promocion, precioBase)
-        {
-        }
-    }
-
-    public class PaqueteHD : Paquete
-    {
-        public PaqueteHD(string nombre, bool promocion, decimal precioBase) : base(nombre, promocion, precioBase)
-        {
-        }
-    }
-
     public abstract class Paquete
     {
         //id autogenerado
+        #region atributos
+
         private static int internalID;
         private int Id;
         public string Nombre { get; set; }
-        //cambio prueba 2
-        public string Pepe { get; set; }
-        //nueva comentario
-        //depende de la clase que se este (por herencia)
-        private TipoPaquete tipoPaquete;
-        public TipoPaquete TipoPaquete { get; }
-        //Mathi - herencia
-        //public TipoPaquete
-        // SD
-        // public  bool MejoraCionImagen
-        //HD
-        //        public bool GrabacionNube { get; set; }
-        // public decimal CostoFijoNube {get;set;}
+
+        protected TipoPaquete tipoPaquete;
+
 
         private List<Canal> canales;
         public List<Canal> Canales { get { return canales; } }
-        
+
         public bool Promocion { get; set; }
         public decimal PrecioBase { get; set; }
-        //hola esto es un cambio cambio
+        #endregion
 
         public Paquete(string nombre, bool promocion, decimal precioBase)
         {
@@ -54,15 +31,23 @@ namespace Dominio
             Promocion = promocion;
             PrecioBase = precioBase;
 
-            //para pruebas, quitar esto despues
-            TipoPaquete = TipoPaquete.HD;
         }
 
-        public bool AsignarCanal(Canal c)
+        public bool IngresarCanal(Canal c)
         {
             canales.Add(c);
             return true;
         }
+
+        public abstract decimal DefinirPrecio();
+
+        public abstract bool ValidarResolucion();
+
+        public bool ValidarCantCanales()
+        {
+            return canales.Count > 0;
+        }
+        
 
         //
         public override string ToString()
@@ -71,7 +56,6 @@ namespace Dominio
         }
 
     }
-
     public enum TipoPaquete
     {
         SD =1,
