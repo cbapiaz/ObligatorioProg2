@@ -50,7 +50,15 @@ namespace Dominio
 
         public abstract Paquete ClonarPaquete();
 
-        public abstract decimal DefinirPrecio();
+        public virtual decimal DefinirPrecio()
+        {
+            decimal result=PrecioBase;
+            foreach (Canal c in Canales)
+            {
+                result += c.Precio;
+            }
+            return result;
+        }
 
         public abstract bool ValidarResolucion();
 

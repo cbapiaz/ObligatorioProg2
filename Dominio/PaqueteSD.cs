@@ -27,7 +27,20 @@ namespace Dominio
 
         public override decimal DefinirPrecio()
         {
-            throw new NotImplementedException();
+            decimal result = base.DefinirPrecio();
+
+            //20% mas si tiene mejoramiento de imagen
+            if (MejoraImagen)
+            {
+                result = ((decimal)1.2) * result;
+            }
+            //15% descuento si esta en promocion
+            if (Promocion)
+            {
+                result = result - result * (decimal)0.15;
+            }
+
+            return result;
         }
 
         public override bool ValidarResolucion()

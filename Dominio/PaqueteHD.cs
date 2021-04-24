@@ -34,18 +34,19 @@ namespace Dominio
             return new PaqueteHD(Nombre, Promocion, PrecioBase, Canales, Id, GrabacionNube, CostoFijo);
         }
 
-       public override decimal DefinirPrecio()//
+       public override decimal DefinirPrecio()
         {
+            decimal result = base.DefinirPrecio();
             if (GrabacionNube == true && Promocion == false) 
             {
-                return PrecioBase + CostoFijo;
+                return result + CostoFijo;
 
             }
             if (GrabacionNube == true && Promocion == true) 
             {
-                return PrecioBase + CostoFijo / 2;
+                return (result + CostoFijo) / 2;
             }
-            return PrecioBase ;
+            return result ;
         }
     
 
