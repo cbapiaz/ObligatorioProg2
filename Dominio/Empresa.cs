@@ -33,7 +33,7 @@ namespace Dominio
         public bool AgregarCanal(string nombre, Resolucion resolucion, bool multilenguaje, decimal precio)
         {
             bool exito = false;
-            if (Canal.ValidarNombre(nombre) && Canal.ValidarPrecio(precio) && BuscarCanal(Id) == null)
+            if (Canal.ValidarNombre(nombre) && Canal.ValidarPrecio(precio)) /*TODO Verify this && BuscarCanal(Id) == null*/
             {
                 Canal unC = new Canal(nombre, resolucion, multilenguaje, precio);
                 Canales.Add(unC);
@@ -43,17 +43,45 @@ namespace Dominio
             return exito;
         }
 
-        public bool AgregarPaquete(string nombre, bool promocion, decimal precioBase, List<Canal> canales)
-        {
-            bool exito = false;
-            if (BuscarPaquete(Nombre) == null)
-            {
-                Paquete unP = new Paquete(nombre, promocion, precioBase,List<Canal> canales);
-                Paquetes.Add(unP);
-                exito = true;
-            }
 
-            return exito;
+        /// <summary>
+        /// agregar una nueva instancia de paquete hd al sistema
+        /// </summary>
+        /// <param name="nombre"></param>
+        /// <param name="promocion"></param>
+        /// <param name="precioBase"></param>
+        /// <param name="grabacionNube"></param>
+        /// <param name="costoFijo"></param>
+        /// <param name="canales"></param>
+        /// <returns></returns>
+        public bool AgregarPaqueteHD(string nombre, bool promocion, decimal precioBase,bool grabacionNube,decimal costoFijo, List<Canal> canales)
+        {
+            //bool exito = false; TODO Verify this
+            //if (BuscarPaquete(Nombre) == null)
+            //{
+              Paquete unP = new PaqueteHD(nombre, promocion, precioBase,canales, grabacionNube,costoFijo);
+              Paquetes.Add(unP);
+            //    exito = true;
+            //}
+
+            return true;
+        }
+
+        /// <summary>
+        /// agregar una nueva instancia de paquete sd al sistema
+        /// </summary>
+        /// <param name="nombre"></param>
+        /// <param name="promocion"></param>
+        /// <param name="precioBase"></param>
+        /// <param name="mejoraImagen"></param>
+        /// <param name="canales"></param>
+        /// <returns></returns>
+        public bool AgregarPaqueteSD(string nombre, bool promocion, decimal precioBase, bool mejoraImagen, List<Canal> canales)
+        {
+
+            Paquete unP = new PaqueteSD(nombre, promocion, precioBase, canales, mejoraImagen);
+            Paquetes.Add(unP);
+            return true;
         }
 
         public List<Paquete> ListarPaquetes()
@@ -98,13 +126,13 @@ namespace Dominio
 
         }
 
-        public Canal BuscarCanal(int Id)
+        public Canal BuscarCanal(string nombre)
         {
             Canal unC = null;
             int i = 0;
             while (unC == null && i < Canales.Count)
             {
-                if (Canales[i].GetId() == Id)
+                if (Canales[i].Nombre == nombre)
                 {
                     unC = Canales[i];
                 }
@@ -113,13 +141,13 @@ namespace Dominio
             return unC;
         }
 
-        public Paquete BuscarPaquete(string Nombre)
+        public Paquete BuscarPaquete(int id)
         {
             Paquete unP = null;
             int i = 0;
             while (unP == null && i < Paquetes.Count)
             {
-                if (Paquetes[i].Nombre == Nombre)
+                if (Paquetes[i].GetId() == id)
                 {
                     unP = Paquetes[i];
                 }

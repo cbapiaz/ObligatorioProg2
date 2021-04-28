@@ -22,6 +22,9 @@ namespace Dominio
         public decimal PrecioBase { get; set; }
         #endregion
 
+
+      
+
         public Paquete(string nombre, bool promocion, decimal precioBase,List<Canal> canales)
         {
             this.canales = canales;
@@ -51,6 +54,11 @@ namespace Dominio
         internal int CantCanales()
         {
             return canales.Count;
+        }
+
+        public int GetId()
+        {
+            return Id;
         }
 
         public abstract Paquete ClonarPaquete();

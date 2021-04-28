@@ -20,6 +20,10 @@ namespace Dominio
             MejoraImagen = mejoraImagen;
         }
 
+        /// <summary>
+        /// Clonar un paquete sd a partir de los datos originales
+        /// </summary>
+        /// <returns>nueva instancia de paquetesd</returns>
         public override Paquete ClonarPaquete()
         {
             return new PaqueteSD(Nombre,Promocion,PrecioBase,Canales,Id,MejoraImagen);
