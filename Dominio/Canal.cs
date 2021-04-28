@@ -6,7 +6,7 @@ namespace Dominio
     {
         #region atributos
             private static int internalID;
-            private int Id;
+            protected int Id;
 
             public string Nombre { get; set; }
             public Resolucion Resolucion { get; set; }
@@ -56,6 +56,10 @@ namespace Dominio
             return $"Nombre {Nombre} | Resolucion {(int)Resolucion} | MultiLenguaje: {MultiLenguaje} | Precio: {Precio}";
         }
 
+        internal int GetId()
+        {
+            return Id;
+        }
     }
 
     public enum Resolucion : int

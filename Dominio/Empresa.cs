@@ -8,14 +8,12 @@ namespace Dominio
     public class Empresa
     {
         public int Id { get; set; }
-        public List<Paquete> Paquetes { get;  }
-        public List<Canal> Canales { get; }
+        public List<Paquete> Paquetes { get;  }=new List<Paquete>();
+        public List<Canal> Canales { get; } = new List<Canal>();
 
 
         public Empresa()
         {
-            Paquetes = new List<Paquete>();
-            Canales = new List<Canal>();
         }
         //TODO
         //prepopulacion como vimos en clase - TODO
@@ -58,14 +56,32 @@ namespace Dominio
 
         public List<Canal> ListarCanales()
         {
-            throw new NotImplementedException();
+            return Canales;
 
         }
 
         public List<Paquete> ListarPaquetesConMasCanales()
         {
-            throw new NotImplementedException();
+            int mayor = int.MinValue;
+            List<Paquete> aux = new List<Paquete>();
 
+            foreach (Paquete item in Paquetes)
+            {
+                int cant = item.CantCanales();
+                if ( cant > mayor)
+                {
+                    mayor = cant;
+                    
+                    aux.Clear();
+                    aux.Add(item);
+
+                } else if (cant == mayor)
+                {
+                    aux.Add(item);
+                }
+            }
+
+            return aux;
         }
 
         public List<Paquete> ListarPaquetesConMayorPrecio(decimal precio)
@@ -73,13 +89,14 @@ namespace Dominio
             throw new NotImplementedException();
 
         }
+
         public Canal BuscarCanal(int Id)
         {
             Canal unC = null;
             int i = 0;
             while (unC == null && i < Canales.Count)
             {
-                if (Canales[i].Id == Id)
+                if (Canales[i].GetId() == Id)
                 {
                     unC = Canales[i];
                 }
