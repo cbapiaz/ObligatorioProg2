@@ -48,6 +48,11 @@ namespace Dominio
             return true;
         }
 
+        internal int CantCanales()
+        {
+            return canales.Count;
+        }
+
         public abstract Paquete ClonarPaquete();
 
         public virtual decimal DefinirPrecio()
