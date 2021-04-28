@@ -26,9 +26,59 @@ namespace Dominio
 
         public void PrecargaCanales()
         {
+            AgregarCanal("canal1", Resolucion.RES1, true, 180);
+            AgregarCanal("canal2", Resolucion.RES1, true, 190);
+            AgregarCanal("canal3", Resolucion.RES2, true, 100);
+            AgregarCanal("canal4", Resolucion.RES2, true, 120);
+            AgregarCanal("canal5", Resolucion.RES1, true, 130);
+            AgregarCanal("canal6", Resolucion.RES1, true, 145);
+            AgregarCanal("canal7", Resolucion.RES2, true, 150);
+            AgregarCanal("canal8", Resolucion.RES2, true, 155);
+            AgregarCanal("canal9", Resolucion.RES1, true, 160);
+            AgregarCanal("canal10", Resolucion.RES1, true, 165);
+            AgregarCanal("canal11", Resolucion.RES2, true, 170);
+            AgregarCanal("canal12", Resolucion.RES2, true, 180);
+            AgregarCanal("canal13", Resolucion.RES1, true, 180);
+            AgregarCanal("canal14", Resolucion.RES2, true, 181);
+            AgregarCanal("canal15", Resolucion.RES2, true, 182);
+            AgregarCanal("canal16", Resolucion.RES1, true, 183);
+            AgregarCanal("canal17", Resolucion.RES1, true, 184);
+            AgregarCanal("canal18", Resolucion.RES2, true, 185);
+            AgregarCanal("canal19", Resolucion.RES2, true, 186);
+            AgregarCanal("canal20", Resolucion.RES1, true, 180);
+            AgregarCanal("canal21", Resolucion.RES1, true, 180);
+            AgregarCanal("canal22", Resolucion.RES2, true, 1950);
+            AgregarCanal("canal23", Resolucion.RES2, true, 196);
+            AgregarCanal("canal24", Resolucion.RES1, true, 112);
+            AgregarCanal("canal25", Resolucion.RES1, true, 113);
+            AgregarCanal("canal26", Resolucion.RES2, true, 114);
+            AgregarCanal("canal27", Resolucion.RES2, true, 180);
+            AgregarCanal("canal28", Resolucion.RES1, true, 116);
+            AgregarCanal("canal29", Resolucion.RES1, true, 180);
+            AgregarCanal("canal30", Resolucion.RES2, true, 180);
+            AgregarCanal("canal31", Resolucion.RES2, true, 117);
+            AgregarCanal("canal32", Resolucion.RES1, true, 118);
+            AgregarCanal("canal33", Resolucion.RES1, true, 119);
+            AgregarCanal("canal34", Resolucion.RES2, true, 132);
+            AgregarCanal("canal35", Resolucion.RES2, true, 133);
+            AgregarCanal("canal36", Resolucion.RES1, true, 134);
+            AgregarCanal("canal37", Resolucion.RES1, true, 180);
+            AgregarCanal("canal38", Resolucion.RES2, true, 180);
+            AgregarCanal("canal39", Resolucion.RES2, true, 180);
+            AgregarCanal("canal40", Resolucion.RES1, true, 180);
+            AgregarCanal("canal41", Resolucion.RES1, true, 180);
+            AgregarCanal("canal42", Resolucion.RES2, true, 180);
+            AgregarCanal("canal43", Resolucion.RES2, true, 180);
+            AgregarCanal("canal44", Resolucion.RES1, true, 180);
+            AgregarCanal("canal45", Resolucion.RES1, true, 135);
+            AgregarCanal("canal46", Resolucion.RES2, true, 136);
+            AgregarCanal("canal47", Resolucion.RES2, true, 137);
+            AgregarCanal("canal48", Resolucion.RES1, true, 188);
+            AgregarCanal("canal49", Resolucion.RES1, true, 139);
+            AgregarCanal("canal50", Resolucion.RES1, true, 184);
 
         }
-       
+
 
         public bool AgregarCanal(string nombre, Resolucion resolucion, bool multilenguaje, decimal precio)
         {
@@ -155,5 +205,33 @@ namespace Dominio
             }
             return unP;
         }
+
+        public List<Paquete> PaquetesMayorPrecio(decimal precioComparar)
+        {
+            decimal max = int.MinValue;
+            List<Paquete> paquetesAux = new List<Paquete>();
+
+            foreach (Paquete paqueteAux in Paquetes)
+            {
+                decimal precioActual = paqueteAux.PrecioBase;
+
+                if (precioActual > max)
+                {
+                    max = precioActual;
+                    paquetesAux.Clear();
+                    paquetesAux.Add(paqueteAux);
+                }
+
+                else if (precioActual == max)
+                {
+                    paquetesAux.Add(paqueteAux);
+                }
+            }
+
+            return paquetesAux;
+        }
+
+
+
     }
 }
