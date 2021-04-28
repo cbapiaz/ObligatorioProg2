@@ -8,9 +8,10 @@ namespace Dominio
     public class Empresa
     {
         public int Id { get; set; }
-        public List<Paquete> Paquetes { get;  }=new List<Paquete>();
+        public string Nombre { get; set; }
+        public List<Paquete> Paquetes { get;  } =new List<Paquete>();
         public List<Canal> Canales { get; } = new List<Canal>();
-
+        
 
         public Empresa()
         {
@@ -42,10 +43,17 @@ namespace Dominio
             return exito;
         }
 
-        public bool AgregarPaquete()
+        public bool AgregarPaquete(string nombre, bool promocion, decimal precioBase, List<Canal> canales)
         {
-            throw new NotImplementedException();
+            bool exito = false;
+            if (BuscarPaquete(Nombre) == null)
+            {
+                Paquete unP = new Paquete(nombre, promocion, precioBase,List<Canal> canales);
+                Paquetes.Add(unP);
+                exito = true;
+            }
 
+            return exito;
         }
 
         public List<Paquete> ListarPaquetes()
@@ -103,6 +111,21 @@ namespace Dominio
                 i++;
             }
             return unC;
+        }
+
+        public Paquete BuscarPaquete(string Nombre)
+        {
+            Paquete unP = null;
+            int i = 0;
+            while (unP == null && i < Paquetes.Count)
+            {
+                if (Paquetes[i].Nombre == Nombre)
+                {
+                    unP = Paquetes[i];
+                }
+                i++;
+            }
+            return unP;
         }
     }
 }
