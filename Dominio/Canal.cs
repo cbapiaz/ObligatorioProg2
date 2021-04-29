@@ -2,6 +2,9 @@
 
 namespace Dominio
 {
+    /// <summary>
+    /// TODO
+    /// </summary>
     public class Canal
     {
         #region atributos

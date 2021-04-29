@@ -4,6 +4,9 @@ using System.Text;
 
 namespace Dominio
 {
+    /// <summary>
+    /// TODO
+    /// </summary>
     public class PaqueteSD : Paquete
     {
         public bool MejoraImagen { get; set; }

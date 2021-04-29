@@ -180,23 +180,19 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\cecil\\.nuget\\packages\\": {},
-    "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder": {}
+    "C:\\Users\\sebastian.piazza\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\cecil\\Documents\\GitHub\\ObligatorioProg2\\Dominio\\Dominio.csproj",
+      "projectUniqueName": "C:\\Repos\\N2B-Prog2-ORT\\Obligatorio\\ObligatorioProg2\\Dominio\\Dominio.csproj",
       "projectName": "Dominio",
-      "projectPath": "C:\\Users\\cecil\\Documents\\GitHub\\ObligatorioProg2\\Dominio\\Dominio.csproj",
-      "packagesPath": "C:\\Users\\cecil\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\cecil\\Documents\\GitHub\\ObligatorioProg2\\Dominio\\obj\\",
+      "projectPath": "C:\\Repos\\N2B-Prog2-ORT\\Obligatorio\\ObligatorioProg2\\Dominio\\Dominio.csproj",
+      "packagesPath": "C:\\Users\\sebastian.piazza\\.nuget\\packages\\",
+      "outputPath": "C:\\Repos\\N2B-Prog2-ORT\\Obligatorio\\ObligatorioProg2\\Dominio\\obj\\",
       "projectStyle": "PackageReference",
-      "fallbackFolders": [
-        "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
-      ],
       "configFilePaths": [
-        "C:\\Users\\cecil\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\sebastian.piazza\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
@@ -228,10 +224,16 @@
           }
         },
         "imports": [
-          "net461"
+          "net461",
+          "net462",
+          "net47",
+          "net471",
+          "net472",
+          "net48"
         ],
         "assetTargetFallback": true,
-        "warn": true
+        "warn": true,
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.402\\RuntimeIdentifierGraph.json"
       }
     }
   }

@@ -18,7 +18,6 @@ namespace Dominio
         }
         //TODO
         //prepopulacion como vimos en clase - TODO
-
         public void PrecargaPaquetes()
         {
 
@@ -76,10 +75,16 @@ namespace Dominio
             AgregarCanal("canal48", Resolucion.RES1, true, 188);
             AgregarCanal("canal49", Resolucion.RES1, true, 139);
             AgregarCanal("canal50", Resolucion.RES1, true, 184);
-
         }
 
-
+        /// <summary>
+        /// dado un nombre resolucion, multilenguaje y precio crea un canal nuevo y lo agrega a la lista de canales
+        /// </summary>
+        /// <param name="nombre"></param>
+        /// <param name="resolucion"></param>
+        /// <param name="multilenguaje"></param>
+        /// <param name="precio"></param>
+        /// <returns></returns>
         public bool AgregarCanal(string nombre, Resolucion resolucion, bool multilenguaje, decimal precio)
         {
             bool exito = false;
@@ -128,24 +133,34 @@ namespace Dominio
         /// <returns></returns>
         public bool AgregarPaqueteSD(string nombre, bool promocion, decimal precioBase, bool mejoraImagen, List<Canal> canales)
         {
-
             Paquete unP = new PaqueteSD(nombre, promocion, precioBase, canales, mejoraImagen);
             Paquetes.Add(unP);
             return true;
         }
 
+        /// <summary>
+        /// retorna toda la lista de paquetes del sistema
+        /// </summary>
+        /// <returns></returns>
         public List<Paquete> ListarPaquetes()
         {
 
             return Paquetes;
         }
 
+        /// <summary>
+        /// retorna toda la lista de canales del sistema
+        /// </summary>
+        /// <returns></returns>
         public List<Canal> ListarCanales()
         {
             return Canales;
-
         }
 
+        /// <summary>
+        /// lista los paquetes que tienen mayor cantidad de canales asociados
+        /// </summary>
+        /// <returns></returns>
         public List<Paquete> ListarPaquetesConMasCanales()
         {
             int mayor = int.MinValue;
@@ -170,12 +185,11 @@ namespace Dominio
             return aux;
         }
 
-        public List<Paquete> ListarPaquetesConMayorPrecio(decimal precio)
-        {
-            throw new NotImplementedException();
-
-        }
-
+        /// <summary>
+        /// TODO
+        /// </summary>
+        /// <param name="nombre"></param>
+        /// <returns></returns>
         public Canal BuscarCanal(string nombre)
         {
             Canal unC = null;
@@ -191,6 +205,12 @@ namespace Dominio
             return unC;
         }
 
+
+        /// <summary>
+        /// TODO
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
         public Paquete BuscarPaquete(int id)
         {
             Paquete unP = null;
@@ -206,6 +226,11 @@ namespace Dominio
             return unP;
         }
 
+        /// <summary>
+        /// lista los paquetes con precio mayor a "precio"
+        /// </summary>
+        /// <param name="precio"></param>
+        /// <returns></returns>
         public List<Paquete> PaquetesMayorPrecio(decimal precioComparar)
         {
             decimal max = int.MinValue;

@@ -3,6 +3,9 @@ using System.Collections.Generic;
 
 namespace Dominio
 {
+    /// <summary>
+    /// TODO
+    /// </summary>
     public abstract class Paquete
     {
         //id autogenerado

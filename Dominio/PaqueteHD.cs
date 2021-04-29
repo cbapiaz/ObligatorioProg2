@@ -4,6 +4,9 @@ using System.Text;
 
 namespace Dominio
 {
+    /// <summary>
+    /// TODO
+    /// </summary>
     public class PaqueteHD : Paquete
     {
 
