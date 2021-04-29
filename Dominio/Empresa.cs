@@ -12,17 +12,45 @@ namespace Dominio
         public List<Paquete> Paquetes { get;  } =new List<Paquete>();
         public List<Canal> Canales { get; } = new List<Canal>();
         
-
         public Empresa()
         {
+
         }
-        //TODO
-        //prepopulacion como vimos en clase - TODO
+        
+        /// <summary>
+        /// 
+        /// </summary>
         public void PrecargaPaquetes()
         {
+            PaqueteHD.CostoFijo = 566;
+
+            AgregarPaqueteHD("paqueteHD1", true, 580, true, new List<Canal>());
+            AgregarPaqueteHD("paqueteHD2", true, 523, true, new List<Canal>());
+            AgregarPaqueteHD("paqueteHD3", false, 623, true, new List<Canal>());
+            AgregarPaqueteHD("paqueteHD4", false, 871, true, new List<Canal>());
+            AgregarPaqueteHD("paqueteHD5", true, 174, true, new List<Canal>());
+            AgregarPaqueteHD("paqueteHD6", true, 823, true, new List<Canal>());
+            AgregarPaqueteHD("paqueteHD7", false, 284, true, new List<Canal>());
+            AgregarPaqueteHD("paqueteHD8", false, 937, true, new List<Canal>());
+            AgregarPaqueteHD("paqueteHD9", true, 127, true, new List<Canal>());
+            AgregarPaqueteHD("paqueteHD10", true, 264, true, new List<Canal>());
+
+            AgregarPaqueteSD("paqueteSD1", true, 385, true, new List<Canal>());
+            AgregarPaqueteSD("paqueteSD2", true, 396, true, new List<Canal>());
+            AgregarPaqueteSD("paqueteSD3", false, 295, true, new List<Canal>());
+            AgregarPaqueteSD("paqueteSD4", false, 285, true, new List<Canal>());
+            AgregarPaqueteSD("paqueteSD5", true, 184, true, new List<Canal>());
+            AgregarPaqueteSD("paqueteSD6", true, 195, true, new List<Canal>());
+            AgregarPaqueteSD("paqueteSD7", false, 186, true, new List<Canal>());
+            AgregarPaqueteSD("paqueteSD8", false, 275, true, new List<Canal>());
+            AgregarPaqueteSD("paqueteSD9", true, 275, true, new List<Canal>());
+            AgregarPaqueteSD("paqueteSD10", true, 195, true, new List<Canal>());
 
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
         public void PrecargaCanales()
         {
             AgregarCanal("canal1", Resolucion.RES1, true, 180);
@@ -106,15 +134,14 @@ namespace Dominio
         /// <param name="promocion"></param>
         /// <param name="precioBase"></param>
         /// <param name="grabacionNube"></param>
-        /// <param name="costoFijo"></param>
         /// <param name="canales"></param>
         /// <returns></returns>
-        public bool AgregarPaqueteHD(string nombre, bool promocion, decimal precioBase,bool grabacionNube,decimal costoFijo, List<Canal> canales)
+        public bool AgregarPaqueteHD(string nombre, bool promocion, decimal precioBase,bool grabacionNube, List<Canal> canales)
         {
             //bool exito = false; TODO Verify this
             //if (BuscarPaquete(Nombre) == null)
             //{
-              Paquete unP = new PaqueteHD(nombre, promocion, precioBase,canales, grabacionNube,costoFijo);
+              Paquete unP = new PaqueteHD(nombre, promocion, precioBase,canales, grabacionNube);
               Paquetes.Add(unP);
             //    exito = true;
             //}

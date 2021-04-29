@@ -13,28 +13,26 @@ namespace Dominio
         #region atributos
         //atributos y propiedades EN UNA LINEA SOLA
         public bool GrabacionNube { get; set; }
-        public decimal CostoFijo { get; set; }
+        public static decimal CostoFijo { get; set; }
         #endregion
 
-        public PaqueteHD(string nombre, bool promocion, decimal precioBase,List<Canal> canales, bool grabacionNube, decimal costoFijo) : base(nombre, promocion, precioBase,canales)
+        public PaqueteHD(string nombre, bool promocion, decimal precioBase,List<Canal> canales, bool grabacionNube) : base(nombre, promocion, precioBase,canales)
         {
             tipoPaquete = TipoPaquete.HD;
             GrabacionNube = grabacionNube;
-            CostoFijo = costoFijo;
         }
 
-        public PaqueteHD(string nombre, bool promocion, decimal precioBase, List<Canal> canales, int id, bool grabacionNube, decimal costoFijo) : base(nombre, promocion, precioBase, canales, id)
+        public PaqueteHD(string nombre, bool promocion, decimal precioBase, List<Canal> canales, int id, bool grabacionNube) : base(nombre, promocion, precioBase, canales, id)
         {
             tipoPaquete = TipoPaquete.HD;
             GrabacionNube = grabacionNube;
-            CostoFijo = costoFijo;
         }
 
         //cambio - cambio
 
         public override Paquete ClonarPaquete()
         {
-            return new PaqueteHD(Nombre, Promocion, PrecioBase, Canales, Id, GrabacionNube, CostoFijo);
+            return new PaqueteHD(Nombre, Promocion, PrecioBase, Canales, Id, GrabacionNube);
         }
 
        public override decimal DefinirPrecio()
