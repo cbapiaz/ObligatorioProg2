@@ -287,7 +287,7 @@ namespace Dominio
         /// <returns></returns>
         public List<Paquete> PaquetesMayorPrecio(decimal precioComparar)
         {
-            decimal max = int.MinValue;
+            decimal max = precioComparar;
             List<Paquete> paquetesAux = new List<Paquete>();
 
             foreach (Paquete paqueteAux in Paquetes)
@@ -296,15 +296,9 @@ namespace Dominio
 
                 if (precioActual > max)
                 {
-                    max = precioActual;
-                    paquetesAux.Clear();
                     paquetesAux.Add(paqueteAux);
                 }
 
-                else if (precioActual == max)
-                {
-                    paquetesAux.Add(paqueteAux);
-                }
             }
 
             return paquetesAux;

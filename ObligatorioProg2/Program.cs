@@ -5,7 +5,7 @@ namespace ObligatorioProg2
 {
     class Program
     {
-        Empresa empresa = new Empresa();
+        readonly Empresa empresa = new Empresa();
         static void Main(string[] args)
         {
 
