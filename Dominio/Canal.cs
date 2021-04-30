@@ -67,7 +67,7 @@ namespace Dominio
 
     public enum Resolucion : int
     {
-        RES1 = 576,
-        RES2 = 1080
+        BAJA = 576,
+        ALTA = 1080
     }
 }
