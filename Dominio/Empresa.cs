@@ -14,7 +14,9 @@ namespace Dominio
 
         public Empresa()
         {
-
+            PrecargaPaquetes();
+            PrecargaCanales();
+            string result = PrecargaCanalesAPaquetes();
         }
 
         /// <summary>
@@ -105,7 +107,7 @@ namespace Dominio
             AgregarCanal("canal50", Resolucion.BAJA, true, 184);
         }
 
-        public void PrecargaCanalesAPaquetes()
+        public string PrecargaCanalesAPaquetes()
         {
             string errores = "";
             Paquete auxPaq1 = BuscarPaquete("paqueteHD1");
@@ -121,6 +123,8 @@ namespace Dominio
             Paquete auxPaq2 = BuscarPaquete("paqueteSD1");
             auxPaq2.IngresarCanal(BuscarCanal("canal1"));
             auxPaq2.IngresarCanal(BuscarCanal("canal2"));
+
+            return errores;
 
         }
 
