@@ -18,7 +18,7 @@ namespace Dominio
         }
 
         /// <summary>
-        /// 
+        /// precargar los paquetes con distintos datos
         /// </summary>
         public void PrecargaPaquetes()
         {
@@ -49,7 +49,7 @@ namespace Dominio
         }
 
         /// <summary>
-        /// 
+        /// precarga los canales con distintos datos
         /// </summary>
         public void PrecargaCanales()
         {
@@ -135,7 +135,7 @@ namespace Dominio
         public bool AgregarCanal(string nombre, Resolucion resolucion, bool multilenguaje, decimal precio)
         {
             bool exito = false;
-            if (Canal.ValidarNombre(nombre) && Canal.ValidarPrecio(precio)) /*TODO Verify this && BuscarCanal(Id) == null*/
+            if (Canal.ValidarNombre(nombre) && Canal.ValidarPrecio(precio) && BuscarCanal(nombre) == null)
             {
                 Canal unC = new Canal(nombre, resolucion, multilenguaje, precio);
                 Canales.Add(unC);
@@ -240,7 +240,7 @@ namespace Dominio
         }
 
         /// <summary>
-        /// TODO
+        /// a partir de un nobmre retorna el canal asociado
         /// </summary>
         /// <param name="nombre"></param>
         /// <returns></returns>
@@ -261,9 +261,9 @@ namespace Dominio
 
 
         /// <summary>
-        /// TODO
+        /// a partir de un nombre retorna el paquete asociado
         /// </summary>
-        /// <param name="id"></param>
+        /// <param name="nombreBuscar"></param>
         /// <returns></returns>
         public Paquete BuscarPaquete(string nombreBuscar)
         {

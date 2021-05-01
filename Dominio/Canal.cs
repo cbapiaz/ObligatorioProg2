@@ -3,12 +3,12 @@
 namespace Dominio
 {
     /// <summary>
-    /// TODO
+    /// Representa un Canal en el sistema
     /// </summary>
     public class Canal
     {
         #region atributos
-            private static int internalID;
+            private static int internalID=0;
             protected int Id;
 
             public string Nombre { get; set; }

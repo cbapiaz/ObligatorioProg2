@@ -5,7 +5,7 @@ using System.Text;
 namespace Dominio
 {
     /// <summary>
-    /// TODO
+    /// Representa un Paquete HD (alta definicion) en el sistema
     /// </summary>
     public class PaqueteHD : Paquete
     {

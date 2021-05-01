@@ -5,7 +5,7 @@ using System.Text;
 namespace Dominio
 {
     /// <summary>
-    /// TODO
+    /// Representa un Paquete SD ( definicion standart) en el sistema
     /// </summary>
     public class PaqueteSD : Paquete
     {

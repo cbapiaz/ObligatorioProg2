@@ -4,14 +4,14 @@ using System.Collections.Generic;
 namespace Dominio
 {
     /// <summary>
-    /// TODO
+    /// Representa un paquete con una lista de canales en el sistema
     /// </summary>
     public abstract class Paquete
     {
         //id autogenerado
         #region atributos
 
-        private static int internalID;
+        private static int internalID=0;
         protected int Id;
         public string Nombre { get; set; }
 
