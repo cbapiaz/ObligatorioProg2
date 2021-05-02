@@ -136,17 +136,16 @@ namespace Dominio
         /// <param name="multilenguaje"></param>
         /// <param name="precio"></param>
         /// <returns></returns>
-        public bool AgregarCanal(string nombre, Resolucion resolucion, bool multilenguaje, decimal precio)
+        public Canal AgregarCanal(string nombre, Resolucion resolucion, bool multilenguaje, decimal precio)
         {
-            bool exito = false;
+            Canal unC = null;
             if (Canal.ValidarNombre(nombre) && Canal.ValidarPrecio(precio) && BuscarCanal(nombre) == null)
             {
-                Canal unC = new Canal(nombre, resolucion, multilenguaje, precio);
+                unC = new Canal(nombre, resolucion, multilenguaje, precio);
                 Canales.Add(unC);
-                exito = true;
             }
 
-            return exito;
+            return unC;
         }
 
 
@@ -159,18 +158,16 @@ namespace Dominio
         /// <param name="grabacionNube"></param>
         /// <param name="canales"></param>
         /// <returns></returns>
-        public bool AgregarPaqueteHD(string nombre, bool promocion, decimal precioBase, bool grabacionNube, List<Canal> canales)
+        public PaqueteHD AgregarPaqueteHD(string nombre, bool promocion, decimal precioBase, bool grabacionNube, List<Canal> canales)
         {
-            bool exito = false;
-
+            PaqueteHD unP = null;
             if (BuscarPaquete(nombre) == null)
             {
-                Paquete unP = new PaqueteHD(nombre, promocion, precioBase, canales, grabacionNube);
+                unP = new PaqueteHD(nombre, promocion, precioBase, canales, grabacionNube);
                 Paquetes.Add(unP);
-                exito = true;
             }
 
-            return exito;
+            return unP;
         }
 
         /// <summary>
@@ -182,18 +179,16 @@ namespace Dominio
         /// <param name="mejoraImagen"></param>
         /// <param name="canales"></param>
         /// <returns></returns>
-        public bool AgregarPaqueteSD(string nombre, bool promocion, decimal precioBase, bool mejoraImagen, List<Canal> canales)
+        public PaqueteSD AgregarPaqueteSD(string nombre, bool promocion, decimal precioBase, bool mejoraImagen, List<Canal> canales)
         {
-            bool exito = false;
-
+            PaqueteSD unP = null;
             if (BuscarPaquete(nombre) == null)
             {
-                Paquete unP = new PaqueteSD(nombre, promocion, precioBase, canales, mejoraImagen);
+                unP = new PaqueteSD(nombre, promocion, precioBase, canales, mejoraImagen);
                 Paquetes.Add(unP);
-                exito = true;
             }
 
-            return exito;
+            return unP;
         }
 
         /// <summary>
