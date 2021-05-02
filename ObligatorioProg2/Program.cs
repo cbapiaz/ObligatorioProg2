@@ -11,25 +11,31 @@ namespace ObligatorioProg2
         static void Main(string[] args)
         {
 
-            Canal c = new Canal("pepe", Resolucion.BAJA, false, 7878);
-            Console.WriteLine(c);
+                      
 
-            Console.WriteLine("Canales");
-            foreach (var v in empresa.ListarCanales())
-            {
-                Console.WriteLine(v.ToString());
-            }
+            MostrarPaquetes();
 
+            Mostrar();
 
-            Console.WriteLine("Paquetes");
+        }
+
+        private static void MostrarPaquetes()
+        {
+            Console.WriteLine("Paquetes: ");
 
             foreach (var v in empresa.ListarPaquetes())
             {
                 Console.WriteLine(v.ToString());
             }
+        }
 
-            Mostrar();
-
+        private static void MostrarCanales()
+        {
+            Console.WriteLine("Canales: ");
+            foreach (var v in empresa.ListarCanales())
+            {
+                Console.WriteLine(v.ToString());
+            }
         }
 
         /// <summary>
@@ -62,6 +68,12 @@ namespace ObligatorioProg2
                         MostrarPaquetesPrecioMayorA();
                         break;
                     case 6:
+                        MostrarCanales();
+                        break;
+                    case 7:
+                        MostrarPaquetes();
+                        break;
+                    case 8:
                         salir = 0;
                         break;
 
@@ -81,9 +93,14 @@ namespace ObligatorioProg2
             Console.WriteLine("Menu:");
             Console.WriteLine("1. Ingresar un canal de TV.");
             Console.WriteLine("2. Visualizar todos los paquetes de canales.");
-            Console.WriteLine("3.  Modificar el costo fijo de grabación en la nube.");
+            Console.WriteLine("3. Modificar el costo fijo de grabación en la nube.");
             Console.WriteLine("4. Mostrar los paquetes con la mayor cantidad de canales.");
-            Console.WriteLine("5. Visualizar todos los paquetes de canales.");
+            Console.WriteLine("5. Listar los paquetes cuyo precio supere un valor dado.");
+            Console.WriteLine("6. Mostrar Todos los Canales");
+            Console.WriteLine("7. Mostrar Todos los Paquetes");
+            Console.WriteLine("8. Salir");
+            
+
             Console.WriteLine("Para salir ingrese '0'.");
 
             opcion = int.Parse(Console.ReadLine());
@@ -112,7 +129,7 @@ namespace ObligatorioProg2
             //si la respuesta es ALTA se asigna este valor a la resolucion, de no ser asi se asigna BAJA
             //Resolucion resolucionFinal = resolucionString == "alta" ? Resolucion.ALTA : Resolucion.BAJA;
 
-            string multiString = Console.ReadLine();
+            string multiString = ""; // Console.ReadLine();
             do
             {
                 Console.WriteLine("Ingrese si tiene multilenguage, 'si' o 'no': ");
@@ -172,8 +189,11 @@ namespace ObligatorioProg2
 
             foreach (Paquete item in listaaux)
             {
+                Console.WriteLine($"Cant Canales: {item.Canales.Count}");
                 Console.WriteLine(item);
             }
+
+            
 
         }
 
