@@ -10,13 +10,13 @@ namespace Dominio
         #region atributos
             private static int internalID=0;
             protected int Id;
-
             public string Nombre { get; set; }
             public Resolucion Resolucion { get; set; }
             public bool MultiLenguaje { get; set; }
             public decimal Precio { get; set; }
         #endregion atributos
 
+        #region Constructores
         public Canal(string nombre, Resolucion resolucion, bool multilenguaje, decimal precio)
         {
             Id = ++internalID;
@@ -34,15 +34,14 @@ namespace Dominio
             MultiLenguaje = multilenguaje;
             Precio = precio;
         }
+        #endregion
 
+        #region metodos
         public Canal ClonarCanal()
         {
             Canal canalAux = new Canal(Id, Nombre, Resolucion, MultiLenguaje, Precio);
-
             return canalAux;
-
         }
-
 
         public static bool ValidarPrecio(decimal precio)
         {
@@ -63,6 +62,7 @@ namespace Dominio
         {
             return Id;
         }
+        #endregion
     }
 
     public enum Resolucion : int

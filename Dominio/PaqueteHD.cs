@@ -16,6 +16,7 @@ namespace Dominio
         public static decimal CostoFijo { get; set; }
         #endregion
 
+        #region constructores
         public PaqueteHD(string nombre, bool promocion, decimal precioBase,List<Canal> canales, bool grabacionNube) : base(nombre, promocion, precioBase,canales)
         {
             tipoPaquete = TipoPaquete.HD;
@@ -27,9 +28,9 @@ namespace Dominio
             tipoPaquete = TipoPaquete.HD;
             GrabacionNube = grabacionNube;
         }
+        #endregion
 
-        //cambio - cambio
-
+        #region metodos
         public override Paquete ClonarPaquete()
         {
             return new PaqueteHD(Nombre, Promocion, PrecioBase, Canales, Id, GrabacionNube);
@@ -49,11 +50,11 @@ namespace Dominio
             }
             return result ;
         }
-    
 
-        public override bool ValidarResolucion()
+        public static bool ValidarPrecioNube(decimal precioACambiar)
         {
-            throw new NotImplementedException();
+            return precioACambiar > 0;
         }
+        #endregion
     }
 }

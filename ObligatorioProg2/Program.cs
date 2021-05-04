@@ -10,13 +10,7 @@ namespace ObligatorioProg2
         private static Empresa empresa = new Empresa();
         static void Main(string[] args)
         {
-
-                      
-
-            MostrarPaquetes();
-
-            Mostrar();
-
+            MostrarMenu();
         }
 
         private static void MostrarPaquetes()
@@ -41,7 +35,7 @@ namespace ObligatorioProg2
         /// <summary>
         /// Programa que se muestra en consola
         /// </summary>
-        public static void Mostrar()
+        public static void MostrarMenu()
         {
             Console.WriteLine("****************************\nObligatorio - Programación 2\n****************************");
             int salir = -1;
@@ -99,8 +93,6 @@ namespace ObligatorioProg2
             Console.WriteLine("6. Mostrar Todos los Canales");
             Console.WriteLine("7. Mostrar Todos los Paquetes");
             Console.WriteLine("8. Salir");
-            
-
             Console.WriteLine("Para salir ingrese '0'.");
 
             opcion = int.Parse(Console.ReadLine());
@@ -129,7 +121,7 @@ namespace ObligatorioProg2
             //si la respuesta es ALTA se asigna este valor a la resolucion, de no ser asi se asigna BAJA
             //Resolucion resolucionFinal = resolucionString == "alta" ? Resolucion.ALTA : Resolucion.BAJA;
 
-            string multiString = ""; // Console.ReadLine();
+            string multiString;
             do
             {
                 Console.WriteLine("Ingrese si tiene multilenguage, 'si' o 'no': ");
@@ -138,16 +130,13 @@ namespace ObligatorioProg2
 
             //si la respuesta es SI se asigna TRUE a multilenguaje, de no ser asi se asigna FALSE
             bool multiFinal = multiString == "si" ? true : false;
-
             decimal precioDecimal = GuardarValorDecimal("Ingrese el precio del mismo: ");
 
             if (Canal.ValidarPrecio(precioDecimal) && Canal.ValidarNombre(nombre)) { }
             {
                 Canal unC = empresa.AgregarCanal(nombre, resolucionFinal, multiFinal, precioDecimal);
                 Console.WriteLine("Su canal ha sido creado.");
-
                 Console.WriteLine(unC);
-
             }
 
         }
@@ -176,10 +165,17 @@ namespace ObligatorioProg2
 
             decimal precioACambiar = GuardarValorDecimal("Ingresa un nuevo valor para el costo fijo de grabación en la nube: ");
 
-            PaqueteHD.CostoFijo = precioACambiar;
+            if (!PaqueteHD.ValidarPrecioNube(precioACambiar))
+            {
+                Console.WriteLine("Precio de grabacion en la nube no valido");
+            }
+            else
+            {
+                PaqueteHD.CostoFijo = precioACambiar;
 
-            Console.WriteLine("Precio cambiado exitosamente.");
+                Console.WriteLine("Precio cambiado exitosamente.");
 
+            }
         }
 
         /// <summary>
@@ -194,9 +190,6 @@ namespace ObligatorioProg2
                 Console.WriteLine($"Cant Canales: {item.Canales.Count}");
                 Console.WriteLine(item);
             }
-
-            
-
         }
 
         /// <summary>
@@ -205,14 +198,11 @@ namespace ObligatorioProg2
         public static void MostrarPaquetesPrecioMayorA()
         {
             decimal precioComparar = GuardarValorDecimal("Ingrese un precio a comparar: ");
-
             List<Paquete> listaaux = empresa.PaquetesMayorPrecio(precioComparar);
-
             foreach (Paquete item in listaaux)
             {
                 Console.WriteLine(item);
             }
-
         }
 
         /// <summary>
@@ -232,7 +222,6 @@ namespace ObligatorioProg2
             } while (!precioString.All(char.IsDigit));
 
             nuevoprecio = decimal.Parse(precioString);
-
             return nuevoprecio;
         }
     }

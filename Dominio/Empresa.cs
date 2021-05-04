@@ -7,17 +7,23 @@ namespace Dominio
 
     public class Empresa
     {
+        #region atributos
         public int Id { get; set; }
         public string Nombre { get; set; }
         public List<Paquete> Paquetes { get; } = new List<Paquete>();
         public List<Canal> Canales { get; } = new List<Canal>();
+        #endregion
 
+        #region constructores
         public Empresa()
         {
             PrecargaPaquetes();
             PrecargaCanales();
-            string result = PrecargaCanalesAPaquetes();
+            PrecargaCanalesAPaquetes();
         }
+        #endregion
+
+        #region metodos
 
         /// <summary>
         /// precargar los paquetes con distintos datos
@@ -25,7 +31,6 @@ namespace Dominio
         public void PrecargaPaquetes()
         {
             PaqueteHD.CostoFijo = 566;
-
             AgregarPaqueteHD("paqueteHD1", true, 580, true, new List<Canal>());
             AgregarPaqueteHD("paqueteHD2", true, 523, true, new List<Canal>());
             AgregarPaqueteHD("paqueteHD3", false, 623, true, new List<Canal>());
@@ -36,7 +41,6 @@ namespace Dominio
             AgregarPaqueteHD("paqueteHD8", false, 937, true, new List<Canal>());
             AgregarPaqueteHD("paqueteHD9", true, 127, true, new List<Canal>());
             AgregarPaqueteHD("paqueteHD10", true, 264, true, new List<Canal>());
-
             AgregarPaqueteSD("paqueteSD1", true, 385, true, new List<Canal>());
             AgregarPaqueteSD("paqueteSD2", true, 396, true, new List<Canal>());
             AgregarPaqueteSD("paqueteSD3", false, 295, true, new List<Canal>());
@@ -47,7 +51,6 @@ namespace Dominio
             AgregarPaqueteSD("paqueteSD8", false, 275, true, new List<Canal>());
             AgregarPaqueteSD("paqueteSD9", true, 275, true, new List<Canal>());
             AgregarPaqueteSD("paqueteSD10", true, 195, true, new List<Canal>());
-
         }
 
         /// <summary>
@@ -107,6 +110,10 @@ namespace Dominio
             AgregarCanal("canal50", Resolucion.BAJA, true, 184);
         }
 
+        /// <summary>
+        /// asociar canales existentes a paquetes
+        /// </summary>
+        /// <returns></returns>
         public string PrecargaCanalesAPaquetes()
         {
             string errores = "";
@@ -119,11 +126,9 @@ namespace Dominio
             { //No se debe agregar un canal de resolucion BAJA a un paquete de resolcuion ALTA
                 errores += "ERROR AL INGRESAR UN CANAL\n";
             }
-
             Paquete auxPaq2 = BuscarPaquete("paqueteSD1");
             auxPaq2.IngresarCanal(BuscarCanal("canal1"));
             auxPaq2.IngresarCanal(BuscarCanal("canal2"));
-
             return errores;
 
         }
@@ -297,13 +302,11 @@ namespace Dominio
                 {
                     paquetesAux.Add(paqueteAux);
                 }
-
             }
-
             return paquetesAux;
         }
 
-
+        #endregion
 
     }
 }

@@ -8,9 +8,9 @@ namespace Dominio
     /// </summary>
     public abstract class Paquete
     {
-        //id autogenerado
-        #region atributos
 
+        #region atributos
+        //id autogenerado
         private static int internalID=0;
         protected int Id;
         public string Nombre { get; set; }
@@ -25,18 +25,14 @@ namespace Dominio
         public decimal PrecioBase { get; set; }
         #endregion
 
-
-      
-
+        #region constructores
         public Paquete(string nombre, bool promocion, decimal precioBase,List<Canal> canales)
         {
             this.canales = canales;
             Id = ++internalID;
-
             Nombre = nombre;
             Promocion = promocion;
             PrecioBase = precioBase;
-
         }
 
         public Paquete(string nombre, bool promocion, decimal precioBase, List<Canal> canales, int id)
@@ -47,7 +43,9 @@ namespace Dominio
             Promocion = promocion;
             PrecioBase = precioBase;
         }
+        #endregion
 
+        #region metodos
         public bool IngresarCanal(Canal c)
         {
             canales.Add(c);
@@ -76,8 +74,6 @@ namespace Dominio
             return result;
         }
 
-        public abstract bool ValidarResolucion();
-
         public bool ValidarCantCanales()
         {
             return canales.Count > 0;
@@ -87,8 +83,10 @@ namespace Dominio
         {
             return $"Nombre : {Nombre} | Promocion : {Promocion} | Precio Base : {PrecioBase}";
         }
+        #endregion
 
     }
+
     public enum TipoPaquete
     {
         SD =1,

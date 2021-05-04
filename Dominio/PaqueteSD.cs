@@ -9,7 +9,11 @@ namespace Dominio
     /// </summary>
     public class PaqueteSD : Paquete
     {
+        #region atributos
         public bool MejoraImagen { get; set; }
+        #endregion
+
+        #region constructores
         public PaqueteSD(string nombre, bool promocion, decimal precioBase,List<Canal> canales, bool mejoraimagen) 
             : base(nombre, promocion, precioBase, canales)
         {
@@ -22,6 +26,9 @@ namespace Dominio
             tipoPaquete = TipoPaquete.SD;
             MejoraImagen = mejoraImagen;
         }
+        #endregion
+
+        #region metodos
 
         /// <summary>
         /// Clonar un paquete sd a partir de los datos originales
@@ -50,9 +57,6 @@ namespace Dominio
             return result;
         }
 
-        public override bool ValidarResolucion()
-        {
-            throw new NotImplementedException();
-        }
+        #endregion
     }
 }
