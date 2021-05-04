@@ -172,6 +172,8 @@ namespace ObligatorioProg2
         /// </summary>
         public static void ModificarCostoFijo()
         {
+            Console.WriteLine($"Costo fijo de grabacion en la nube actual: {PaqueteHD.CostoFijo}");
+
             decimal precioACambiar = GuardarValorDecimal("Ingresa un nuevo valor para el costo fijo de grabación en la nube: ");
 
             PaqueteHD.CostoFijo = precioACambiar;
