@@ -96,7 +96,7 @@ namespace ObligatorioProg2
             Console.WriteLine("Para salir ingrese '0'.");
 
             opcion = int.Parse(Console.ReadLine());
-        
+
             return opcion;
         }
 
@@ -105,18 +105,32 @@ namespace ObligatorioProg2
         /// </summary>
         public static void IngresarCanalTV()
         {
-            //nombre, resolucion ATLA o BAJA, multilenguaje TRUE, decimal PRECIO
-            Console.WriteLine("Ingrese el nombre del canal: ");
-            string nombre = Console.ReadLine();
+            string nombre = "";
+            bool validar = false;
+            do
+            {
+                //nombre, resolucion ATLA o BAJA, multilenguaje TRUE, decimal PRECIO
+                Console.WriteLine("Ingrese el nombre del canal: ");
+                nombre = Console.ReadLine();
+
+                validar = Canal.ValidarNombre(nombre);
+
+                if (!validar)
+                {
+                    Console.WriteLine("El nombre del canal debe ser mayor a tres caracteres.");
+                }
+
+            } while (!validar);
 
             string resolucionString = "";
             do
             {
                 Console.WriteLine("Ingrese la resolucion del canal, 1080 'alta' o 576 'baja': ");
                 resolucionString = Console.ReadLine();
+                resolucionString = resolucionString.ToLower();
             } while (resolucionString != "alta" && resolucionString != "baja");
 
-            Resolucion resolucionFinal =  (Resolucion) Enum.Parse(typeof(Resolucion), resolucionString.ToUpper());
+            Resolucion resolucionFinal = (Resolucion)Enum.Parse(typeof(Resolucion), resolucionString.ToUpper());
 
             //si la respuesta es ALTA se asigna este valor a la resolucion, de no ser asi se asigna BAJA
             //Resolucion resolucionFinal = resolucionString == "alta" ? Resolucion.ALTA : Resolucion.BAJA;
@@ -126,11 +140,21 @@ namespace ObligatorioProg2
             {
                 Console.WriteLine("Ingrese si tiene multilenguage, 'si' o 'no': ");
                 multiString = Console.ReadLine();
+                multiString = multiString.ToLower();
             } while (multiString != "si" && multiString != "no");
 
             //si la respuesta es SI se asigna TRUE a multilenguaje, de no ser asi se asigna FALSE
             bool multiFinal = multiString == "si" ? true : false;
-            decimal precioDecimal = GuardarValorDecimal("Ingrese el precio del mismo: ");
+            decimal precioDecimal = -1;
+            do
+            {
+                precioDecimal = GuardarValorDecimal("Ingrese el precio del mismo: ");
+ 
+                if (!Canal.ValidarPrecio(precioDecimal))
+                {
+                    Console.WriteLine("Ingeese un precio de Canal mayo a 0.");
+                }
+            } while (!Canal.ValidarPrecio(precioDecimal));
 
             if (Canal.ValidarPrecio(precioDecimal) && Canal.ValidarNombre(nombre)) { }
             {
@@ -215,13 +239,15 @@ namespace ObligatorioProg2
 
             decimal nuevoprecio = -1;
             string precioString = "";
+            bool exito = false;
             do
             {
                 Console.WriteLine(mensaje);
                 precioString = Console.ReadLine();
-            } while (!precioString.All(char.IsDigit));
+                exito = decimal.TryParse(precioString, out nuevoprecio);
 
-            nuevoprecio = decimal.Parse(precioString);
+            } while (!exito);
+
             return nuevoprecio;
         }
     }
