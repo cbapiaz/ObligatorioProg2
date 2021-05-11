@@ -46,7 +46,7 @@ namespace Dominio
         #endregion
 
         #region metodos
-        public bool IngresarCanal(Canal c)
+        public virtual bool IngresarCanal(Canal c)
         {
             canales.Add(c);
             return true;

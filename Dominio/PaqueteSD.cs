@@ -57,6 +57,16 @@ namespace Dominio
             return result;
         }
 
+        public override bool IngresarCanal(Canal c)
+        {
+            if (c.Resolucion == Resolucion.BAJA)
+            {
+                Canales.Add(c);
+                return true;
+            }
+            return false;
+        }
+
         #endregion
     }
 }
