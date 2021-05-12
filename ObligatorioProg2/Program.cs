@@ -16,19 +16,33 @@ namespace ObligatorioProg2
         private static void MostrarPaquetes()
         {
             Console.WriteLine("Paquetes: ");
-
-            foreach (var v in empresa.ListarPaquetes())
+            var lista = empresa.ListarPaquetes();
+            if (lista == null || lista.Count == 0)
             {
-                Console.WriteLine(v.ToString());
+                Console.WriteLine("No hay paquetes");
+            }
+            else {
+                foreach (var v in lista)
+                {
+                    Console.WriteLine(v.ToString());
+                }
             }
         }
 
         private static void MostrarCanales()
         {
             Console.WriteLine("Canales: ");
-            foreach (var v in empresa.ListarCanales())
+            var lista = empresa.ListarCanales();
+            if (lista == null || lista.Count == 0)
             {
-                Console.WriteLine(v.ToString());
+                Console.WriteLine("No hay canales");
+            }
+            else
+            {
+                foreach (var v in empresa.ListarCanales())
+                {
+                    Console.WriteLine(v.ToString());
+                }
             }
         }
 
@@ -173,9 +187,17 @@ namespace ObligatorioProg2
             Console.WriteLine("Lista de todos los paquetes de canales.");
 
             List<Paquete> paquetesLista = empresa.ListarPaquetes();
-            foreach (Paquete item in paquetesLista)
+
+            if (paquetesLista == null || paquetesLista.Count == 0)
             {
-                Console.WriteLine(item);
+                Console.WriteLine("No hay Paquetes");
+            }
+            else
+            {
+                foreach (Paquete item in paquetesLista)
+                {
+                    Console.WriteLine(item);
+                }
             }
 
         }
@@ -209,10 +231,18 @@ namespace ObligatorioProg2
         {
             List<Paquete> listaaux = empresa.ListarPaquetesConMasCanales();
 
-            foreach (Paquete item in listaaux)
+
+            if (listaaux == null || listaaux.Count == 0)
             {
-                Console.WriteLine($"Cant Canales: {item.Canales.Count}");
-                Console.WriteLine(item);
+                Console.WriteLine("No hay Paquetes asociados");
+            }
+            else
+            {
+                foreach (Paquete item in listaaux)
+                {
+                    Console.WriteLine($"Cant Canales: {item.Canales.Count}");
+                    Console.WriteLine(item);
+                }
             }
         }
 
@@ -223,9 +253,17 @@ namespace ObligatorioProg2
         {
             decimal precioComparar = GuardarValorDecimal("Ingrese un precio a comparar: ");
             List<Paquete> listaaux = empresa.PaquetesMayorPrecio(precioComparar);
-            foreach (Paquete item in listaaux)
+
+            if (listaaux == null || listaaux.Count == 0)
             {
-                Console.WriteLine(item);
+                Console.WriteLine("No hay paquetes asociados");
+            }
+            else
+            {
+                foreach (Paquete item in listaaux)
+                {
+                    Console.WriteLine(item);
+                }
             }
         }
 
