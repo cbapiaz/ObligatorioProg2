@@ -46,11 +46,7 @@ namespace Dominio
         #endregion
 
         #region metodos
-        public virtual bool IngresarCanal(Canal c)
-        {
-            canales.Add(c);
-            return true;
-        }
+        public abstract bool IngresarCanal(Canal c);
 
         internal int CantCanales()
         {
