@@ -8,6 +8,17 @@ namespace Dominio
     public class Empresa
     {
         #region atributos
+
+        private static Empresa _instancia = null;
+        public static Empresa Instancia { get {
+                if (_instancia == null)
+                {
+                    _instancia = new Empresa();
+                }
+                return _instancia;
+            } 
+        }
+
         public int Id { get; set; }
         public string Nombre { get; set; }
         public List<Paquete> Paquetes { get; } = new List<Paquete>();
@@ -15,7 +26,7 @@ namespace Dominio
         #endregion
 
         #region constructores
-        public Empresa()
+        private Empresa()
         {
             PrecargaPaquetes();
             PrecargaCanales();
