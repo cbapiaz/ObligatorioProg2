@@ -16,7 +16,7 @@ namespace Dominio
                     _instancia = new Empresa();
                 }
                 return _instancia;
-            } 
+            }
         }
 
         public int Id { get; set; }
