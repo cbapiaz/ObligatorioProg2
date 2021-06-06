@@ -11,16 +11,22 @@
 <body>
     <div class="navbar navbar-inverse navbar-fixed-top">
         <div class="container">
-            <div class="navbar-header">
-                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+            <div class="navbar-header" data-toggle="collapse" data-target=".navbar-collapse">
+                <!-- -->
+                <button id="navbar-toggle-btn" type="button" class="navbar-toggle">
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                @Html.ActionLink("Application name", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
+                <a src="/Home/Index" class="navbar-brand">Home Solution</a>            
             </div>
             <div class="navbar-collapse collapse">
-                <ul class="nav navbar-nav">
+                <ul class="nav-list nav navbar-nav">
+                    <li class="nav-item">
+                        <a class="nav-link" href="#about">About</a>
+                    </li>
+                    <li class="nav-item"><a class="nav-link" href="~/Canal/Index">Canales</a></li>
+                    <li class="nav-item">  <a class="nav-link" href="~/Paquete/Index">Paquetes</a></li>
                 </ul>
             </div>
         </div>
