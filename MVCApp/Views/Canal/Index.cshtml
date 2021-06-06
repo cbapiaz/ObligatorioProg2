@@ -1,0 +1,34 @@
+﻿@using Dominio
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Listado de canales</h2>
+
+
+
+
+<table class="table">
+    <thead>
+        <tr>
+            <th scope="col">#</th>
+            <th scope="col">Nombre del canal</th>
+            <th scope="col">Resolucion</th>
+            <th scope="col">Precio</th>
+            <th scope="col">Multilenguaje</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (Canal item in ViewBag.canales)
+        {
+
+            <tr>
+                <th scope="row"></th>
+                <td>@item.Nombre</td>
+                <td>@item.Resolucion </td>
+                <td> @item.Precio</td>
+                <td>@item.MultiLenguaje</td>
+            </tr>
+        }
+    </tbody>
+</table>
