@@ -12,9 +12,17 @@ namespace MVCApp.Controllers
         // GET: Canal
         public ActionResult Index()
         {
-            ViewBag.canales = unE.ListarCanales();
+            if (unE.LoggedIn)
+            {
 
-            return View();
+                ViewBag.canales = unE.ListarCanales();
+
+                return View();
+            }
+            else
+            {
+                return RedirectToAction("Index", "Login");
+            }
         }
 
     }

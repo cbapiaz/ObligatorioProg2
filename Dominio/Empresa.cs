@@ -21,7 +21,7 @@ namespace Dominio
             }
         }
 
-        public bool LoggedIn { get; set; }
+        public bool LoggedIn { get; set; } = false;
 
         public int Id { get; set; }
         public string Nombre { get; set; }
