@@ -9,6 +9,8 @@ namespace Dominio
     {
         #region atributos
 
+
+
         private static Empresa _instancia = null;
         public static Empresa Instancia { get {
                 if (_instancia == null)
@@ -18,6 +20,8 @@ namespace Dominio
                 return _instancia;
             }
         }
+
+        public bool LoggedIn { get; set; }
 
         public int Id { get; set; }
         public string Nombre { get; set; }

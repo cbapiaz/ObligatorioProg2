@@ -1,0 +1,38 @@
+﻿@using Dominio
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Paquetes</h2>
+
+
+
+
+<table class="table">
+    <thead>
+        <tr>
+            <th scope="col">#</th>
+            <th scope="col">Nombre del canal</th>
+            <th scope="col">Promocion</th>
+            <th scope="col">Precio Base</th>
+
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (Paquete item in ViewBag.paquetes)
+        {
+
+
+        <tr>
+            <th scope="row"></th>
+           
+
+            <td>@item.Nombre</td>
+            <td>@item.Promocion </td>
+            <td> @item.PrecioBase</td>
+
+        </tr>
+        }
+    </tbody>
+   
+</table>

@@ -1,0 +1,8 @@
+C:\Repos\N2B-Prog2-ORT\Obligatorio\ObligatorioProg2\Dominio\bin\Release\netstandard2.0\Dominio.deps.json
+C:\Repos\N2B-Prog2-ORT\Obligatorio\ObligatorioProg2\Dominio\bin\Release\netstandard2.0\Dominio.dll
+C:\Repos\N2B-Prog2-ORT\Obligatorio\ObligatorioProg2\Dominio\bin\Release\netstandard2.0\Dominio.pdb
+C:\Repos\N2B-Prog2-ORT\Obligatorio\ObligatorioProg2\Dominio\obj\Release\netstandard2.0\Dominio.AssemblyInfoInputs.cache
+C:\Repos\N2B-Prog2-ORT\Obligatorio\ObligatorioProg2\Dominio\obj\Release\netstandard2.0\Dominio.AssemblyInfo.cs
+C:\Repos\N2B-Prog2-ORT\Obligatorio\ObligatorioProg2\Dominio\obj\Release\netstandard2.0\Dominio.csproj.CoreCompileInputs.cache
+C:\Repos\N2B-Prog2-ORT\Obligatorio\ObligatorioProg2\Dominio\obj\Release\netstandard2.0\Dominio.dll
+C:\Repos\N2B-Prog2-ORT\Obligatorio\ObligatorioProg2\Dominio\obj\Release\netstandard2.0\Dominio.pdb
