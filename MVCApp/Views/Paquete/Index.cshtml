@@ -23,16 +23,22 @@
         {
 
 
-        <tr>
-            <th scope="row"></th>
-           
+            <tr>
+                <th scope="row"></th>
 
-            <td>@item.Nombre</td>
-            <td>@item.Promocion </td>
-            <td> @item.PrecioBase</td>
 
-        </tr>
+                <td>@item.Nombre</td>
+                <td>@item.Promocion </td>
+                <td> @item.PrecioBase</td>
+
+            </tr>
         }
     </tbody>
-   
+
 </table>
+
+@section scripts {
+    <script>
+        $("navBar").show();
+    </script>
+}
