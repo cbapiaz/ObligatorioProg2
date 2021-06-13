@@ -27,6 +27,7 @@
                     </li>
                     <li class="nav-item"><a class="nav-link" href="~/Canal/Index">Canales</a></li>
                     <li class="nav-item">  <a class="nav-link" href="~/Paquete/Index">Paquetes</a></li>
+                    <li class="nav-item"> <a class="nav-link" href="~/Login/Index">Login</a></li>
                 </ul>
             </div>
         </div>
@@ -44,5 +45,10 @@
     <script src="~/Scripts/bootstrap.min.js"></script>
 
     @RenderSection("scripts")
+
+    <script>
+        var loggedIn = '@ViewBag.usuarioLogin' == 'True';
+        console.log(loggedIn);
+    </script>
 </body>
 </html>

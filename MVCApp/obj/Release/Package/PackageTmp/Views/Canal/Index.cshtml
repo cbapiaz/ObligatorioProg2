@@ -35,7 +35,17 @@
 
 
 @section scripts {
-    <script type="text/javascript">
-        $("navBar").show();
+    
+    <script>
+        var loggedIn = '@ViewBag.usuarioLogin' == 'True';
+        if (loggedIn) {
+            $("navBar").show();
+        }
+        else {
+            $("navBar").hide();
+            //location = "/Login/Index";
+        }
     </script>
+    
+
 }

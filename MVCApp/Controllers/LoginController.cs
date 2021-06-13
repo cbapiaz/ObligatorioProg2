@@ -7,6 +7,7 @@ using System.Web.Mvc;
 
 namespace MVCApp.Controllers
 {
+    //manejo de usuarios....
     public class LoginController : Controller
     {
         // GET: Login
@@ -14,6 +15,14 @@ namespace MVCApp.Controllers
         {
             ViewBag.usuarioLogin = Empresa.Instancia.LoggedIn;
             return View();
+        }
+
+        //ingresar usuario existente al sistema
+        public ActionResult Ingresar(string user, string pass)
+        {
+            //implementar login por usuario o cliente
+            Empresa.Instancia.LoggedIn = true;
+            return RedirectToAction("Index", "Canal");
         }
     }
 }

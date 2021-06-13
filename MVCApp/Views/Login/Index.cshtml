@@ -11,8 +11,8 @@
         </div>
         <!-- Login Form -->
         <form>
-            <input type="text" id="login" class="fadeIn second" name="login" placeholder="login">
-            <input type="text" id="password" class="fadeIn third" name="login" placeholder="password">
+            <input type="text" id="user" class="fadeIn second" name="login" placeholder="username">
+            <input type="password" id="password" class="fadeIn third" name="login" placeholder="password">
             <input id="logintBtn" type="submit" class="fadeIn fourth" value="Log In">
         </form>
 
@@ -34,12 +34,16 @@
             $("#navBar").hide();
         }
         else {
-            $("navBar").hide();
+            $("#navBar").show();
             location="/Canal/Index"
         }
 
+       
         $("#logintBtn").click(function () {
-            alert("hay que implementar login!");
+            let login = $("#user").val();
+            let psw = $("#password").val();
+            let url = `/Login/Ingresar?user=${login}&pass=${psw}`;
+            location = url;
         });
     </script>
 }
