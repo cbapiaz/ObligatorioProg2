@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Dominio;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -11,6 +12,7 @@ namespace MVCApp.Controllers
         // GET: Login
         public ActionResult Index()
         {
+            ViewBag.usuarioLogin = Empresa.Instancia.LoggedIn;
             return View();
         }
     }

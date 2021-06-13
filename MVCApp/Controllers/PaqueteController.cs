@@ -8,11 +8,12 @@ namespace MVCApp.Controllers
 {
     public class PaqueteController : Controller
     {
-        Empresa unP = Empresa.Instancia;
+        Empresa unE = Empresa.Instancia;
         // GET: Paquete
         public ActionResult Index()
         {
-            ViewBag.paquetes = unP.ListarPaquetes();
+            ViewBag.paquetes = unE.ListarPaquetes();
+            ViewBag.usuarioLogin = unE.LoggedIn;
             return View();
         }
     }

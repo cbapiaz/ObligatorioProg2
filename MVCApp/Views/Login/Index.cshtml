@@ -16,9 +16,12 @@
             <input id="logintBtn" type="submit" class="fadeIn fourth" value="Log In">
         </form>
 
-        <!-- Remind Passowrd -->
+        <!-- Register -->
         <div id="formFooter">
-            <a class="underlineHover" href="#">Forgot Password?</a>
+            <a class="underlineHover" href="#">Register</a>
+        </div>
+        <div>
+            <a class="underlineHover" href="/Canal/Index">Canales Disponibles?</a>
         </div>
 
     </div>
@@ -26,7 +29,15 @@
 
 @section scripts {
     <script>
-        $("#navBar").hide();
+        var loggedIn = '@ViewBag.usuarioLogin' == 'True';
+        if (!loggedIn) {
+            $("#navBar").hide();
+        }
+        else {
+            $("navBar").hide();
+            location="/Canal/Index"
+        }
+
         $("#logintBtn").click(function () {
             alert("hay que implementar login!");
         });
