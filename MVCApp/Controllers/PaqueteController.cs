@@ -16,5 +16,12 @@ namespace MVCApp.Controllers
             ViewBag.usuarioLogin = unE.LoggedIn;
             return View();
         }
+
+        public ActionResult MayorPrecio(decimal paquetePrecio)
+        {
+            ViewBag.paquetes = unE.PaquetesMayorPrecio(paquetePrecio);
+            ViewBag.usuarioLogin = unE.LoggedIn;
+            return View("Index");
+        }
     }
 }

@@ -5,7 +5,11 @@
 
 <h2>Paquetes</h2>
 
-
+<section>
+    <h3>Busca el paquete por precio</h3>
+    <input type="number" id="paquetePrecio" />
+    <button id="btnBuscar">Buscar</button>
+</section>
 
 
 <table class="table">
@@ -47,5 +51,15 @@
             $("navBar").hide();
             location = "/Login/Index";
         }
+
+        //BUSCAR PAQUETE MAYOR PRECIO
+        let btnBuscar = document.getElementById("btnBuscar");
+        let paquetePrecio = document.getElementById("paquetePrecio");
+
+        btnBuscar.addEventListener('click', () => {
+            let url = "/paquete/MayorPrecio?paquetePrecio=" + paquetePrecio.value;
+            location = url;
+        })
+
     </script>
 }
