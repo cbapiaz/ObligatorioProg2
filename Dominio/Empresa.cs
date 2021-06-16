@@ -21,7 +21,7 @@ namespace Dominio
             }
         }
 
-        public bool LoggedIn { get; set; } = false;
+        public bool LoggedIn { get; set; } = true;
 
         public int Id { get; set; }
         public string Nombre { get; set; }
@@ -320,6 +320,42 @@ namespace Dominio
             }
             return paquetesAux;
         }
+
+        //Dado el nombre de un canal obtener todos los paquetes que la incluyen.
+        /// <summary>
+        /// filtra los canales 
+        /// </summary>
+        /// <param name="nombreCanal"></param>
+        /// <returns></returns>
+        public List<Paquete> CanalesEnPaquete(string nombreCanal ) 
+        {
+           
+            List<Paquete> paquetesAux = new List<Paquete>();
+
+            foreach (Paquete paqueteAux in Paquetes)
+            {
+                Canal canal = BuscarCanal(nombreCanal);
+                if ( canal != null)
+                {
+                    //Implementar override del metodo equals en la clase canal, 4 parte c repasar
+
+                    if(paqueteAux.Canales.Contains(canal))
+                    {
+                    paquetesAux.Add(paqueteAux);
+                    }
+                    
+
+
+                }
+            }
+            
+            return paquetesAux;
+
+
+        }
+
+        //public CanalesEnPaquete()
+
 
         #endregion
 

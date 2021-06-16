@@ -132,6 +132,7 @@
     <Content Include="Views\Canal\Index.cshtml" />
     <Content Include="Views\Paquete\Index.cshtml" />
     <Content Include="Views\Login\Index.cshtml" />
+    <Content Include="Views\Paquete\CanalesEnPaquete.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

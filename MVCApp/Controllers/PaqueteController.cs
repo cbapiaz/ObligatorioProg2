@@ -23,5 +23,12 @@ namespace MVCApp.Controllers
             ViewBag.usuarioLogin = unE.LoggedIn;
             return View("Index");
         }
+
+        public ActionResult CanalesEnPaquete(string nombreCanal)
+        {
+            ViewBag.canales = unE.CanalesEnPaquete(nombreCanal);
+            ViewBag.usuarioLogin = unE.LoggedIn;
+            return View("Index");
+        }
     }
 }

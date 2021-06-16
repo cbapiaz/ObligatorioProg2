@@ -10,7 +10,11 @@
     <input type="number" id="paquetePrecio" />
     <button id="btnBuscar">Buscar</button>
 </section>
-
+<section>
+    <h3>Busca el nombre</h3>
+    <input type="text" id="nombreCanal" />
+    <button id="btnBuscar1">Buscar</button>
+</section>
 
 <table class="table">
     <thead>
@@ -60,6 +64,17 @@
             let url = "/paquete/MayorPrecio?paquetePrecio=" + paquetePrecio.value;
             location = url;
         })
+   // Parte de filtrado  de paquete segun canal
+     
+        //BUSCAR CANAL EN PAQUETE
+       /* let btnBuscar1 = document.getElementById("btnBuscar1");*/
+        let nombreCanal = document.getElementById("nombreCanal");
+
+        document.getElementById("btnBuscar1").addEventListener('click', () => {
+            let url = "/paquete/CanalesEnPaquete?nombreCanal=" + nombreCanal.value;
+            location = url;
+        })
+
 
     </script>
 }
