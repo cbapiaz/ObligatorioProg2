@@ -321,7 +321,8 @@ namespace Dominio
             return paquetesAux;
         }
 
-        //Dado el nombre de un canal obtener todos los paquetes que la incluyen.
+        //Dado el nombre de un canal obtener todos los paquetes que la incluyen.
+
         /// <summary>
         /// filtra los canales 
         /// </summary>

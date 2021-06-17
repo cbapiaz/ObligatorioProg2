@@ -62,7 +62,16 @@ namespace Dominio
         {
             return Id;
         }
+
+
+        public override bool Equals(Object o)
+        {
+            Canal otro = (Canal)o;
+            return Nombre == otro.Nombre;
+        }
+
         #endregion
+
     }
 
     public enum Resolucion : int
