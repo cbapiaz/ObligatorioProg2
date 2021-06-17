@@ -11,7 +11,7 @@
     <button id="btnBuscar">Buscar</button>
 </section>
 <section>
-    <h3>Busca el nombre</h3>
+    <h3>Busca por nombre de canal</h3>
     <input type="text" id="nombreCanal" />
     <button id="btnBuscar1">Buscar</button>
 </section>
@@ -20,9 +20,10 @@
     <thead>
         <tr>
             <th scope="col">#</th>
-            <th scope="col">Nombre del canal</th>
+            <th scope="col">Nombre del paquete</th>
             <th scope="col">Promocion</th>
             <th scope="col">Precio Base</th>
+            <th scope="col">Canales</th>
 
         </tr>
     </thead>
@@ -37,7 +38,8 @@
 
                 <td>@item.Nombre</td>
                 <td>@item.Promocion </td>
-                <td> @item.PrecioBase</td>
+                <td>@item.PrecioBase</td>
+                <td>@item.GetCanales()</td>
 
             </tr>
         }
@@ -67,7 +69,7 @@
    // Parte de filtrado  de paquete segun canal
      
         //BUSCAR CANAL EN PAQUETE
-       /* let btnBuscar1 = document.getElementById("btnBuscar1");*/
+
         let nombreCanal = document.getElementById("nombreCanal");
 
         document.getElementById("btnBuscar1").addEventListener('click', () => {

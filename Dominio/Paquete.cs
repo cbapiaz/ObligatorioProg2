@@ -48,6 +48,16 @@ namespace Dominio
         #region metodos
         public abstract bool IngresarCanal(Canal c);
 
+        public string GetCanales()
+        {
+            string res = "";
+            foreach (var c in Canales)
+            {
+                res += c.Nombre + ",";
+            }
+
+            return res;
+        }
         internal int CantCanales()
         {
             return canales.Count;
