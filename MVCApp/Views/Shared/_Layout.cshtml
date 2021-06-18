@@ -44,11 +44,11 @@
     <script src="~/Scripts/jquery-3.4.1.min.js"></script>
     <script src="~/Scripts/bootstrap.min.js"></script>
 
-    @RenderSection("scripts")
+    @RenderSection("scripts",false)
 
-    <script>
-        var loggedIn = '@ViewBag.usuarioLogin' == 'True';
+<script>
+        var loggedIn = '@Session["LoggedIn"]' == 'True';
         console.log(loggedIn);
-    </script>
+</script>
 </body>
 </html>

@@ -13,16 +13,35 @@ namespace MVCApp.Controllers
         // GET: Login
         public ActionResult Index()
         {
-            ViewBag.usuarioLogin = Empresa.Instancia.LoggedIn;
+            Session["UserName"] = null;
+            Session["UserRol"] = null;
+            Session["LoggedIn"] = false;
             return View();
         }
 
         //ingresar usuario existente al sistema
-        public ActionResult Ingresar(string user, string pass)
+        public ActionResult Ingresar(string username, string pass)
         {
-            //implementar login por usuario o cliente
-            Empresa.Instancia.LoggedIn = true;
-            return RedirectToAction("Index", "Canal");
+            User user = Empresa.Instancia.BuscarUsuario(username, pass);
+            if (user != null)
+            {
+
+                Session["UserName"] = user.NombreUsuario;
+                Session["UserRol"] = user.Rol;
+                Session["LoggedIn"] = true;
+
+                //todo: check this redirection
+                return RedirectToAction("Index", "Canal");
+            }
+            else
+            {
+                ViewBag.MensajeError = "Error de Login";
+            }
+
+            return View("Index");
+
+           
         }
+
     }
 }

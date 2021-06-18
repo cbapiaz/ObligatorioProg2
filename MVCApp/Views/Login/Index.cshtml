@@ -18,7 +18,7 @@
 
         <!-- Register -->
         <div id="formFooter">
-            <a class="underlineHover" href="#">Register</a>
+            <a class="underlineHover" href="/User/Registrar">Register</a>
         </div>
         <div>
             <a class="underlineHover" href="/Canal/Index">Canales Disponibles?</a>
@@ -29,7 +29,8 @@
 
 @section scripts {
     <script>
-        var loggedIn = '@ViewBag.usuarioLogin' == 'True';
+       
+        var loggedIn = '@Session["LoggedIn"]' == 'True';
         if (!loggedIn) {
             $("#navBar").hide();
         }
@@ -38,7 +39,7 @@
             location="/Canal/Index"
         }
 
-       
+
         $("#logintBtn").click(function () {
             let login = $("#user").val();
             let psw = $("#password").val();

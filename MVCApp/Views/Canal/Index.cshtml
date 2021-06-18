@@ -43,16 +43,19 @@
 @section scripts {
     
     <script>
-        var loggedIn = '@ViewBag.usuarioLogin' == 'True';
+
+      
+        var loggedIn = @Session["LoggedIn"] == 'True';
+
         if (loggedIn) {
             $("navBar").show();
         }
         else {
             $("navBar").hide();
-            //location = "/Login/Index";
+            location = "/Login/Index";
         }
 
- 
+
     </script>
     
 

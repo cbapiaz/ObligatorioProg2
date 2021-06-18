@@ -9,10 +9,9 @@ namespace Dominio
     {
         #region atributos
 
-
-
         private static Empresa _instancia = null;
-        public static Empresa Instancia { get {
+        public static Empresa Instancia { 
+            get {
                 if (_instancia == null)
                 {
                     _instancia = new Empresa();
@@ -24,9 +23,75 @@ namespace Dominio
         public bool LoggedIn { get; set; } = true;
 
         public int Id { get; set; }
+
+
+        /** USUARIO **/
+
+        public bool AltaUsuario(User user)
+        {
+            if (user.Rol == User.ROL_CLIENTE)
+            {
+                return AltaUsuarioCliente(user.Cedula, user.Nombre, user.Apellido, user.Password);
+            }
+            
+            if (user.Rol == User.ROL_OPERADOR)
+            {
+                return AltaUsuarioOperador(user.Nombre, user.Password);
+            }
+            return false;
+        }
+
+
+        private bool AltaUsuarioCliente(int cedula, string nombre, string apellido, string password)
+        {
+            if (User.ValidarCedula(cedula) && User.ValidarPassword(password)
+                && User.ValidarNombreApellido(nombre) && User.ValidarNombreApellido(apellido))
+            {
+                User u = new User(cedula, nombre, apellido, password, User.ROL_CLIENTE);
+                Usuarios.Add(u);
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
+
+
+
+        private bool AltaUsuarioOperador(string nombreUsuario, string password)
+        {
+            if (User.ValidarPassword(password))
+            {
+                User u = new User(nombreUsuario, password, User.ROL_OPERADOR);
+                Usuarios.Add(u);
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
+
+        public User BuscarUsuario(string username, string pass)
+        {
+            User u = null;
+            foreach (User unU in Usuarios)
+            {
+                if (unU.NombreUsuario == username && unU.Password == pass)
+                {
+                    u = unU;
+                    break;
+                }
+            }
+
+            return u;
+        }
+
         public string Nombre { get; set; }
         public List<Paquete> Paquetes { get; } = new List<Paquete>();
         public List<Canal> Canales { get; } = new List<Canal>();
+        public List<User> Usuarios { get; } = new List<User>();
         #endregion
 
         #region constructores
@@ -35,7 +100,17 @@ namespace Dominio
             PrecargaPaquetes();
             PrecargaCanales();
             PrecargaCanalesAPaquetes();
+
+            PreCargaUsuarios();
         }
+
+        private void PreCargaUsuarios()
+        {
+            AltaUsuarioOperador("Ceci", "Pepe123");
+            AltaUsuarioOperador("Klein", "Pepe666");
+
+        }
+
         #endregion
 
         #region metodos
@@ -321,10 +396,9 @@ namespace Dominio
             return paquetesAux;
         }
 
-        //Dado el nombre de un canal obtener todos los paquetes que la incluyen.
 
         /// <summary>
-        /// filtra los canales 
+        ///Dado el nombre de un canal obtener todos los paquetes que la incluyen.
         /// </summary>
         /// <param name="nombreCanal"></param>
         /// <returns></returns>
@@ -338,15 +412,10 @@ namespace Dominio
                 Canal canal = BuscarCanal(nombreCanal);
                 if ( canal != null)
                 {
-                    //Implementar override del metodo equals en la clase canal, 4 parte c repasar
-
                     if(paqueteAux.Canales.Contains(canal))
                     {
-                    paquetesAux.Add(paqueteAux);
+                        paquetesAux.Add(paqueteAux);
                     }
-                    
-
-
                 }
             }
             
@@ -355,7 +424,6 @@ namespace Dominio
 
         }
 
-        //public CanalesEnPaquete()
 
 
         #endregion
