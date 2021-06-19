@@ -73,5 +73,11 @@ namespace MVCApp.Controllers
             ViewBag.usuarioRol = Session["UserRol"];
             return View("Index");
         }
+
+        public ActionResult Carrito()
+        {
+            ViewBag.paquetes = unE.ListarPaquetes();
+            return View();
+        }
     }
 }
