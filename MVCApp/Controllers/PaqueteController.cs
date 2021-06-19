@@ -19,6 +19,11 @@ namespace MVCApp.Controllers
 
         public ActionResult MayorPrecio(decimal paquetePrecio)
         {
+            if (Session["LoggedIn"] == null || !(bool)Session["LoggedIn"])
+            {
+                return Redirect("/login/index");
+            }
+
             ViewBag.paquetes = unE.PaquetesMayorPrecio(paquetePrecio);
             ViewBag.usuarioLogin = unE.LoggedIn;
             return View("Index");
@@ -26,6 +31,12 @@ namespace MVCApp.Controllers
 
         public ActionResult CanalesEnPaquete(string nombreCanal)
         {
+
+            if (Session["LoggedIn"] == null || !(bool)Session["LoggedIn"])
+            {
+                return Redirect("/login/index");
+            }
+
             ViewBag.paquetes = unE.CanalesEnPaquete(nombreCanal);
             ViewBag.usuarioLogin = unE.LoggedIn;
             return View("Index");
