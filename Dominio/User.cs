@@ -69,6 +69,8 @@ namespace Dominio
             Password = password;
             Rol = rol;
             nombreUsuario = cedula.ToString();
+            Compras = new List<Compra>();
+
         }
         #endregion
 
@@ -123,6 +125,14 @@ namespace Dominio
             }
             return true;
         }
+
+        public bool AgregarCompra(Compra compra)
+        {
+            Compras.Add(compra);
+            return true;
+        }
+
+
         #endregion
     }
 }

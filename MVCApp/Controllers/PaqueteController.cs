@@ -37,6 +37,7 @@ namespace MVCApp.Controllers
                 return Redirect("/login/index");
             }
 
+
             ViewBag.paquetes = unE.CanalesEnPaquete(nombreCanal);
             ViewBag.usuarioLogin = unE.LoggedIn;
             return View("Index");
