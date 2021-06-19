@@ -11,11 +11,13 @@ namespace MVCApp.Controllers
     public class LoginController : Controller
     {
         // GET: Login
+        [HttpGet]
         public ActionResult Index()
         {
             return View();
         }
 
+        [HttpGet]
         public ActionResult LogOut()
         {
             Session["UserName"] = null;
@@ -34,9 +36,8 @@ namespace MVCApp.Controllers
                 Session["UserName"] = user.NombreUsuario;
                 Session["UserRol"] = user.Rol;
                 Session["LoggedIn"] = true;
-                //@Response.Redirect("~/Canal/Index");
                 //todo: check this redirection
-                return RedirectToAction("Index", "CanalController");
+                return RedirectToAction("Index", "Canal");
             }
             else
             {

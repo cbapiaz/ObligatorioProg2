@@ -10,9 +10,9 @@
             <img src="~/Content/img/icon.png" id="icon" alt="User Icon" />
         </div>
         <!-- Login Form -->
-        <form>
-            <input type="text" id="user" class="fadeIn second" name="login" placeholder="username">
-            <input type="password" id="password" class="fadeIn third" name="login" placeholder="password">
+        <form action="~/Login/Ingresar">
+            <input type="text" id="user" class="fadeIn second" name="username" placeholder="username">
+            <input type="password" id="password" class="fadeIn third" name="pass" placeholder="password">
             <input id="logintBtn" type="submit" class="fadeIn fourth" value="Log In">
         </form>
 
@@ -29,21 +29,24 @@
 
 @section scripts {
     <script>
+
+        
         var loggedIn = '@Session["LoggedIn"]' == 'True';
         if (!loggedIn) {
             $("#navBar").hide();
         }
         else {
             $("#navBar").show();
-            location="/Canal/Index"
+           //  location="/Canal/Index"
         }
 
 
-        $("#logintBtn").click(function () {
+        /*$("#logintBtn").click(function () {
             let login = $("#user").val();
             let psw = $("#password").val();
-            let url = `/Login/Ingresar?username=${login}&pass=${psw}`;
+            let url = `~/Login/Ingresar?username=${login}&pass=${psw}`;
+            debugger;
             location = url;
-        });
+        });*/
     </script>
 }
