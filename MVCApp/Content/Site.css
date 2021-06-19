@@ -9,6 +9,9 @@
     padding-right: 15px;
 }
 
+.nav-item:hover {
+    cursor:pointer;
+}
 /* Set width on the form input elements since they're 100% wide by default */
 input,
 select,

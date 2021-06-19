@@ -29,7 +29,6 @@
 
 @section scripts {
     <script>
-       
         var loggedIn = '@Session["LoggedIn"]' == 'True';
         if (!loggedIn) {
             $("#navBar").hide();
@@ -43,7 +42,7 @@
         $("#logintBtn").click(function () {
             let login = $("#user").val();
             let psw = $("#password").val();
-            let url = `/Login/Ingresar?user=${login}&pass=${psw}`;
+            let url = `/Login/Ingresar?username=${login}&pass=${psw}`;
             location = url;
         });
     </script>

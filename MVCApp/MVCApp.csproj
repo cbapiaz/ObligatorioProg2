@@ -134,6 +134,7 @@
     <Content Include="Views\Login\Index.cshtml" />
     <Content Include="Views\Paquete\CanalesEnPaquete.cshtml" />
     <Content Include="Views\User\Registrar.cshtml" />
+    <Content Include="Views\Login\LogOut.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

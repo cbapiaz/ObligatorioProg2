@@ -34,15 +34,15 @@ namespace MVCApp.Controllers
         [HttpPost]*/
         public ActionResult Registrar(User user)
         {
-            ViewBag.ErrorMessage = "";
-            ViewBag.Message = "";
+            ViewBag.ErrorMessage = null;
+            ViewBag.Message = null;
             if (user!= null && user.Rol!=null)
             {
                 User userExistente = Empresa.Instancia.BuscarUsuario(user.NombreUsuario, user.Password);
 
                 if (userExistente != null)
                 {
-                   ViewBag.ErrorMessage="Usuario ya existe";
+                     ViewBag.ErrorMessage="Usuario ya existe";
                 }
                 else if(!Empresa.Instancia.AltaUsuario(user))
                 {
@@ -52,12 +52,8 @@ namespace MVCApp.Controllers
                 {
                     ViewBag.Message = "Usuario dado de alta exitosamente";
                 }
-                
-
 
             }
-         
-
             return View(user);
         }
 

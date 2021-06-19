@@ -13,7 +13,7 @@ namespace MVCApp.Controllers
         public ActionResult Index()
         {
             ViewBag.canales = unE.ListarCanales();
-            ViewBag.usuarioLogin = unE.LoggedIn;
+           // ViewBag.usuarioLogin = unE.LoggedIn;
             return View();
         }
     

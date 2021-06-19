@@ -13,6 +13,11 @@ namespace MVCApp.Controllers
         // GET: Login
         public ActionResult Index()
         {
+            return View();
+        }
+
+        public ActionResult LogOut()
+        {
             Session["UserName"] = null;
             Session["UserRol"] = null;
             Session["LoggedIn"] = false;
@@ -29,16 +34,17 @@ namespace MVCApp.Controllers
                 Session["UserName"] = user.NombreUsuario;
                 Session["UserRol"] = user.Rol;
                 Session["LoggedIn"] = true;
-
+                //@Response.Redirect("~/Canal/Index");
                 //todo: check this redirection
-                return RedirectToAction("Index", "Canal");
+                return RedirectToAction("Index", "CanalController");
             }
             else
             {
                 ViewBag.MensajeError = "Error de Login";
+                return View("Index");
             }
 
-            return View("Index");
+          
 
            
         }

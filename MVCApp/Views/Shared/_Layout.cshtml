@@ -6,7 +6,10 @@
     <title>@ViewBag.Title - My ASP.NET Application</title>
     <link href="~/Content/Site.css" rel="stylesheet" type="text/css" />
     <link href="~/Content/bootstrap.min.css" rel="stylesheet" type="text/css" />
+
     <script src="~/Scripts/modernizr-2.8.3.js"></script>
+
+    @RenderSection("styles", false)
 </head>
 <body>
     <div id="navBar" class="navbar navbar-inverse navbar-fixed-top">
@@ -28,6 +31,7 @@
                     <li class="nav-item"><a class="nav-link" href="~/Canal/Index">Canales</a></li>
                     <li class="nav-item">  <a class="nav-link" href="~/Paquete/Index">Paquetes</a></li>
                     <li class="nav-item"> <a class="nav-link" href="~/Login/Index">Login</a></li>
+                    <li class="nav-item"> <a class="nav-link" href="~/Login/LogOut">Log-Out</a></li>
                 </ul>
             </div>
         </div>

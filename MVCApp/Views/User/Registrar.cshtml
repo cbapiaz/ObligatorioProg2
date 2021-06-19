@@ -6,6 +6,23 @@
 
 <h2>Registrar</h2>
 
+<section>
+    @if (ViewBag.ErrorMessage != null)
+    {
+        <div class="text-danger">
+            <h3>* @ViewBag.ErrorMessage *</h3>
+        </div>
+    }
+
+    @if (ViewBag.Message != null)
+    {
+        <div class="text-success">
+            <h3>
+                @ViewBag.Message
+            </h3>
+        </div>
+    }
+</section>
 
 <form action="/User/Registrar">
 
@@ -64,19 +81,7 @@
 
 </form>
 
-@if (ViewBag.ErrorMessage != null)
-{
-    <div class="alert alert-primary">
-        @ViewBag.ErrorMessage
-    </div>
-}
 
-@if (ViewBag.Message != null)
-{
-    <div class="text-success">
-        @ViewBag.Message
-    </div>
-}
 
 
 <div>
@@ -96,4 +101,12 @@
             }
         }
     </script>
+}
+
+@section styles {
+        <style>
+            section {
+               padding:4px;
+            }
+        </style>
 }

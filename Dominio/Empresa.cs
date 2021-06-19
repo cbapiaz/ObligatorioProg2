@@ -25,6 +25,35 @@ namespace Dominio
         public int Id { get; set; }
 
 
+
+        public string Nombre { get; set; }
+        public List<Paquete> Paquetes { get; } = new List<Paquete>();
+        public List<Canal> Canales { get; } = new List<Canal>();
+        public List<User> Usuarios { get; } = new List<User>();
+        #endregion
+
+        #region constructores
+        private Empresa()
+        {
+            PrecargaPaquetes();
+            PrecargaCanales();
+            PrecargaCanalesAPaquetes();
+
+            PreCargaUsuarios();
+        }
+
+        private void PreCargaUsuarios()
+        {
+            AltaUsuarioOperador("Ceci", "Pepe123");
+            AltaUsuarioOperador("Klein", "Pepe666");
+
+        }
+
+        #endregion
+
+        #region metodos
+
+
         /** USUARIO **/
 
         public bool AltaUsuario(User user)
@@ -33,7 +62,7 @@ namespace Dominio
             {
                 return AltaUsuarioCliente(user.Cedula, user.Nombre, user.Apellido, user.Password);
             }
-            
+
             if (user.Rol == User.ROL_OPERADOR)
             {
                 return AltaUsuarioOperador(user.Nombre, user.Password);
@@ -88,32 +117,6 @@ namespace Dominio
             return u;
         }
 
-        public string Nombre { get; set; }
-        public List<Paquete> Paquetes { get; } = new List<Paquete>();
-        public List<Canal> Canales { get; } = new List<Canal>();
-        public List<User> Usuarios { get; } = new List<User>();
-        #endregion
-
-        #region constructores
-        private Empresa()
-        {
-            PrecargaPaquetes();
-            PrecargaCanales();
-            PrecargaCanalesAPaquetes();
-
-            PreCargaUsuarios();
-        }
-
-        private void PreCargaUsuarios()
-        {
-            AltaUsuarioOperador("Ceci", "Pepe123");
-            AltaUsuarioOperador("Klein", "Pepe666");
-
-        }
-
-        #endregion
-
-        #region metodos
 
         /// <summary>
         /// precargar los paquetes con distintos datos
