@@ -44,10 +44,6 @@ namespace MVCApp.Controllers
                 ViewBag.MensajeError = "Error de Login";
                 return View("Index");
             }
-
-          
-
-           
         }
 
     }

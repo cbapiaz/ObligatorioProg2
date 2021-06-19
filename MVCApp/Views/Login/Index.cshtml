@@ -10,7 +10,7 @@
             <img src="~/Content/img/icon.png" id="icon" alt="User Icon" />
         </div>
         <!-- Login Form -->
-        <form action="~/Login/Ingresar">
+        <form id="loginForm" action="~/Login/Ingresar">
             <input type="text" id="user" class="fadeIn second" name="username" placeholder="username">
             <input type="password" id="password" class="fadeIn third" name="pass" placeholder="password">
             <input id="logintBtn" type="submit" class="fadeIn fourth" value="Log In">
@@ -37,16 +37,7 @@
         }
         else {
             $("#navBar").show();
-           //  location="/Canal/Index"
+            location="/Canal/Index"
         }
-
-
-        /*$("#logintBtn").click(function () {
-            let login = $("#user").val();
-            let psw = $("#password").val();
-            let url = `~/Login/Ingresar?username=${login}&pass=${psw}`;
-            debugger;
-            location = url;
-        });*/
     </script>
 }
