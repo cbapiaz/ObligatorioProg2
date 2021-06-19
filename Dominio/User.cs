@@ -9,6 +9,7 @@ namespace Dominio
 
         //cliente
 
+        #region fields
 
         public const string ROL_CLIENTE = "Cliente";
         public const string ROL_OPERADOR = "Operador";
@@ -35,8 +36,14 @@ namespace Dominio
         //Cliente/Operador
         public string Rol { get; set; }
 
+        public List<Compra> Compras { get; set; }
 
-        public User() { }
+        #endregion
+
+        #region constructors
+        public User() {
+            Compras = new List<Compra>();
+        }
 
         // crear usuario operador
         // -> new User(nombre,password,"Operador")
@@ -49,6 +56,7 @@ namespace Dominio
             Rol = rol;
 
             nombreUsuario = nombre;
+            Compras = new List<Compra>();
         }
 
         // crear usuario cliente
@@ -62,7 +70,9 @@ namespace Dominio
             Rol = rol;
             nombreUsuario = cedula.ToString();
         }
+        #endregion
 
+        #region methods
         //La cédula será un numérico de entre 7 y 9 dígitos
         public static bool ValidarCedula(int cedula)
         {
@@ -70,11 +80,13 @@ namespace Dominio
             return cedulaStr.Length >= 7 && cedulaStr.Length <= 9;
         }
 
-        public static bool ValidarNombreApellido(string nombre)
+        //validacion para nombre y apellido
+        public static bool ValidarNombreApellido(string val)
         {
-            return nombre.Length >= 2;
+            return val.Length >= 2;
         }
 
+        //validar consistencia de la constraseña
         public static bool ValidarPassword(string password)
         {
             if (password.Length < 6)
@@ -109,14 +121,8 @@ namespace Dominio
             {
                 return false;
             }
-
-
             return true;
-
-
         }
+        #endregion
     }
-
-
-
 }
