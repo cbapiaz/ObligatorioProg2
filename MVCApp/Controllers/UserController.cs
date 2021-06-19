@@ -25,6 +25,22 @@ namespace MVCApp.Controllers
         [HttpGet]
         public ActionResult Listado()
         {
+            //esto lo ve solo el OPERADOR
+
+            if (Session["LoggedIn"] == null || !(bool)Session["LoggedIn"])
+            {
+                return Redirect("/login/index");
+            }
+
+            //si el usuario no es operador, NO DEBERIA VERLO, aunque si lo hace, se ve una lista VACIA
+            if (Session["LoggedIn"] != null && (string)Session["UserRol"] != Dominio.User.ROL_OPERADOR)
+            {
+                ViewBag.usuarios = new List<Dominio.User>();
+            }
+
+            //aun falta el viewbag con la lista en si
+            //TODO: List
+
             return View();
         }
 
@@ -34,6 +50,12 @@ namespace MVCApp.Controllers
         [HttpPost]*/
         public ActionResult Registrar(User user)
         {
+            //si el usuario ya esta logueado, va hacia el listado
+            if (Session["LoggedIn"] != null || (bool)Session["LoggedIn"])
+            {
+                return Redirect("/login/listado");
+            }
+
             ViewBag.ErrorMessage = null;
             ViewBag.Message = null;
             if (user!= null && user.Rol!=null)
@@ -56,21 +78,6 @@ namespace MVCApp.Controllers
             }
             return View(user);
         }
-
-        [HttpPut]
-        public ActionResult Modificacion()
-        {
-
-            return View();
-        }
-
-        [HttpDelete]
-        public ActionResult Borrado()
-        {
-
-            return View();
-        }
-
 
     }
 }
