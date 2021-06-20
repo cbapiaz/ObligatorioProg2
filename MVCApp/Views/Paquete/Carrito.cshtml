@@ -1,67 +1,40 @@
 ﻿@using Dominio
+
 @{
     ViewBag.Title = "Carrito";
 }
-<div class="shopping-cart">
-    <!-- Titulo -->
-    <div class="titulo">
-        Carrito de Compras
-    </div>
+<h2>Compra tu paquete</h2>
 
-    
-    <div class="container">
-        <div class="row">
-            <!-- Elementos generados a partir del JSON -->
-            <section id="items" class="col-sm-8 row">
-                <input type="text" id="nombrePaquete" />
-                
-                              
+<div class="container">
+
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th scope="col">#</th>
+                <th scope="col">Nombre del paquete</th>
+                <th scope="col">Promocion</th>
+                <th scope="col">Precio Base</th>
                
-                <button class="plus-btn" type="button" name="button" id="btnMas">
-                    +
-                </button>
-            </section>
-            <!-- Carrito -->
-            <aside class="col-sm-4">
-                <h2>Carrito</h2>
-                <!-- Elementos del carrito -->
-                <ul id="carrito" class="list-group"></ul>
-                <hr>
-                <!-- Precio total -->
-                <p class="text-right">Total: <span id="total"></span>&euro;</p>
-                <button id="boton-vaciar" class="btn btn-danger">Vaciar</button>
-            </aside>
-        </div>
-    </div>
+
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                    <th scope="row"></th>
 
 
-    <button id="btnsubmit">Submit</button>
-    <button id="btnCancelar">Cancelar</button>
+                    <td>@ViewBag.Nombre</td>
+                    
+                   
+            </tr>
+          
+        </tbody>
+
+    </table>
+
+
+
+
 </div>
-        
 
-
-      
-
-@section scripts {
-
-    <script>
-
-        //
-        let btnMas = document.getElementById("btnMas");
-        let nombrePaquete = document.getElementById("nombrePaquete");
-
-        btnMas.addEventListener('click', () => {
-            let li = document.createElement('li');
-            li.textContent = nombrePaquete.value;
-            
-            let carrito = document.getElementById("carrito");
-            carrito.appendChild(li);
-        })
-
-        
-        
-    </script>
-
-
-}
