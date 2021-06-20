@@ -4,7 +4,7 @@ using System.Text;
 
 namespace Dominio
 {
-    public class User
+    public class User : IComparable
     {
 
         //cliente
@@ -130,6 +130,29 @@ namespace Dominio
         {
             Compras.Add(compra);
             return true;
+        }
+
+        public string GetCompras()
+        {
+            var res = "";
+            foreach(var c in Compras)
+            {
+                res += c.GetDetalleCompra() + " | ";
+            }
+            return res;
+        }
+
+        public int CompareTo(object obj)
+        {
+            User anotherU = (User)obj;
+            var index = String.Compare(this.Apellido, anotherU.Apellido);
+
+            if (index == 0)
+            {
+               index= String.Compare(this.Nombre, anotherU.Nombre);
+            } 
+            return index;
+            
         }
 
 

@@ -32,6 +32,7 @@
                     @if (Session["LoggedIn"] != null && (string)Session["UserRol"] == Dominio.User.ROL_OPERADOR)
                     {
                         <li class="nav-item">  <a class="nav-link" href="~/Compra/Index">Compras</a></li>
+                        <li class="nav-item">  <a class="nav-link" href="~/User/Listado">Clientes</a></li>
                     }
 
                     @if (Session["LoggedIn"] != null && (string)Session["UserRol"] == Dominio.User.ROL_CLIENTE)
@@ -51,7 +52,7 @@
                         <li class="nav-item"> <a class="nav-link" href="~/Login/LogOut">Log-Out</a></li>
                     }
 
-                </ul>
+                    </ul>
             </div>
         </div>
     </div>
