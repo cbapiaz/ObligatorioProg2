@@ -128,7 +128,7 @@ namespace Dominio
             return true;
         }
 
-        public bool AgregarCompra(Compra compra)
+        internal bool AgregarCompra(Compra compra)
         {
             Compras.Add(compra);
             return true;

@@ -10,8 +10,10 @@ namespace Dominio
         #region atributos
 
         private static Empresa _instancia = null;
-        public static Empresa Instancia { 
-            get {
+        public static Empresa Instancia
+        {
+            get
+            {
                 if (_instancia == null)
                 {
                     _instancia = new Empresa();
@@ -43,12 +45,11 @@ namespace Dominio
             PreCargaUsuarios();
         }
 
-     
+
         private void PreCargaUsuarios()
         {
             AltaUsuarioCliente(45042994, "Sebas", "Piaz", "Cba123");
-            AltaUsuarioCliente(45042995, "Sebas2", "Piaz2", "Cba123");
-
+            AltaUsuarioCliente(47294379, "Mathi", "Sanchez", "Mathi123");
             AltaUsuarioOperador("Ceci", "Pepe123");
             AltaUsuarioOperador("Klein", "Pepe666");
         }
@@ -146,6 +147,15 @@ namespace Dominio
             AgregarCanal("canal48", Resolucion.BAJA, true, 188);
             AgregarCanal("canal49", Resolucion.BAJA, true, 139);
             AgregarCanal("canal50", Resolucion.BAJA, true, 184);
+        }
+
+        public Compra AgregarCompraExistente(string username,Compra compraAux)
+        {
+            User usuarioAux = BuscarUsuario(username);
+            usuarioAux.AgregarCompra(compraAux);
+            Compras.Add(compraAux);
+
+            return compraAux;
         }
 
         /// <summary>
@@ -393,12 +403,12 @@ namespace Dominio
 
         public decimal TotalCompras()
         {
-            decimal res = 0;
+            decimal sumatoria = 0;
             foreach (var c in Compras)
             {
-                res += c.GetTotalCompra();
+                sumatoria += c.PrecioCompra();
             }
-            return res;
+            return sumatoria;
         }
 
         public decimal TotalCompras(DateTime start, DateTime end)
@@ -408,7 +418,7 @@ namespace Dominio
             {
                 if (c.Fecha >= start && c.Fecha <= end)
                 {
-                    res += c.GetTotalCompra();
+                    res += c.PrecioCompra();
                 }
             }
             return res;
@@ -423,23 +433,16 @@ namespace Dominio
         /// <param name="fechaVencimiento"></param>
         /// <param name="cancelada"></param>
         /// <returns></returns>
-        public Compra AgregarNuevaCompra(string username,DateTime date,List<string> paquetes)
+        public Compra AgregarNuevaCompra(string username, DateTime date, Paquete paqueteComprar)
         {
             User user = BuscarUsuario(username);
             // usuario debe existir
-            if (user != null) {
-                List<Paquete> paquetesAux = new List<Paquete>();
-                foreach (string nombrePaquete in  paquetes)
-                {
-                    Paquete paquete1 = BuscarPaquete(nombrePaquete);
-                    paquetesAux.Add(paquete1);
-                }
-
-                Compra nuevaCompra = new Compra(date, false, paquetesAux);
-                
+            if (user != null)
+            {
+                Paquete paquete1 = BuscarPaquete(paqueteComprar.Nombre);
+                Compra nuevaCompra = new Compra(date, false, paquete1);
                 //agregar compra al sistema
                 Compras.Add(nuevaCompra);
-
                 //agregar compra al usuario
                 user.AgregarCompra(nuevaCompra);
 
@@ -448,13 +451,13 @@ namespace Dominio
             else
             {
                 return null;
-            } 
+            }
         }
 
-        public bool ActualizarCompra(int idCompra,bool cancelada)
+        public bool ActualizarCompra(int idCompra, bool cancelada)
         {
             Compra compra = BuscarCompra(idCompra);
-            if(compra != null)
+            if (compra != null)
             {
                 compra.Cancelada = cancelada;
                 return true;
@@ -463,25 +466,7 @@ namespace Dominio
             return false;
         }
 
-        /// <summary>
-        /// agregar un paquete a una compra existente
-        /// </summary>
-        /// <param name="idCompra"></param>
-        /// <param name="paquete"></param>
-        /// <returns></returns>
-        public Compra AgregarPaqueteCompra(int idCompra, Paquete paquete)
-        {
-            Compra compra = BuscarCompra(idCompra);
-            if(compra!= null)
-            {
-                compra.AgregarPaquete(paquete);
-                return compra;
-            }
-
-            return null;
-        }
-
-        private Compra BuscarCompra(int idCompra)
+        public Compra BuscarCompra(int idCompra)
         {
             foreach (Compra c in Compras)
             {
@@ -509,7 +494,7 @@ namespace Dominio
 
             foreach (Compra compra in Compras)
             {
-                if (compra.Fecha >=inicio && compra.Fecha <=fin)
+                if (compra.Fecha >= inicio && compra.Fecha <= fin)
                 {
                     res.Add(compra);
                 }
@@ -635,29 +620,26 @@ namespace Dominio
         /// </summary>
         /// <param name="nombreCanal"></param>
         /// <returns></returns>
-        public List<Paquete> CanalesEnPaquete(string nombreCanal ) 
+        public List<Paquete> CanalesEnPaquete(string nombreCanal)
         {
-           
+
             List<Paquete> paquetesAux = new List<Paquete>();
 
             foreach (Paquete paqueteAux in Paquetes)
             {
                 Canal canal = BuscarCanal(nombreCanal);
-                if ( canal != null)
+                if (canal != null)
                 {
-                    if(paqueteAux.Canales.Contains(canal))
+                    if (paqueteAux.Canales.Contains(canal))
                     {
                         paquetesAux.Add(paqueteAux);
                     }
                 }
             }
-            
+
             return paquetesAux;
 
-
         }
-
-
 
         #endregion
 
