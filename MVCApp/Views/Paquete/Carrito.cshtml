@@ -1,4 +1,5 @@
 ﻿@using Dominio
+@model Dominio.Paquete
 @{
     ViewBag.Title = "Carrito";
 }
@@ -16,11 +17,16 @@
             </tr>
         </thead>
         <tbody>
+            
+          
             <tr>
-                <th scope="row"></th>
-
-                <td>@ViewBag.Nombre</td>
-
+                @if (Model != null)
+                {
+                    <th scope="row"></th>
+                    <td>@Model.Nombre</td>
+                    <td>@Model.Promocion</td>
+                    <td>@Model.PrecioBase</td>
+                }
 
             </tr>
 

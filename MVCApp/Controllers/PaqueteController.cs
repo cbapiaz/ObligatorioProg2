@@ -84,7 +84,7 @@ namespace MVCApp.Controllers
 
 
 
-            return View();
+            return View(paquete);
         }
 
     }
