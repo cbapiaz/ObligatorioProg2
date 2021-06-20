@@ -47,9 +47,13 @@ namespace Dominio
         private void PreCargaUsuarios()
         {
             AltaUsuarioCliente(45042994, "Sebas", "Piaz", "Cba123");
+            AltaUsuarioCliente(45042995, "Sebas2", "Piaz2", "Cba123");
+
             AltaUsuarioOperador("Ceci", "Pepe123");
             AltaUsuarioOperador("Klein", "Pepe666");
         }
+
+
 
 
 
@@ -57,113 +61,7 @@ namespace Dominio
 
         #region metodos
 
-
-        /** USUARIO **/
-
-
-        public List<User> ListaUsuariosClientes()
-        {
-            var res = new List<User>();
-
-            foreach (var u in Usuarios)
-            {
-                if (u.Rol == User.ROL_CLIENTE)
-                {
-                    res.Add(u);
-                }
-            }
-
-            res.Sort();
-
-            return res;
-        }
-
-        public User BuscarUsuario(string username)
-        {
-            foreach (User user in Usuarios)
-            {
-                if (user.NombreUsuario == username)
-                {
-                    return user;
-                }
-            }
-
-            return null;
-        }
-
-        //logica de alta de usuario
-        public bool AltaUsuario(User user)
-        {
-            if (user.Rol == User.ROL_CLIENTE)
-            {
-                //verificar que no exista el usuario cliente con esa cedula
-                if (BuscarUsuario(user.Cedula.ToString()) == null) { 
-                    return AltaUsuarioCliente(user.Cedula, user.Nombre, user.Apellido, user.Password);
-                }
-                else
-                {
-                    return false;
-                }
-            }
-
-            if (user.Rol == User.ROL_OPERADOR)
-            {
-                //verificar que no exista otro usuario operador
-                if (BuscarUsuario(user.Nombre) == null)
-                {
-                    return AltaUsuarioOperador(user.Nombre, user.Password);
-                }
-            }
-            return false;
-        }
-
-
-        private bool AltaUsuarioCliente(int cedula, string nombre, string apellido, string password)
-        {
-            if (User.ValidarCedula(cedula) && User.ValidarPassword(password)
-                && User.ValidarNombreApellido(nombre) && User.ValidarNombreApellido(apellido))
-            {
-                User u = new User(cedula, nombre, apellido, password, User.ROL_CLIENTE);
-                Usuarios.Add(u);
-                return true;
-            }
-            else
-            {
-                return false;
-            }
-        }
-
-
-
-        private bool AltaUsuarioOperador(string nombreUsuario, string password)
-        {
-            if (User.ValidarPassword(password))
-            {
-                User u = new User(nombreUsuario, password, User.ROL_OPERADOR);
-                Usuarios.Add(u);
-                return true;
-            }
-            else
-            {
-                return false;
-            }
-        }
-
-        public User BuscarUsuario(string username, string pass)
-        {
-            User u = null;
-            foreach (User unU in Usuarios)
-            {
-                if (unU.NombreUsuario == username && unU.Password == pass)
-                {
-                    u = unU;
-                    break;
-                }
-            }
-
-            return u;
-        }
-
+        /**PRECARGA**/
 
         /// <summary>
         /// precargar los paquetes con distintos datos
@@ -271,6 +169,161 @@ namespace Dominio
             auxPaq2.IngresarCanal(BuscarCanal("canal2"));
             return errores;
 
+        }
+
+
+        /** USUARIO **/
+
+
+
+        // lista de clientes que tengan compras cuyo vencimiento sea en los próximos "ultimosDias" días o menos.
+        public List<User> ListaClientesCompraPorDias(int ultimosDias)
+        {
+            var res = new List<User>();
+
+            foreach (var u in Usuarios)
+            {
+                if (u.Rol == User.ROL_CLIENTE)
+                {
+                    if (u.TieneCompraUltimosDias(ultimosDias))
+                    {
+                        res.Add(u);
+                    }
+                }
+            }
+
+            res.Sort();
+
+            return res;
+        }
+
+        /// <summary>
+        /// lista de usuarios con rol cliente
+        /// </summary>
+        /// <returns></returns>
+        public List<User> ListaUsuariosClientes()
+        {
+            var res = new List<User>();
+
+            foreach (var u in Usuarios)
+            {
+                if (u.Rol == User.ROL_CLIENTE)
+                {
+                    res.Add(u);
+                }
+            }
+
+            res.Sort();
+            return res;
+        }
+
+        /// <summary>
+        /// dado un nombre de usuario retorna el objeto asociado en el sistema
+        /// </summary>
+        /// <param name="username"></param>
+        /// <returns></returns>
+        public User BuscarUsuario(string username)
+        {
+            foreach (User user in Usuarios)
+            {
+                if (user.NombreUsuario == username)
+                {
+                    return user;
+                }
+            }
+
+            return null;
+        }
+
+        //logica de alta de usuario
+        public bool AltaUsuario(User user)
+        {
+            if (user.Rol == User.ROL_CLIENTE)
+            {
+                //verificar que no exista el usuario cliente con esa cedula
+                if (BuscarUsuario(user.Cedula.ToString()) == null) { 
+                    return AltaUsuarioCliente(user.Cedula, user.Nombre, user.Apellido, user.Password);
+                }
+                else
+                {
+                    return false;
+                }
+            }
+
+            if (user.Rol == User.ROL_OPERADOR)
+            {
+                //verificar que no exista otro usuario operador
+                if (BuscarUsuario(user.Nombre) == null)
+                {
+                    return AltaUsuarioOperador(user.Nombre, user.Password);
+                }
+            }
+            return false;
+        }
+
+        /// <summary>
+        /// alta de un usuario cliente
+        /// </summary>
+        /// <param name="cedula"></param>
+        /// <param name="nombre"></param>
+        /// <param name="apellido"></param>
+        /// <param name="password"></param>
+        /// <returns></returns>
+        private bool AltaUsuarioCliente(int cedula, string nombre, string apellido, string password)
+        {
+            if (User.ValidarCedula(cedula) && User.ValidarPassword(password)
+                && User.ValidarNombreApellido(nombre) && User.ValidarNombreApellido(apellido))
+            {
+                User u = new User(cedula, nombre, apellido, password, User.ROL_CLIENTE);
+                Usuarios.Add(u);
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
+
+
+        /// <summary>
+        /// alta de un usuario operador
+        /// </summary>
+        /// <param name="nombreUsuario"></param>
+        /// <param name="password"></param>
+        /// <returns></returns>
+        private bool AltaUsuarioOperador(string nombreUsuario, string password)
+        {
+            if (User.ValidarPassword(password))
+            {
+                User u = new User(nombreUsuario, password, User.ROL_OPERADOR);
+                Usuarios.Add(u);
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
+
+        /// <summary>
+        /// dado nombre de usuario y password retorna el usuario asociado en el sistema o "null" si no existe
+        /// </summary>
+        /// <param name="username"></param>
+        /// <param name="pass"></param>
+        /// <returns></returns>
+        public User BuscarUsuario(string username, string pass)
+        {
+            User u = null;
+            foreach (User unU in Usuarios)
+            {
+                if (unU.NombreUsuario == username && unU.Password == pass)
+                {
+                    u = unU;
+                    break;
+                }
+            }
+
+            return u;
         }
 
         /// <summary>

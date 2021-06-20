@@ -15,18 +15,10 @@ namespace MVCApp.Controllers
             return View();
         }
 
-        /**ABM - Usuario**/
-
-        //listado usuario
-        //alta usuario
-        //modificacion usuario
-        //borrado usuario
-
         [HttpGet]
         public ActionResult Listado()
         {
             //esto lo ve solo el OPERADOR
-
             if (Session["LoggedIn"] == null || !(bool)Session["LoggedIn"])
             {
                 return Redirect("/login/index");
@@ -35,22 +27,23 @@ namespace MVCApp.Controllers
             //si el usuario no es operador, NO DEBERIA VERLO, aunque si lo hace, se ve una lista VACIA
             if (Session["LoggedIn"] != null && (string)Session["UserRol"] != Dominio.User.ROL_OPERADOR)
             {
-                ViewBag.usuarios = new List<Dominio.User>();
+                ViewBag.usuarios = new List<User>();
                 Session["error"] = "ERROR: Usuario no tiene permisos para acceder";
                 return RedirectToAction("Error", "Error");
             }
 
-            //aun falta el viewbag con la lista en si
-            //TODO: List
             ViewBag.usuarios= Empresa.Instancia.ListaUsuariosClientes();
 
             return View();
         }
 
+        public ActionResult ComprasFilter(int ultimosDias)
+        {
+            ViewBag.usuarios = Empresa.Instancia.ListaClientesCompraPorDias(ultimosDias);
 
-        //alta
-       /* [HttpGet]
-        [HttpPost]*/
+            return View("Listado");
+        }
+
         public ActionResult Registrar(User user)
         {
             //si el usuario ya esta logueado, va hacia el listado

@@ -17,6 +17,8 @@ namespace MVCApp.Controllers
             Compra c = emp.AgregarNuevaCompra("45042994", DateTime.Now.AddMonths(-2), new List<string>() { "paqueteHD1", "paqueteSD1" });
             Compra c2 = emp.AgregarNuevaCompra("45042994", DateTime.Now.AddDays(2), new List<string>() { "paqueteHD2", "paqueteSD2" });
 
+
+            c2.FechaVencimiento = DateTime.Now.AddDays(20);
         }
 
         // GET: Compra

@@ -72,6 +72,8 @@ namespace Dominio
             Compras = new List<Compra>();
 
         }
+
+      
         #endregion
 
         #region methods
@@ -138,6 +140,27 @@ namespace Dominio
             foreach(var c in Compras)
             {
                 res += c.GetDetalleCompra() + " | ";
+            }
+            return res;
+        }
+
+
+        /// <summary>
+        /// dado una cantidad de dias retorna true si el cliente tiene compras que vencen en esos dias
+        /// </summary>
+        /// <param name="ultimosDias"></param>
+        /// <returns></returns>
+        internal bool TieneCompraUltimosDias(int ultimosDias)
+        {
+            bool res = false;
+            foreach (var compra in Compras)
+            {
+                double diffDias = (DateTime.Now.AddDays(ultimosDias) - compra.FechaVencimiento).TotalDays;
+                diffDias = Math.Abs(diffDias);
+                if (diffDias >= 0 && diffDias <= ultimosDias)
+                {
+                    res = true;
+                }
             }
             return res;
         }
