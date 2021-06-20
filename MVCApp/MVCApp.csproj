@@ -160,7 +160,7 @@
     <Content Include="Views\Login\LogOut.cshtml" />
     <Content Include="Views\Error\Error.cshtml" />
     <Content Include="Views\Compra\Index.cshtml" />
-    <Content Include="Views\Paquete\Carrito.cshtml" />
+    <Content Include="Views\Paquete\PaqueteDetalle.cshtml" />
     <Content Include="Views\Compra\MisCompras.cshtml" />
     <Content Include="Scripts\bootstrap.min.js.map" />
     <Content Include="Scripts\bootstrap.js.map" />
@@ -171,6 +171,7 @@
     <Content Include="Scripts\jquery-3.6.0.slim.min.map" />
     <Content Include="Scripts\jquery-3.6.0.min.map" />
     <Content Include="Views\User\Listado.cshtml" />
+    <Content Include="Views\Compra\DetalleCompra.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

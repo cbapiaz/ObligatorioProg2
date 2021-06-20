@@ -14,16 +14,17 @@ namespace MVCApp.Controllers
 
         private void populate()
         {
-            Compra c = emp.AgregarNuevaCompra("45042994", DateTime.Now.AddMonths(-2), new List<string>() { "paqueteHD1", "paqueteSD1" });
-            Compra c2 = emp.AgregarNuevaCompra("45042994", DateTime.Now.AddDays(2), new List<string>() { "paqueteHD2", "paqueteSD2" });
-
+            Compra c1 = emp.AgregarNuevaCompra("45042994", DateTime.Now.AddMonths(-2), emp.BuscarPaquete("paqueteHD1"));
+            Compra c2 = emp.AgregarNuevaCompra("45042994", DateTime.Now.AddMonths(-2), emp.BuscarPaquete("paqueteSD1"));
+            Compra c3 = emp.AgregarNuevaCompra("45042994", DateTime.Now.AddMonths(-2), emp.BuscarPaquete("paqueteHD2"));
+            Compra c4 = emp.AgregarNuevaCompra("45042994", DateTime.Now.AddMonths(-2), emp.BuscarPaquete("paqueteSD2"));
         }
 
         // GET: Compra
         public ActionResult Index()
         {
             populate();
-           
+
             ViewBag.IdCompra = 1;
 
             if (Session["LoggedIn"] == null || !(bool)Session["LoggedIn"])
@@ -31,7 +32,8 @@ namespace MVCApp.Controllers
                 return Redirect("/login/index");
             }
 
-            if (Session["UserRol"]!= null && Session["UserRol"].ToString() == Dominio.User.ROL_OPERADOR) {
+            if (Session["UserRol"] != null && Session["UserRol"].ToString() == Dominio.User.ROL_OPERADOR)
+            {
                 ViewBag.Compras = emp.ListarCompras();
                 ViewBag.Total = emp.TotalCompras();
                 ViewBag.Start = DateTime.Now.ToString("yyyy-MM-ddThh:mm");
@@ -70,7 +72,7 @@ namespace MVCApp.Controllers
 
             if (Session["UserRol"] != null && Session["UserRol"].ToString() == Dominio.User.ROL_OPERADOR)
             {
-                ViewBag.Compras = emp.ListarCompras(start,end);
+                ViewBag.Compras = emp.ListarCompras(start, end);
                 ViewBag.Total = emp.TotalCompras(start, end);
                 ViewBag.Start = start.ToString("yyyy-MM-ddThh:mm");
                 ViewBag.End = end.ToString("yyyy-MM-ddThh:mm");
@@ -82,10 +84,24 @@ namespace MVCApp.Controllers
             }
         }
 
-        //public ActionResult TerminarCompra(string nomPaquete)
-        //{
+        public ActionResult DetalleCompra(string nombrePaquete)
+        {
+            if (Session["UserRol"] != null && Session["UserRol"].ToString() == Dominio.User.ROL_CLIENTE)
+            {
+                Paquete paquete = emp.BuscarPaquete(nombrePaquete);
+                Compra compraAux = new Compra(DateTime.Now, false, paquete);
+                Dominio.User usuarioAux =  emp.BuscarUsuario(Session["UserName"].ToString());
+                usuarioAux.AgregarCompra(compraAux);
+                ViewBag.compra = compraAux;
 
-        //}
+                return View();
+            }
+            else
+            {
+                Session["error"] = "ERROR: Rol no valido por favor loguearse nuevamente";
+                return RedirectToAction("Error", "Error");
+            }
+        }
 
         /*public ActionResult TerminarCompra(int idCompra, List<int> idPaquete)
         {

@@ -14,7 +14,7 @@ namespace Dominio
 
         public bool Cancelada { get; set; } = false;
 
-        public List<Paquete> Paquetes { get; } = new List<Paquete>();
+        public Paquete PaqueteComprar;
 
         public Compra()
         {
@@ -29,43 +29,27 @@ namespace Dominio
             Cancelada = cancelada;
         }
 
-        //seba me parece que se compra 1 solo paquete por compra, no hay multiples compras, es de a una
-        //quiero agregar el controlador TerminarCompra que compre solo 1 paquete y lo agrege a la lista del usuario cliente activo
-        public Compra(DateTime fecha, bool cancelada, List<Paquete> paquetesComprados)
+        public Compra(DateTime fecha, bool cancelada, Paquete paqueteComprar)
         {
             Id = uid++;
             Fecha = fecha;
             FechaVencimiento = fecha.AddYears(1);
             Cancelada = cancelada;
-            Paquetes = paquetesComprados;
-        }
-
-        public bool AgregarPaquete(Paquete paquete)
-        {
-            Paquetes.Add(paquete);
-            return true;
+            PaqueteComprar = paqueteComprar;
         }
 
         public string GetDetalleCompra()
         {
             string aux = "";/*$"Compra {Fecha.ToString()} ";*/
-            foreach (Paquete paquete in Paquetes)
-            {
-                aux += paquete.Nombre +",";
-            }
+
+            aux += $"Fecha de compra: {Fecha.ToShortDateString()} | Fecha vencimiento: {FechaVencimiento.ToShortDateString()} | Cancelada: {Cancelada} | Nombre de Paqute: {PaqueteComprar.Nombre} ";
 
             return aux;
         }
 
-        public decimal GetTotalCompra()
+        public decimal PrecioCompra()
         {
-            decimal result = 0;
-            foreach (Paquete paquete in Paquetes)
-            {
-                result += paquete.DefinirPrecio();
-            }
-
-            return result;
+            return PaqueteComprar.PrecioBase;
         }
     }
 }

@@ -1,0 +1,17 @@
+﻿@using Dominio;
+
+@{
+    ViewBag.Title = "DetalleCompra";
+}
+
+<h2>DetalleCompra</h2>
+
+<p><a href="/paquete/index">Volver al inicio</a></p>
+
+<section>
+    <p>Fecha: @ViewBag.compra.Fecha.ToShortDateString()</p>
+    <p>Fecha de Vencimiento: @ViewBag.compra.FechaVencimiento.ToShortDateString()</p>
+    <p>Cancelada: @ViewBag.compra.Cancelada</p>
+    <p>Nombre de Paquete: @ViewBag.compra.PaqueteComprar</p>
+    <p>Canales de Paquete: @ViewBag.compra.PaqueteComprar.GetCanales()</p>
+</section>

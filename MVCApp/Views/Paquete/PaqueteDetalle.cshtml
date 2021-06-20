@@ -1,9 +1,14 @@
 ﻿@using Dominio
 @model Dominio.Paquete
 @{
-    ViewBag.Title = "Carrito";
+    ViewBag.Title = "PaqueteDetalle";
 }
 <h2>Compra tu paquete</h2>
+
+<section>
+    <button href="/compra/DetalleCompra?nombrePaquete=@Model.Nombre">Comprar</button>
+</section>
+
 <div class="container">
 
     <table class="table">
