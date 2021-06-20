@@ -83,10 +83,18 @@ namespace MVCApp.Controllers
         /// <returns></returns>
         public ActionResult PaqueteDetalle(string nombrePaquete)
         {
-            Paquete paquete = unE.BuscarPaquete(nombrePaquete);
-            //ViewBag.paquete = unE.BuscarPaquete(nombrePaquete);
-
-            return View(paquete);
+            if (Session["UserRol"] != null && Session["UserRol"].ToString() == Dominio.User.ROL_CLIENTE)
+            {
+                Paquete paquete = unE.BuscarPaquete(nombrePaquete);
+                //ViewBag.paquete = unE.BuscarPaquete(nombrePaquete);
+                return View(paquete);
+            }
+            else
+            {
+                Session["error"] = "ERROR: Rol no valido por favor loguearse nuevamente";
+                return RedirectToAction("Error", "Error");
+            }
+            
         }
 
     }

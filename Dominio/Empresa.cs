@@ -407,7 +407,7 @@ namespace Dominio
             return false;
         }
 
-        private Compra BuscarCompra(int idCompra)
+        public Compra BuscarCompra(int idCompra)
         {
             foreach (Compra c in Compras)
             {

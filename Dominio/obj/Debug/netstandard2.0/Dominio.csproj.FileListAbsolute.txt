@@ -7,14 +7,6 @@ C:\Users\cecil\Desktop\carpetas varias\rto\s2\rg 2\RepositorioObligatorio1\Domin
 C:\Users\cecil\Desktop\carpetas varias\rto\s2\rg 2\RepositorioObligatorio1\Dominio\obj\Debug\netstandard2.0\Dominio.AssemblyInfo.cs
 C:\Users\cecil\Desktop\carpetas varias\rto\s2\rg 2\RepositorioObligatorio1\Dominio\obj\Debug\netstandard2.0\Dominio.dll
 C:\Users\cecil\Desktop\carpetas varias\rto\s2\rg 2\RepositorioObligatorio1\Dominio\obj\Debug\netstandard2.0\Dominio.pdb
-C:\Users\cecil\Documents\GitHub\ObligatorioProg2\Dominio\bin\Debug\netstandard2.0\Dominio.deps.json
-C:\Users\cecil\Documents\GitHub\ObligatorioProg2\Dominio\bin\Debug\netstandard2.0\Dominio.dll
-C:\Users\cecil\Documents\GitHub\ObligatorioProg2\Dominio\bin\Debug\netstandard2.0\Dominio.pdb
-C:\Users\cecil\Documents\GitHub\ObligatorioProg2\Dominio\obj\Debug\netstandard2.0\Dominio.csproj.CoreCompileInputs.cache
-C:\Users\cecil\Documents\GitHub\ObligatorioProg2\Dominio\obj\Debug\netstandard2.0\Dominio.AssemblyInfoInputs.cache
-C:\Users\cecil\Documents\GitHub\ObligatorioProg2\Dominio\obj\Debug\netstandard2.0\Dominio.AssemblyInfo.cs
-C:\Users\cecil\Documents\GitHub\ObligatorioProg2\Dominio\obj\Debug\netstandard2.0\Dominio.dll
-C:\Users\cecil\Documents\GitHub\ObligatorioProg2\Dominio\obj\Debug\netstandard2.0\Dominio.pdb
 C:\Repos\N2B-Prog2-ORT\Obligatorio\ObligatorioProg2\Dominio\bin\Debug\netstandard2.0\Dominio.deps.json
 C:\Repos\N2B-Prog2-ORT\Obligatorio\ObligatorioProg2\Dominio\bin\Debug\netstandard2.0\Dominio.dll
 C:\Repos\N2B-Prog2-ORT\Obligatorio\ObligatorioProg2\Dominio\bin\Debug\netstandard2.0\Dominio.pdb
@@ -31,3 +23,12 @@ C:\Users\GameGear\Desktop\Facultad\Obligatory\Dominio\obj\Debug\netstandard2.0\D
 C:\Users\GameGear\Desktop\Facultad\Obligatory\Dominio\obj\Debug\netstandard2.0\Dominio.AssemblyInfo.cs
 C:\Users\GameGear\Desktop\Facultad\Obligatory\Dominio\obj\Debug\netstandard2.0\Dominio.dll
 C:\Users\GameGear\Desktop\Facultad\Obligatory\Dominio\obj\Debug\netstandard2.0\Dominio.pdb
+C:\Users\cecil\Documents\GitHub\ObligatorioProg2\Dominio\bin\Debug\netstandard2.0\Dominio.deps.json
+C:\Users\cecil\Documents\GitHub\ObligatorioProg2\Dominio\bin\Debug\netstandard2.0\Dominio.dll
+C:\Users\cecil\Documents\GitHub\ObligatorioProg2\Dominio\bin\Debug\netstandard2.0\Dominio.pdb
+C:\Users\cecil\Documents\GitHub\ObligatorioProg2\Dominio\obj\Debug\netstandard2.0\Dominio.csprojAssemblyReference.cache
+C:\Users\cecil\Documents\GitHub\ObligatorioProg2\Dominio\obj\Debug\netstandard2.0\Dominio.csproj.CoreCompileInputs.cache
+C:\Users\cecil\Documents\GitHub\ObligatorioProg2\Dominio\obj\Debug\netstandard2.0\Dominio.AssemblyInfoInputs.cache
+C:\Users\cecil\Documents\GitHub\ObligatorioProg2\Dominio\obj\Debug\netstandard2.0\Dominio.AssemblyInfo.cs
+C:\Users\cecil\Documents\GitHub\ObligatorioProg2\Dominio\obj\Debug\netstandard2.0\Dominio.dll
+C:\Users\cecil\Documents\GitHub\ObligatorioProg2\Dominio\obj\Debug\netstandard2.0\Dominio.pdb

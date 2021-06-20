@@ -84,15 +84,23 @@ namespace MVCApp.Controllers
             }
         }
 
-        public ActionResult DetalleCompra(string nombrePaquete)
+        public ActionResult DetalleCompra(string nombrePaquete, int id)
         {
             if (Session["UserRol"] != null && Session["UserRol"].ToString() == Dominio.User.ROL_CLIENTE)
             {
-                Paquete paquete = emp.BuscarPaquete(nombrePaquete);
-                Compra compraAux = new Compra(DateTime.Now, false, paquete);
-                Dominio.User usuarioAux =  emp.BuscarUsuario(Session["UserName"].ToString());
-                usuarioAux.AgregarCompra(compraAux);
-                ViewBag.compra = compraAux;
+                Compra aux = emp.BuscarCompra(id);
+                if (aux == null)
+                {
+                    Paquete paquete = emp.BuscarPaquete(nombrePaquete);
+                    Compra compraAux = new Compra(DateTime.Now, false, paquete);
+                    Dominio.User usuarioAux = emp.BuscarUsuario(Session["UserName"].ToString());
+                    usuarioAux.AgregarCompra(compraAux);
+                    ViewBag.compra = compraAux;
+                }
+                else
+                {
+                    emp.ActualizarCompra(id, true);
+                }
 
                 return View();
             }
