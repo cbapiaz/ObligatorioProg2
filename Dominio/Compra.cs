@@ -48,7 +48,7 @@ namespace Dominio
 
         public string GetDetalleCompra()
         {
-            string aux = "";
+            string aux = "";/*$"Compra {Fecha.ToString()} ";*/
             foreach (Paquete paquete in Paquetes)
             {
                 aux += paquete.Nombre +",";

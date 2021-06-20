@@ -132,6 +132,16 @@ namespace Dominio
             return true;
         }
 
+        public string GetCompras()
+        {
+            var res = "";
+            foreach(var c in Compras)
+            {
+                res += c.GetDetalleCompra() + " | ";
+            }
+            return res;
+        }
+
         public int CompareTo(object obj)
         {
             User anotherU = (User)obj;

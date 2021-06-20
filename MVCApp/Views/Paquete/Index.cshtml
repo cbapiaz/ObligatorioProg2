@@ -5,16 +5,23 @@
 
 <h2>Paquetes</h2>
 
-<section>
-    <h3>Busca el paquete por precio</h3>
-    <input type="number" id="paquetePrecio" />
-    <button id="btnBuscar">Buscar</button>
-</section>
-<section>
-    <h3>Busca por nombre de canal</h3>
-    <input type="text" id="nombreCanal" />
-    <button id="btnBuscar1">Buscar</button>
-</section>
+
+
+@if (Session["LoggedIn"] != null && (string)Session["UserRol"] == Dominio.User.ROL_OPERADOR)
+{
+    <div><strong><h3>Estadisticas</h3></strong></div>
+    <section>
+        <h3>Busca paquete mayor precio</h3>
+        <input type="number" id="paquetePrecio" />
+        <button id="btnBuscar">Buscar</button>
+    </section>
+
+    <section>
+        <h3>Busca por nombre de canal</h3>
+        <input type="text" id="nombreCanal" />
+        <button id="btnBuscar1">Buscar</button>
+    </section>
+}
 
 <table class="table">
     <thead>
@@ -30,14 +37,14 @@
     <tbody>
         @foreach (Paquete item in ViewBag.paquetes)
         {
-        <tr>
-            <th scope="row"></th>
-            <td>@item.Nombre</td>
-            <td>@item.Promocion </td>
-            <td>@item.PrecioBase</td>
-            <td>@item.GetCanales()</td>
-            <td><div id="divBotones"><a href="/Paquete/Carrito?NombrePaquete=@item.Nombre" class="btn btn-info" role="button" id="botonCarrito">Comprar</a></div></td>
-        </tr>
+            <tr>
+                <th scope="row"></th>
+                <td>@item.Nombre</td>
+                <td>@item.Promocion </td>
+                <td>@item.PrecioBase</td>
+                <td>@item.GetCanales()</td>
+                <td><div id="divBotones"><a href="/Paquete/Carrito?NombrePaquete=@item.Nombre" class="btn btn-info" role="button" id="botonCarrito">Comprar</a></div></td>
+            </tr>
         }
     </tbody>
 
