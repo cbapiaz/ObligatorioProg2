@@ -30,13 +30,14 @@
     <tbody>
         @foreach (Paquete item in ViewBag.paquetes)
         {
-            <tr>
-                <th scope="row"></th>
-                <td><a href="~/Paquete/Carrito?nomPaquete=@item.Nombre"> @item.Nombre</a></td>
-                <td>@item.Promocion </td>
-                <td>@item.PrecioBase</td>
-                <td>@item.GetCanales()</td>
-            </tr>
+        <tr>
+            <th scope="row"></th>
+            <td>@item.Nombre</td>
+            <td>@item.Promocion </td>
+            <td>@item.PrecioBase</td>
+            <td>@item.GetCanales()</td>
+            <td><div id="divBotones"><a href="/Paquete/Carrito?NombrePaquete=@item.Nombre" class="btn btn-info" role="button" id="botonCarrito">Comprar</a></div></td>
+        </tr>
         }
     </tbody>
 

@@ -7,11 +7,11 @@
 
 <form action="~/Compra/Filtrar">
     <label>Inicio</label>
-    <input type="datetime-local" id="fechaInicial" name="start" value="@ViewBag.Start"/>
+    <input type="datetime-local" id="fechaInicial" name="start" value="@ViewBag.Start" />
     <label>Fin</label>
-    <input type="datetime-local" id="fechaFinal" name="end" value="@ViewBag.End"/>
+    <input type="datetime-local" id="fechaFinal" name="end" value="@ViewBag.End" />
 
-    <input type="submit" value="Filtrar"/>
+    <input type="submit" value="Filtrar" />
 </form>
 
 <table class="table">
@@ -53,6 +53,8 @@
         </tr>
     </tbody>
 </table>
+
+
 
 @section scripts {
     <script>

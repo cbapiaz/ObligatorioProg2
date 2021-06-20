@@ -28,26 +28,29 @@
                     <li class="nav-item">
                         <a class="nav-link" href="#about">About</a>
                     </li>
-                    <li class="nav-item"><a class="nav-link" href="~/Canal/Index">Canales</a></li>
                     <li class="nav-item">  <a class="nav-link" href="~/Paquete/Index">Paquetes</a></li>
-                    <li class="nav-item">  <a class="nav-link" href="~/Compra/Index">Compras</a></li>
-
-                    @if (Session["LoggedIn"] != null && (bool)Session["LoggedIn"])
+                    @if (Session["LoggedIn"] != null && (string)Session["UserRol"] == Dominio.User.ROL_OPERADOR)
                     {
-
+                        <li class="nav-item">  <a class="nav-link" href="~/Compra/Index">Compras</a></li>
                         <li class="nav-item">  <a class="nav-link" href="~/User/Listado">Clientes</a></li>
                     }
 
-                        @if (Session["LoggedIn"] == null || !(bool)Session["LoggedIn"])
-                        {
-                            <li class="nav-item"> <a class="nav-link" href="~/Login/Index">Login</a></li>
-                        }
+                    @if (Session["LoggedIn"] != null && (string)Session["UserRol"] == Dominio.User.ROL_CLIENTE)
+                    {
+                        <li class="nav-item">  <a class="nav-link" href="~/Compra/misCompras">Mis Compras</a></li>
+                    }
 
-                        @if (Session["LoggedIn"] != null && (bool)Session["LoggedIn"])
-                        {
-                            <li class="nav-item"><a class="nav-link" href="#">@Session["UserName"]</a></li>
-                            <li class="nav-item"> <a class="nav-link" href="~/Login/LogOut">Log-Out</a></li>
-                        }
+                    @if (Session["LoggedIn"] == null || !(bool)Session["LoggedIn"])
+                    {
+                        <li class="nav-item"> <a class="nav-link" href="~/Login/Index">Login</a></li>
+                    }
+
+                    @if (Session["LoggedIn"] != null && (bool)Session["LoggedIn"])
+                    {
+                        <li class="nav-item"><a class="nav-link" href="~/Canal/Index">Canales</a></li>
+                        <li class="nav-item"><a class="nav-link" href="#">@Session["UserName"]</a></li>
+                        <li class="nav-item"> <a class="nav-link" href="~/Login/LogOut">Log-Out</a></li>
+                    }
 
                     </ul>
             </div>
@@ -65,11 +68,11 @@
     <script src="~/Scripts/jquery-3.4.1.min.js"></script>
     <script src="~/Scripts/bootstrap.min.js"></script>
 
-    @RenderSection("scripts",false)
+    @RenderSection("scripts", false)
 
-<script>
+    <script>
         var loggedIn = '@Session["LoggedIn"]' == 'True';
         console.log(loggedIn);
-</script>
+    </script>
 </body>
 </html>

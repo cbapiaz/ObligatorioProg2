@@ -14,6 +14,8 @@ namespace MVCApp.Controllers
         {
             ViewBag.paquetes = unE.ListarPaquetes();
             ViewBag.usuarioLogin = unE.LoggedIn;
+            ViewBag.rolUsuario = (string)Session["UserRol"];
+
             return View();
         }
 
@@ -27,10 +29,10 @@ namespace MVCApp.Controllers
             }
 
             //si el usuario no es operador, NO DEBERIA VERLO, aunque si lo hace, se ve una lista VACIA
-            if (Session["LoggedIn"] != null && (string)Session["UserRol"] != Dominio.User.ROL_OPERADOR)
+            if (Session["LoggedIn"] != null && Session["UserRol"].ToString() != Dominio.User.ROL_OPERADOR)
             {
-                ViewBag.error = "Usuario no autorizado";
-                return View("~/Error/UsuarioNoAutorizado.cshtml");
+                Session["error"] = "ERROR: Rol no valido por favor loguearse nuevamente";
+                return RedirectToAction("Error", "Error");
             }
 
             if ((string)Session["UserRol"] == Dominio.User.ROL_OPERADOR)
@@ -58,10 +60,10 @@ namespace MVCApp.Controllers
             }
 
             //si el usuario no es operador, NO DEBERIA VERLO, aunque si lo hace, se ve una lista VACIA
-            if (Session["LoggedIn"] != null && (string)Session["UserRol"] != Dominio.User.ROL_OPERADOR)
+            if (Session["LoggedIn"] != null && Session["UserRol"].ToString() != Dominio.User.ROL_OPERADOR)
             {
-                ViewBag.error = "Usuario no autorizado";
-                return View("~/Error/UsuarioNoAutorizado.cshtml");
+                Session["error"] = "ERROR: Rol no valido por favor loguearse nuevamente";
+                return RedirectToAction("Error", "Error");
             }
             //si es operador, ve los canales en paquetes
             if ((string)Session["UserRol"] == Dominio.User.ROL_OPERADOR)
@@ -74,14 +76,16 @@ namespace MVCApp.Controllers
             return View("Index");
         }
 
-
         // toda info paquete....
-        public ActionResult Carrito(string nomPaquete)
+        public ActionResult Carrito(string nombrePaquete)
         {
-            ViewBag.paquetes = unE.ListarPaquetes();
-            ViewBag.NombrePaquete = nomPaquete;
+            Paquete paquete = unE.BuscarPaquete(nombrePaquete);
+            //ViewBag.paquete = unE.BuscarPaquete(nombrePaquete);
 
-            return View();
+
+
+            return View(paquete);
         }
+
     }
 }

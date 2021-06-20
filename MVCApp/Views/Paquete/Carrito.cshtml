@@ -1,70 +1,37 @@
 ﻿@using Dominio
+@model Dominio.Paquete
 @{
     ViewBag.Title = "Carrito";
 }
-<div class="shopping-cart">
-    <!-- Titulo -->
-    <div class="titulo">
-        Carrito de Compras
-    </div>
+<h2>Compra tu paquete</h2>
+<div class="container">
 
-    
-    <div class="container">
-        <div class="row">
-            <!-- Elementos generados a partir del JSON -->
-            <section id="items" class="col-sm-8 row">
+    <table class="table">
+        <thead>
+            <tr>
+                <th scope="col">#</th>
+                <th scope="col">Nombre del paquete</th>
+                <th scope="col">Promocion</th>
+                <th scope="col">Precio Base</th>
 
-                <!--datos del paquete-->
-                <!-- mostrar info paquete...-->
-                <input type="text" id="nombrePaquete" value="@ViewBag.NombrePaquete"/>
-                
-                              
-               
-                <button class="plus-btn" type="button" name="button" id="btnMas">
-                    +
-                </button>
-            </section>
-            <!-- Carrito -->
-            <aside class="col-sm-4">
-                <h2>Carrito</h2>
-                <!-- Elementos del carrito -->
-                <ul id="carrito" class="list-group"></ul>
-                <hr>
-                <!-- Precio total -->
-                <p class="text-right">Total: <span id="total"></span>&euro;</p>
-                <button id="boton-vaciar" class="btn btn-danger">Vaciar</button>
-            </aside>
-        </div>
-    </div>
-
-
-    <button id="btnsubmit">Comprar</button>
-    <button id="btnCancelar">Cancelar</button>
-</div>
-        
-
-
-      
-
-@section scripts {
-
-    <script>
-
-        //
-        let btnMas = document.getElementById("btnMas");
-        let nombrePaquete = document.getElementById("nombrePaquete");
-
-        btnMas.addEventListener('click', () => {
-            let li = document.createElement('li');
-            li.textContent = nombrePaquete.value;
+            </tr>
+        </thead>
+        <tbody>
             
-            let carrito = document.getElementById("carrito");
-            carrito.appendChild(li);
-        })
+          
+            <tr>
+                @if (Model != null)
+                {
+                    <th scope="row"></th>
+                    <td>@Model.Nombre</td>
+                    <td>@Model.Promocion</td>
+                    <td>@Model.PrecioBase</td>
+                }
 
-        
-        
-    </script>
+            </tr>
+
+        </tbody>
+    </table>
 
 
-}
+</div>
