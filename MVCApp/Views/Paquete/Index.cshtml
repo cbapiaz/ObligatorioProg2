@@ -5,16 +5,19 @@
 
 <h2>Paquetes</h2>
 
-<section>
-    <h3>Busca el paquete por precio</h3>
-    <input type="number" id="paquetePrecio" />
-    <button id="btnBuscar">Buscar</button>
-</section>
-<section>
-    <h3>Busca por nombre de canal</h3>
-    <input type="text" id="nombreCanal" />
-    <button id="btnBuscar1">Buscar</button>
-</section>
+@if (ViewBag.usuarioLogin && ViewBag.rolUsuario == Dominio.User.ROL_OPERADOR)
+{
+    <section>
+        <h3>Busca el paquete por precio</h3>
+        <input type="number" id="paquetePrecio" />
+        <button id="btnBuscar">Buscar</button>
+    </section>
+    <section>
+        <h3>Busca por nombre de canal</h3>
+        <input type="text" id="nombreCanal" />
+        <button id="btnBuscar1">Buscar</button>
+    </section>
+}
 
 <table class="table">
     <thead>
@@ -30,13 +33,13 @@
     <tbody>
         @foreach (Paquete item in ViewBag.paquetes)
         {
-            <tr>
-                <th scope="row"></th>
-                <td><a href="~/Paquete/Carrito?nomPaquete=@item.Nombre"> @item.Nombre</a></td>
-                <td>@item.Promocion </td>
-                <td>@item.PrecioBase</td>
-                <td>@item.GetCanales()</td>
-            </tr>
+        <tr>
+            <th scope="row"></th>
+            <td><a href="~/Paquete/Carrito?nomPaquete=@item.Nombre"> @item.Nombre</a></td>
+            <td>@item.Promocion </td>
+            <td>@item.PrecioBase</td>
+            <td>@item.GetCanales()</td>
+        </tr>
         }
     </tbody>
 

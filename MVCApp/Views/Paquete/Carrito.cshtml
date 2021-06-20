@@ -2,13 +2,25 @@
 @{
     ViewBag.Title = "Carrito";
 }
+
+<!--  method="post" action="/compra/TerminarCompra" -->
+<form class="form-group">
+    <input type="text" value="@ViewBag.paquete.Nombre" name="nombrePaquete" disabled />
+    <input type="text" value="@ViewBag.paquete.Promocion" disabled />
+    <input type="text" value="@ViewBag.paquete.PrecioBase" disabled />
+    <input type="text" value="@ViewBag.paquete.Canales" disabled />
+
+    <!-- <input type="submit" value="Comprar" /> -->
+</form>
+
+
 <div class="shopping-cart">
     <!-- Titulo -->
     <div class="titulo">
         Carrito de Compras
     </div>
 
-    
+
     <div class="container">
         <div class="row">
             <!-- Elementos generados a partir del JSON -->
@@ -16,10 +28,10 @@
 
                 <!--datos del paquete-->
                 <!-- mostrar info paquete...-->
-                <input type="text" id="nombrePaquete" value="@ViewBag.NombrePaquete"/>
-                
-                              
-               
+                <input type="text" id="nombrePaquete" value="@ViewBag.paquete.Nombre" />
+
+
+
                 <button class="plus-btn" type="button" name="button" id="btnMas">
                     +
                 </button>
@@ -41,10 +53,10 @@
     <button id="btnsubmit">Comprar</button>
     <button id="btnCancelar">Cancelar</button>
 </div>
-        
 
 
-      
+
+
 
 @section scripts {
 
@@ -57,13 +69,13 @@
         btnMas.addEventListener('click', () => {
             let li = document.createElement('li');
             li.textContent = nombrePaquete.value;
-            
+
             let carrito = document.getElementById("carrito");
             carrito.appendChild(li);
         })
 
-        
-        
+
+
     </script>
 
 
