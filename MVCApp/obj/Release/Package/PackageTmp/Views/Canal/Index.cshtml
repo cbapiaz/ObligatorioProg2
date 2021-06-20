@@ -5,6 +5,12 @@
 
 <h2>Listado de canales</h2>
 
+<section>
+    <h3>Busca el nombre</h3>
+    <input type="number" id="paquetePrecio" />
+    <button id="btnBuscar">Buscar</button>
+</section>
+
 
 
 
@@ -37,14 +43,19 @@
 @section scripts {
     
     <script>
-        var loggedIn = '@ViewBag.usuarioLogin' == 'True';
+
+      
+        var loggedIn = '@Session["LoggedIn"]' == 'True';
+        debugger;
         if (loggedIn) {
             $("navBar").show();
         }
         else {
             $("navBar").hide();
-            //location = "/Login/Index";
+            location = "/Login/Index";
         }
+
+
     </script>
     
 

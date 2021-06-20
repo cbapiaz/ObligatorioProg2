@@ -48,7 +48,6 @@ namespace Dominio
             AltaUsuarioCliente(45042994, "Sebas", "Piaz", "Cba123");
             AltaUsuarioOperador("Ceci", "Pepe123");
             AltaUsuarioOperador("Klein", "Pepe666");
-
         }
 
         #endregion

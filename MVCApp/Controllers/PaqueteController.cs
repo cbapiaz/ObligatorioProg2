@@ -74,9 +74,13 @@ namespace MVCApp.Controllers
             return View("Index");
         }
 
-        public ActionResult Carrito()
+
+        // toda info paquete....
+        public ActionResult Carrito(string nomPaquete)
         {
             ViewBag.paquetes = unE.ListarPaquetes();
+            ViewBag.NombrePaquete = nomPaquete;
+
             return View();
         }
     }
