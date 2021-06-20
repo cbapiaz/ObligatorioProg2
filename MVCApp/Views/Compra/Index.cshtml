@@ -5,16 +5,15 @@
 
 <h2>Compras</h2>
 
-<input type="datetime-local" id="fechaInicial" />
-<input type="datetime-local" id="fechaFinal" />
+<form action="~/Compra/Filtrar">
+    <label>Inicio</label>
+    <input type="datetime-local" id="fechaInicial" name="start" value="@ViewBag.Start"/>
+    <label>Fin</label>
+    <input type="datetime-local" id="fechaFinal" name="end" value="@ViewBag.End"/>
 
-<!--
-<section>
-    <h3>Busca el paquete por precio</h3>
-    <input type="number" id="fechaInicio" />
-    <button id="btnBuscar">Buscar</button>
-</section>
-    -->
+    <input type="submit" value="Filtrar"/>
+</form>
+
 <table class="table">
     <thead>
         <tr>
@@ -44,12 +43,20 @@
 
             </tr>
         }
+        <tr>
+            <td colspan="6">
+                Total
+            </td>
+            <td>
+                @ViewBag.Total
+            </td>
+        </tr>
     </tbody>
-
 </table>
 
 @section scripts {
     <script>
+
         var loggedIn = '@Session["LoggedIn"]' == 'True';
         if (loggedIn) {
        //     $("navBar").show();
@@ -58,9 +65,5 @@
          /*   $("navBar").hide();
             location = "/Login/Index";
        */ }
-
-            $(function () {
-                $('#datetimepicker1').datetimepicker();
-            });
     </script>
 }

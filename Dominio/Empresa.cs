@@ -43,6 +43,7 @@ namespace Dominio
             PreCargaUsuarios();
         }
 
+     
         private void PreCargaUsuarios()
         {
             AltaUsuarioCliente(45042994, "Sebas", "Piaz", "Cba123");
@@ -317,6 +318,31 @@ namespace Dominio
 
         //COMPRAS
 
+        public decimal TotalCompras()
+        {
+            decimal res = 0;
+            foreach (var c in Compras)
+            {
+                res += c.GetTotalCompra();
+            }
+            return res;
+        }
+
+        public decimal TotalCompras(DateTime start, DateTime end)
+        {
+            decimal res = 0;
+            foreach (var c in Compras)
+            {
+                if (c.Fecha >= start && c.Fecha <= end)
+                {
+                    res += c.GetTotalCompra();
+                }
+            }
+            return res;
+        }
+
+
+
         /// <summary>
         /// Agregar una nueva compra a un usuario existente
         /// </summary>
@@ -324,7 +350,7 @@ namespace Dominio
         /// <param name="fechaVencimiento"></param>
         /// <param name="cancelada"></param>
         /// <returns></returns>
-        public Compra AgregarNuevaCompra(string username,List<string> paquetes)
+        public Compra AgregarNuevaCompra(string username,DateTime date,List<string> paquetes)
         {
             User user = BuscarUsuario(username);
             // usuario debe existir
@@ -336,7 +362,7 @@ namespace Dominio
                     paquetesAux.Add(paquete1);
                 }
 
-                Compra nuevaCompra = new Compra(DateTime.Now, false, paquetesAux);
+                Compra nuevaCompra = new Compra(date, false, paquetesAux);
                 
                 //agregar compra al sistema
                 Compras.Add(nuevaCompra);
@@ -402,6 +428,21 @@ namespace Dominio
         public List<Compra> ListarCompras()
         {
             return Compras;
+        }
+
+        public List<Compra> ListarCompras(DateTime inicio, DateTime fin)
+        {
+            List<Compra> res = new List<Compra>();
+
+            foreach (Compra compra in Compras)
+            {
+                if (compra.Fecha >=inicio && compra.Fecha <=fin)
+                {
+                    res.Add(compra);
+                }
+            }
+
+            return res;
         }
 
 
