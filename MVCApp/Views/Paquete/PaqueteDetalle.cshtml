@@ -5,10 +5,6 @@
 }
 <h2>Compra tu paquete</h2>
 
-<section>
-    <button href="/compra/DetalleCompra?nombrePaquete=@Model.Nombre">Comprar</button>
-</section>
-
 <div class="container">
 
     <table class="table">
@@ -31,7 +27,7 @@
                     <td>@Model.Nombre</td>
                     <td>@Model.Promocion</td>
                     <td>@Model.PrecioBase</td>
-                    <td><div id="divBotones"><a href="/Compra/MisCompras?NombrePaquete=@Model.Nombre" class="btn btn-info" role="button" id="botonCompra">Finalizar Compra</a></div></td>
+                    <td><div id="divBotones"><button class="btn btn-info" role="button" href="/compra/DetalleCompra?nombrePaquete=@Model.Nombre">Finalizar Compra</button></div></td>
 
                 }
 

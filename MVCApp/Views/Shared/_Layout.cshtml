@@ -6,9 +6,7 @@
     <title>@ViewBag.Title - My ASP.NET Application</title>
     <link href="~/Content/Site.css" rel="stylesheet" type="text/css" />
     <link href="~/Content/bootstrap.min.css" rel="stylesheet" type="text/css" />
-
     <script src="~/Scripts/modernizr-2.8.3.js"></script>
-
     @RenderSection("styles", false)
 </head>
 <body>
@@ -28,35 +26,30 @@
                     <li class="nav-item">
                         <a class="nav-link" href="#about">About</a>
                     </li>
-                    <li class="nav-item">  <a class="nav-link" href="~/Paquete/Index">Paquetes</a></li>
+                    <li class="nav-item"> <a class="nav-link" href="~/Paquete/Index">Paquetes</a></li>
                     @if (Session["LoggedIn"] != null && (string)Session["UserRol"] == Dominio.User.ROL_OPERADOR)
                     {
-                        <li class="nav-item">  <a class="nav-link" href="~/Compra/Index">Compras</a></li>
-                        <li class="nav-item">  <a class="nav-link" href="~/User/Listado">Clientes</a></li>
+                        <li class="nav-item"> <a class="nav-link" href="~/Compra/Index">Compras</a></li>
+                        <li class="nav-item"> <a class="nav-link" href="~/User/Listado">Clientes</a></li>
                     }
-
                     @if (Session["LoggedIn"] != null && (string)Session["UserRol"] == Dominio.User.ROL_CLIENTE)
                     {
-                        <li class="nav-item">  <a class="nav-link" href="~/Compra/misCompras">Mis Compras</a></li>
+                        <li class="nav-item"> <a class="nav-link" href="~/Compra/misCompras">Mis Compras</a></li>
                     }
-
                     @if (Session["LoggedIn"] == null || !(bool)Session["LoggedIn"])
                     {
                         <li class="nav-item"> <a class="nav-link" href="~/Login/Index">Login</a></li>
                     }
-
                     @if (Session["LoggedIn"] != null && (bool)Session["LoggedIn"])
                     {
                         <li class="nav-item"><a class="nav-link" href="~/Canal/Index">Canales</a></li>
                         <li class="nav-item"><a class="nav-link" href="#">@Session["UserName"]</a></li>
                         <li class="nav-item"> <a class="nav-link" href="~/Login/LogOut">Log-Out</a></li>
                     }
-
-                    </ul>
+                </ul>
             </div>
         </div>
     </div>
-
     <div class="container body-content">
         @RenderBody()
         <hr />
@@ -64,15 +57,12 @@
             <p>&copy; @DateTime.Now.Year - My ASP.NET Application</p>
         </footer>
     </div>
-
     <script src="~/Scripts/jquery-3.4.1.min.js"></script>
     <script src="~/Scripts/bootstrap.min.js"></script>
-
     @RenderSection("scripts", false)
-
     <script>
-        var loggedIn = '@Session["LoggedIn"]' == 'True';
-        console.log(loggedIn);
+var loggedIn = '@Session["LoggedIn"]' == 'True';
+console.log(loggedIn);
     </script>
 </body>
 </html>
