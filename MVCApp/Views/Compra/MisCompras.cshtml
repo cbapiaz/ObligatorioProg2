@@ -32,16 +32,19 @@ else
             {
 
 
-                <tr>
-                    <th scope="row"></th>
-                    <td>@item.Id</td>
-                    <td>@item.Fecha </td>
-                    <td>@item.FechaVencimiento</td>
-                    <td>@item.GetDetalleCompra()</td>
-                    <td>@item.Cancelada</td>
-                    <td>@item.PrecioCompra()</td>
-                </tr>
+            <tr>
+                <th scope="row"></th>
+                <td>@item.Id</td>
+                <td>@item.Fecha </td>
+                <td>@item.FechaVencimiento</td>
+                <td>@item.GetDetalleCompra()</td>
+                <td>@item.Cancelada</td>
+                <td>@item.PrecioCompra()</td>
+                <td><button class="btn btn-info" role="button"><a href="/compra/DetalleCompra?nombrePaquete=@Model.Nombre">Finalizar Compra</a></button></td>
+            </tr>
+
             }
+            
         </tbody>
     </table>
 }
