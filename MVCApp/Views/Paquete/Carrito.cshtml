@@ -1,0 +1,67 @@
+﻿@using Dominio
+@{
+    ViewBag.Title = "Carrito";
+}
+<div class="shopping-cart">
+    <!-- Titulo -->
+    <div class="titulo">
+        Carrito de Compras
+    </div>
+
+    
+    <div class="container">
+        <div class="row">
+            <!-- Elementos generados a partir del JSON -->
+            <section id="items" class="col-sm-8 row">
+                <input type="text" id="nombrePaquete" />
+                
+                              
+               
+                <button class="plus-btn" type="button" name="button" id="btnMas">
+                    +
+                </button>
+            </section>
+            <!-- Carrito -->
+            <aside class="col-sm-4">
+                <h2>Carrito</h2>
+                <!-- Elementos del carrito -->
+                <ul id="carrito" class="list-group"></ul>
+                <hr>
+                <!-- Precio total -->
+                <p class="text-right">Total: <span id="total"></span>&euro;</p>
+                <button id="boton-vaciar" class="btn btn-danger">Vaciar</button>
+            </aside>
+        </div>
+    </div>
+
+
+    <button id="btnsubmit">Submit</button>
+    <button id="btnCancelar">Cancelar</button>
+</div>
+        
+
+
+      
+
+@section scripts {
+
+    <script>
+
+        //
+        let btnMas = document.getElementById("btnMas");
+        let nombrePaquete = document.getElementById("nombrePaquete");
+
+        btnMas.addEventListener('click', () => {
+            let li = document.createElement('li');
+            li.textContent = nombrePaquete.value;
+            
+            let carrito = document.getElementById("carrito");
+            carrito.appendChild(li);
+        })
+
+        
+        
+    </script>
+
+
+}
