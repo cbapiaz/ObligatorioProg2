@@ -36,10 +36,13 @@ namespace MVCApp.Controllers
             if (Session["LoggedIn"] != null && (string)Session["UserRol"] != Dominio.User.ROL_OPERADOR)
             {
                 ViewBag.usuarios = new List<Dominio.User>();
+                Session["error"] = "ERROR: Usuario no tiene permisos para acceder";
+                return RedirectToAction("Error", "Error");
             }
 
             //aun falta el viewbag con la lista en si
             //TODO: List
+            ViewBag.usuarios= Empresa.Instancia.ListaUsuariosClientes();
 
             return View();
         }

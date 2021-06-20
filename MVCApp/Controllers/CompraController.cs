@@ -25,6 +25,11 @@ namespace MVCApp.Controllers
            
             ViewBag.IdCompra = 1;
 
+            if (Session["LoggedIn"] == null || !(bool)Session["LoggedIn"])
+            {
+                return Redirect("/login/index");
+            }
+
             if (Session["UserRol"]!= null && Session["UserRol"].ToString() == Dominio.User.ROL_OPERADOR) {
                 ViewBag.Compras = emp.ListarCompras();
                 ViewBag.Total = emp.TotalCompras();

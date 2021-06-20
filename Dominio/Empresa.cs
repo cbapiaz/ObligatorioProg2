@@ -51,12 +51,32 @@ namespace Dominio
             AltaUsuarioOperador("Klein", "Pepe666");
         }
 
+
+
         #endregion
 
         #region metodos
 
 
         /** USUARIO **/
+
+
+        public List<User> ListaUsuariosClientes()
+        {
+            var res = new List<User>();
+
+            foreach (var u in Usuarios)
+            {
+                if (u.Rol == User.ROL_CLIENTE)
+                {
+                    res.Add(u);
+                }
+            }
+
+            res.Sort();
+
+            return res;
+        }
 
         public User BuscarUsuario(string username)
         {

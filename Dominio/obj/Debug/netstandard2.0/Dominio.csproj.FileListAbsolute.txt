@@ -32,5 +32,4 @@ C:\Repos\N2B-Prog2-ORT\Obligatorio\ObligatorioProg2\Dominio\obj\Debug\netstandar
 C:\Repos\N2B-Prog2-ORT\Obligatorio\ObligatorioProg2\Dominio\obj\Debug\netstandard2.0\Dominio.csproj.CoreCompileInputs.cache
 C:\Repos\N2B-Prog2-ORT\Obligatorio\ObligatorioProg2\Dominio\obj\Debug\netstandard2.0\Dominio.dll
 C:\Repos\N2B-Prog2-ORT\Obligatorio\ObligatorioProg2\Dominio\obj\Debug\netstandard2.0\Dominio.pdb
-C:\Repos\N2B-Prog2-ORT\Obligatorio\ObligatorioProg2\Dominio\obj\Debug\netstandard2.0\Dominio.csprojAssemblyReference.cache
 C:\Users\cecil\Documents\GitHub\ObligatorioProg2\Dominio\obj\Debug\netstandard2.0\Dominio.csprojAssemblyReference.cache
