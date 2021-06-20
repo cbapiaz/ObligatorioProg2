@@ -47,6 +47,7 @@ namespace Dominio
         private void PreCargaUsuarios()
         {
             AltaUsuarioCliente(45042994, "Sebas", "Piaz", "Cba123");
+            AltaUsuarioCliente(47294379, "Mathi", "Sanchez", "Mathi123");
             AltaUsuarioOperador("Ceci", "Pepe123");
             AltaUsuarioOperador("Klein", "Pepe666");
         }

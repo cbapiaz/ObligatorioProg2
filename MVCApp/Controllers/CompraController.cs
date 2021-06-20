@@ -78,10 +78,19 @@ namespace MVCApp.Controllers
             }
         }
 
-        //public ActionResult TerminarCompra(string nomPaquete)
-        //{
+        public ActionResult TerminarCompra(string nombrePaquete)
+        {
 
-        //}
+
+            Paquete paquete = emp.BuscarPaquete(nombrePaquete);
+            if (paquete !=null)
+            {
+                ViewBag.resultado = Empresa.Instancia.AgregarNuevaCompra(Session["UserName"].ToString(), DateTime.Now, new List<string>());
+            }
+            return View(paquete);
+        }
+
+        
 
         /*public ActionResult TerminarCompra(int idCompra, List<int> idPaquete)
         {
