@@ -29,6 +29,8 @@ namespace Dominio
             Cancelada = cancelada;
         }
 
+        //seba me parece que se compra 1 solo paquete por compra, no hay multiples compras, es de a una
+        //quiero agregar el controlador TerminarCompra que compre solo 1 paquete y lo agrege a la lista del usuario cliente activo
         public Compra(DateTime fecha, bool cancelada, List<Paquete> paquetesComprados)
         {
             Id = uid++;

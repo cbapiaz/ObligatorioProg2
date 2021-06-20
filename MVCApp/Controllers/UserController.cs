@@ -35,7 +35,8 @@ namespace MVCApp.Controllers
             //si el usuario no es operador, NO DEBERIA VERLO, aunque si lo hace, se ve una lista VACIA
             if (Session["LoggedIn"] != null && (string)Session["UserRol"] != Dominio.User.ROL_OPERADOR)
             {
-                ViewBag.usuarios = new List<Dominio.User>();
+                Session["error"] = "ERROR: Rol no valido por favor loguearse nuevamente";
+                return RedirectToAction("Error", "Error");
             }
 
             //aun falta el viewbag con la lista en si

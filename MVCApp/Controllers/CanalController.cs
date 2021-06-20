@@ -13,6 +13,8 @@ namespace MVCApp.Controllers
         public ActionResult Index()
         {
             ViewBag.canales = unE.ListarCanales();
+            ViewBag.usuarioLogin = unE.LoggedIn;
+            ViewBag.rolUsuario = (string)Session["UserRol"];
             return View();
         }
     

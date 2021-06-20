@@ -140,6 +140,7 @@
     <Content Include="Views\Error\Error.cshtml" />
     <Content Include="Views\Compra\Index.cshtml" />
     <Content Include="Views\Paquete\Carrito.cshtml" />
+    <Content Include="Views\Compra\MisCompras.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
