@@ -30,6 +30,7 @@ namespace Dominio
         public List<Paquete> Paquetes { get; } = new List<Paquete>();
         public List<Canal> Canales { get; } = new List<Canal>();
         public List<User> Usuarios { get; } = new List<User>();
+        public List<Compra> Compras { get; } = new List<Compra>();
         #endregion
 
         #region constructores
@@ -42,11 +43,12 @@ namespace Dominio
             PreCargaUsuarios();
         }
 
+     
         private void PreCargaUsuarios()
         {
+            AltaUsuarioCliente(45042994, "Sebas", "Piaz", "Cba123");
             AltaUsuarioOperador("Ceci", "Pepe123");
             AltaUsuarioOperador("Klein", "Pepe666");
-
         }
 
         #endregion
@@ -56,16 +58,41 @@ namespace Dominio
 
         /** USUARIO **/
 
+        public User BuscarUsuario(string username)
+        {
+            foreach (User user in Usuarios)
+            {
+                if (user.NombreUsuario == username)
+                {
+                    return user;
+                }
+            }
+
+            return null;
+        }
+
+        //logica de alta de usuario
         public bool AltaUsuario(User user)
         {
             if (user.Rol == User.ROL_CLIENTE)
             {
-                return AltaUsuarioCliente(user.Cedula, user.Nombre, user.Apellido, user.Password);
+                //verificar que no exista el usuario cliente con esa cedula
+                if (BuscarUsuario(user.Cedula.ToString()) == null) { 
+                    return AltaUsuarioCliente(user.Cedula, user.Nombre, user.Apellido, user.Password);
+                }
+                else
+                {
+                    return false;
+                }
             }
 
             if (user.Rol == User.ROL_OPERADOR)
             {
-                return AltaUsuarioOperador(user.Nombre, user.Password);
+                //verificar que no exista otro usuario operador
+                if (BuscarUsuario(user.Nombre) == null)
+                {
+                    return AltaUsuarioOperador(user.Nombre, user.Password);
+                }
             }
             return false;
         }
@@ -288,6 +315,136 @@ namespace Dominio
 
             return unP;
         }
+
+        //COMPRAS
+
+        public decimal TotalCompras()
+        {
+            decimal res = 0;
+            foreach (var c in Compras)
+            {
+                res += c.GetTotalCompra();
+            }
+            return res;
+        }
+
+        public decimal TotalCompras(DateTime start, DateTime end)
+        {
+            decimal res = 0;
+            foreach (var c in Compras)
+            {
+                if (c.Fecha >= start && c.Fecha <= end)
+                {
+                    res += c.GetTotalCompra();
+                }
+            }
+            return res;
+        }
+
+
+
+        /// <summary>
+        /// Agregar una nueva compra a un usuario existente
+        /// </summary>
+        /// <param name="username"></param>
+        /// <param name="fechaVencimiento"></param>
+        /// <param name="cancelada"></param>
+        /// <returns></returns>
+        public Compra AgregarNuevaCompra(string username,DateTime date,List<string> paquetes)
+        {
+            User user = BuscarUsuario(username);
+            // usuario debe existir
+            if (user != null) {
+                List<Paquete> paquetesAux = new List<Paquete>();
+                foreach (string nombrePaquete in  paquetes)
+                {
+                    Paquete paquete1 = BuscarPaquete(nombrePaquete);
+                    paquetesAux.Add(paquete1);
+                }
+
+                Compra nuevaCompra = new Compra(date, false, paquetesAux);
+                
+                //agregar compra al sistema
+                Compras.Add(nuevaCompra);
+
+                //agregar compra al usuario
+                user.AgregarCompra(nuevaCompra);
+
+                return nuevaCompra;
+            }
+            else
+            {
+                return null;
+            } 
+        }
+
+        public bool ActualizarCompra(int idCompra,bool cancelada)
+        {
+            Compra compra = BuscarCompra(idCompra);
+            if(compra != null)
+            {
+                compra.Cancelada = cancelada;
+                return true;
+            }
+
+            return false;
+        }
+
+        /// <summary>
+        /// agregar un paquete a una compra existente
+        /// </summary>
+        /// <param name="idCompra"></param>
+        /// <param name="paquete"></param>
+        /// <returns></returns>
+        public Compra AgregarPaqueteCompra(int idCompra, Paquete paquete)
+        {
+            Compra compra = BuscarCompra(idCompra);
+            if(compra!= null)
+            {
+                compra.AgregarPaquete(paquete);
+                return compra;
+            }
+
+            return null;
+        }
+
+        private Compra BuscarCompra(int idCompra)
+        {
+            foreach (Compra c in Compras)
+            {
+                if (c.Id == idCompra)
+                {
+                    return c;
+                }
+            }
+            return null;
+        }
+
+
+        /// <summary>
+        /// retorna toda la lista de compras del sistema
+        /// </summary>
+        /// <returns></returns>
+        public List<Compra> ListarCompras()
+        {
+            return Compras;
+        }
+
+        public List<Compra> ListarCompras(DateTime inicio, DateTime fin)
+        {
+            List<Compra> res = new List<Compra>();
+
+            foreach (Compra compra in Compras)
+            {
+                if (compra.Fecha >=inicio && compra.Fecha <=fin)
+                {
+                    res.Add(compra);
+                }
+            }
+
+            return res;
+        }
+
 
         /// <summary>
         /// retorna toda la lista de paquetes del sistema

@@ -10,15 +10,15 @@
             <img src="~/Content/img/icon.png" id="icon" alt="User Icon" />
         </div>
         <!-- Login Form -->
-        <form>
-            <input type="text" id="login" class="fadeIn second" name="login" placeholder="login">
-            <input type="text" id="password" class="fadeIn third" name="login" placeholder="password">
+        <form id="loginForm" action="~/Login/Ingresar">
+            <input type="text" id="user" class="fadeIn second" name="username" placeholder="username">
+            <input type="password" id="password" class="fadeIn third" name="pass" placeholder="password">
             <input id="logintBtn" type="submit" class="fadeIn fourth" value="Log In">
         </form>
 
         <!-- Register -->
         <div id="formFooter">
-            <a class="underlineHover" href="#">Register</a>
+            <a class="underlineHover" href="/User/Registrar">Register</a>
         </div>
         <div>
             <a class="underlineHover" href="/Canal/Index">Canales Disponibles?</a>
@@ -29,17 +29,15 @@
 
 @section scripts {
     <script>
-        var loggedIn = '@ViewBag.usuarioLogin' == 'True';
+
+        
+        var loggedIn = '@Session["LoggedIn"]' == 'True';
         if (!loggedIn) {
             $("#navBar").hide();
         }
         else {
-            $("navBar").hide();
+            $("#navBar").show();
             location="/Canal/Index"
         }
-
-        $("#logintBtn").click(function () {
-            alert("hay que implementar login!");
-        });
     </script>
 }

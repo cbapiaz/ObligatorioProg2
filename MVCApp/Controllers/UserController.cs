@@ -51,9 +51,9 @@ namespace MVCApp.Controllers
         public ActionResult Registrar(User user)
         {
             //si el usuario ya esta logueado, va hacia el listado
-            if (Session["LoggedIn"] != null || (bool)Session["LoggedIn"])
+            if (Session["LoggedIn"] != null && (bool)Session["LoggedIn"])
             {
-                return Redirect("/login/listado");
+                return Redirect("/paquete/index");
             }
 
             ViewBag.ErrorMessage = null;

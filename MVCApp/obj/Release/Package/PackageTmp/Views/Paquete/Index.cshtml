@@ -5,41 +5,47 @@
 
 <h2>Paquetes</h2>
 
-
-
+<section>
+    <h3>Busca el paquete por precio</h3>
+    <input type="number" id="paquetePrecio" />
+    <button id="btnBuscar">Buscar</button>
+</section>
+<section>
+    <h3>Busca por nombre de canal</h3>
+    <input type="text" id="nombreCanal" />
+    <button id="btnBuscar1">Buscar</button>
+</section>
 
 <table class="table">
     <thead>
         <tr>
             <th scope="col">#</th>
-            <th scope="col">Nombre del canal</th>
+            <th scope="col">Nombre del paquete</th>
             <th scope="col">Promocion</th>
             <th scope="col">Precio Base</th>
+            <th scope="col">Canales</th>
 
         </tr>
     </thead>
     <tbody>
         @foreach (Paquete item in ViewBag.paquetes)
         {
-
-
             <tr>
                 <th scope="row"></th>
-
-
-                <td>@item.Nombre</td>
+                <td><a href="~/Paquete/Carrito?nomPaquete=@item.Nombre"> @item.Nombre</a></td>
                 <td>@item.Promocion </td>
-                <td> @item.PrecioBase</td>
-
+                <td>@item.PrecioBase</td>
+                <td>@item.GetCanales()</td>
             </tr>
         }
     </tbody>
 
 </table>
 
+
 @section scripts {
     <script>
-        var loggedIn = '@ViewBag.usuarioLogin' == 'True';
+        var loggedIn = '@Session["LoggedIn"]' == 'True';
         if (loggedIn) {
             $("navBar").show();
         }
@@ -47,5 +53,25 @@
             $("navBar").hide();
             location = "/Login/Index";
         }
+
+        //BUSCAR PAQUETE MAYOR PRECIO
+        let btnBuscar = document.getElementById("btnBuscar");
+        let paquetePrecio = document.getElementById("paquetePrecio");
+
+        btnBuscar.addEventListener('click', () => {
+            let url = "/paquete/MayorPrecio?paquetePrecio=" + paquetePrecio.value;
+            location = url;
+        })
+        // Parte de filtrado  de paquete segun canal
+        //BUSCAR CANAL EN PAQUETE
+
+        let nombreCanal = document.getElementById("nombreCanal");
+
+        document.getElementById("btnBuscar1").addEventListener('click', () => {
+            let url = "/paquete/CanalesEnPaquete?nombreCanal=" + nombreCanal.value;
+            location = url;
+        })
+
+
     </script>
 }

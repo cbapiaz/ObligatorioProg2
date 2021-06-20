@@ -1,12 +1,9 @@
 ﻿@using Dominio
-
 @{
     ViewBag.Title = "Carrito";
 }
 <h2>Compra tu paquete</h2>
-
 <div class="container">
-
 
     <table class="table">
         <thead>
@@ -15,26 +12,20 @@
                 <th scope="col">Nombre del paquete</th>
                 <th scope="col">Promocion</th>
                 <th scope="col">Precio Base</th>
-               
 
             </tr>
         </thead>
         <tbody>
             <tr>
-                    <th scope="row"></th>
+                <th scope="row"></th>
+
+                <td>@ViewBag.Nombre</td>
 
 
-                    <td>@ViewBag.Nombre</td>
-                    
-                   
             </tr>
-          
-        </tbody>
 
+        </tbody>
     </table>
 
 
-
-
 </div>
-

@@ -106,6 +106,8 @@
   <ItemGroup>
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\CanalController.cs" />
+    <Compile Include="Controllers\CompraController.cs" />
+    <Compile Include="Controllers\ErrorController.cs" />
     <Compile Include="Controllers\LoginController.cs" />
     <Compile Include="Controllers\PaqueteController.cs" />
     <Compile Include="Controllers\UserController.cs" />
@@ -136,6 +138,7 @@
     <Content Include="Views\User\Registrar.cshtml" />
     <Content Include="Views\Login\LogOut.cshtml" />
     <Content Include="Views\Error\Error.cshtml" />
+    <Content Include="Views\Compra\Index.cshtml" />
     <Content Include="Views\Paquete\Carrito.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>

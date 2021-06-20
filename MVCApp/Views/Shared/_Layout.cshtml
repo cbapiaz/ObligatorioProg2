@@ -30,6 +30,7 @@
                     </li>
                     <li class="nav-item"><a class="nav-link" href="~/Canal/Index">Canales</a></li>
                     <li class="nav-item">  <a class="nav-link" href="~/Paquete/Index">Paquetes</a></li>
+                    <li class="nav-item">  <a class="nav-link" href="~/Compra/Index">Compras</a></li>
                     @if (Session["LoggedIn"] == null || !(bool)Session["LoggedIn"])
                     {
                         <li class="nav-item"> <a class="nav-link" href="~/Login/Index">Login</a></li>
@@ -49,7 +50,7 @@
     <div class="container body-content">
         @RenderBody()
         <hr />
-        <footer>
+        <footer id="footer">
             <p>&copy; @DateTime.Now.Year - My ASP.NET Application</p>
         </footer>
     </div>
