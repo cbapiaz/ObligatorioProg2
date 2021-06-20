@@ -100,6 +100,7 @@ namespace MVCApp.Controllers
                 else
                 {
                     emp.ActualizarCompra(id, true);
+                    ViewBag.misCompras = new List<Compra> { emp.BuscarCompra(id) };
                 }
 
                 return View();

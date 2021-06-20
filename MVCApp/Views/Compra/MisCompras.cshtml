@@ -40,7 +40,7 @@ else
                 <td>@item.GetDetalleCompra()</td>
                 <td>@item.Cancelada</td>
                 <td>@item.PrecioCompra()</td>
-                <td><button class="btn btn-info" role="button"><a href="/compra/DetalleCompra?nombrePaquete=@Model.Nombre&id=@item.Id">Cancelar Compra</a></button></td>
+                <td><button class="btn btn-info" role="button"><a href="/compra/DetalleCompra?nombrePaquete=@item.NombrePaquete()&id=@item.Id">Cancelar Compra</a></button></td>
             </tr>
 
             }

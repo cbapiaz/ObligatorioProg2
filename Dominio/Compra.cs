@@ -49,7 +49,26 @@ namespace Dominio
 
         public decimal PrecioCompra()
         {
-            return PaqueteComprar.PrecioBase;
+            if (PaqueteComprar != null)
+            {
+                return PaqueteComprar.PrecioBase;
+            }
+            else
+            {
+                return  0;
+            }
         }
+        public string NombrePaquete()
+        {
+            if(PaqueteComprar != null)
+            { 
+            return PaqueteComprar.Nombre;
+            }
+            else
+            {
+                return "";
+            }
+        }
+
     }
 }
