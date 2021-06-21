@@ -47,6 +47,11 @@ namespace Dominio
             return aux;
         }
 
+        public decimal GetTotalCompra()
+        {
+            return PaqueteComprar.DefinirPrecio();
+        }
+
         public decimal PrecioCompra()
         {
             if (PaqueteComprar != null)
