@@ -1,0 +1,50 @@
+﻿@using Dominio;
+
+@{
+    ViewBag.Title = "MisCompras";
+}
+
+<h2>MisCompras</h2>
+
+@if (ViewBag.misCompras.Count == 0)
+{
+    <tr>
+        <td>No hay compras en el sistema</td>
+    </tr>
+}
+else
+{
+    <table class="table">
+        <thead>
+            <tr>
+                <th scope="col">#</th>
+                <th scope="col">Id compra</th>
+                <th scope="col">Fecha de compra</th>
+                <th scope="col">Fecha de vencimiento</th>
+                <th scope="col">Paquetes Comprados</th>
+                <th scope="col">Cancelada</th>
+
+            </tr>
+        </thead>
+        <tbody>
+
+            @foreach (Compra item in ViewBag.misCompras)
+            {
+
+
+            <tr>
+                <th scope="row"></th>
+                <td>@item.Id</td>
+                <td>@item.Fecha </td>
+                <td>@item.FechaVencimiento</td>
+                <td>@item.GetDetalleCompra()</td>
+                <td>@item.Cancelada</td>
+                <td>@item.PrecioCompra()</td>
+                <td><button class="btn btn-info" role="button"><a href="/compra/DetalleCompra?nombrePaquete=@item.NombrePaquete()&id=@item.Id">Cancelar Compra</a></button></td>
+            </tr>
+
+            }
+            
+        </tbody>
+    </table>
+}

@@ -1,0 +1,71 @@
+﻿@using Dominio
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Compras</h2>
+
+<form action="~/Compra/Filtrar">
+    <label>Inicio</label>
+    <input type="datetime-local" id="fechaInicial" name="start" value="@ViewBag.Start" />
+    <label>Fin</label>
+    <input type="datetime-local" id="fechaFinal" name="end" value="@ViewBag.End" />
+
+    <input type="submit" value="Filtrar" />
+</form>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th scope="col">#</th>
+            <th scope="col">Id compra</th>
+            <th scope="col">Fecha de compra</th>
+            <th scope="col">Fecha de vencimiento</th>
+            <th scope="col">Paquetes Comprados</th>
+            <th scope="col">Cancelada</th>
+            <th scope="col">Total Compra</th>
+
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (Compra item in ViewBag.Compras)
+        {
+
+
+            <tr>
+                <th scope="row"></th>
+                <td>@item.Id</td>
+                <td>@item.Fecha </td>
+                <td>@item.FechaVencimiento</td>
+                <td>@item.GetDetalleCompra()</td>
+                <td>@item.Cancelada</td>
+                <td>@item.GetTotalCompra()</td>
+
+            </tr>
+        }
+        <tr>
+            <td colspan="6">
+                Total
+            </td>
+            <td>
+                @ViewBag.Total
+            </td>
+        </tr>
+    </tbody>
+</table>
+
+
+
+@section scripts {
+    <script>
+
+        var loggedIn = '@Session["LoggedIn"]' == 'True';
+        if (loggedIn) {
+       //     $("navBar").show();
+        }
+        else {
+         /*   $("navBar").hide();
+            location = "/Login/Index";
+       */ }
+    </script>
+}

@@ -1,0 +1,63 @@
+﻿@{
+    ViewBag.Title = "Listado";
+}
+
+<h2>Listado</h2>
+
+
+@if (Session["LoggedIn"] != null && (string)Session["UserRol"] == Dominio.User.ROL_OPERADOR)
+{
+    <div><h3><strong>Estadisticas</strong></h3></div>
+    <section>
+        <h4>Clientes con compras en los ultimos dias</h4>
+        <input type="number" id="ultimosDias" value="30" />
+        <button id="btnBuscar">Buscar</button>
+    </section>
+}
+<table class="table">
+    <thead>
+        <tr>
+            <th scope="col">#</th>
+            <th scope="col">Cedula</th>
+            <th scope="col">Nombre</th>
+            <th scope="col">Apellido</th>
+            <th scope="col">Paquetes Comprados</th>
+
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (Dominio.User item in ViewBag.usuarios)
+        {
+            <tr>
+                <th scope="row"></th>
+                <td>@item.Cedula</td>
+                <td>@item.Nombre </td>
+                <td>@item.Apellido</td>
+                <td>@item.GetCompras()</td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+
+@section scripts {
+    <script>
+        var loggedIn = '@Session["LoggedIn"]' == 'True';
+        if (loggedIn) {
+            $("navBar").show();
+        }
+        else {
+            $("navBar").hide();
+            location = "/Login/Index";
+        }
+
+        //BUSCAR clientes compras ultimos X ( 30 ) dias
+        let btnBuscar = document.getElementById("btnBuscar");
+        let ultimosDias = document.getElementById("ultimosDias");
+
+        btnBuscar.addEventListener('click', () => {
+            let url = "/user/ComprasFilter?ultimosDias=" + ultimosDias.value;
+            location = url;
+        })
+    </script>
+}

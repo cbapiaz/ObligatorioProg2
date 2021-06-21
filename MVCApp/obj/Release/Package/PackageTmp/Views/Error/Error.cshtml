@@ -1,0 +1,22 @@
+﻿
+@{
+    ViewBag.Title = "Error";
+}
+
+<h2>Error</h2>
+
+@if (Session["error"] != null)
+{
+    <p class="text-danger">@Session["error"]</p>
+}
+
+<section class="container-fluid">
+    <h3 class="col-12"><a href="/paquete/Index">Volver al inicio</a></h3>
+</section>
+
+@section scripts {
+    <script>
+        $("#navBar").hide();
+        $("#footer").hide();
+    </script>
+}
