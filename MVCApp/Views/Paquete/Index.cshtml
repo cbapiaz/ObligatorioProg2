@@ -44,7 +44,7 @@
                 <td>@item.PrecioBase</td>
                 <td>@item.GetCanales()</td>
 
-                @if (Session["LoggedIn"] != null && (string)Session["UserRol"] == Dominio.User.ROL_OPERADOR)
+                @if (Session["LoggedIn"] != null && (string)Session["UserRol"] == Dominio.User.ROL_CLIENTE)
                 {
                     <td><div id="divBotones"><a href="/Paquete/PaqueteDetalle?NombrePaquete=@item.Nombre" class="btn btn-info" role="button" id="botonCarrito">Comprar</a></div></td>
                 }
