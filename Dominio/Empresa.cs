@@ -43,6 +43,8 @@ namespace Dominio
             PrecargaCanalesAPaquetes();
 
             PreCargaUsuarios();
+
+            PreCargaCompras();
         }
 
 
@@ -63,6 +65,16 @@ namespace Dominio
         #region metodos
 
         /**PRECARGA**/
+
+        public void PreCargaCompras()
+        {
+           AgregarNuevaCompra("45042994", DateTime.Now.AddMonths(-2), BuscarPaquete("paqueteHD1"));
+           AgregarNuevaCompra("45042994", DateTime.Now.AddMonths(-2), BuscarPaquete("paqueteSD1"));
+           AgregarNuevaCompra("45042994", DateTime.Now.AddMonths(-2), BuscarPaquete("paqueteHD2"));
+           Compra c =AgregarNuevaCompra("45042994", DateTime.Now, BuscarPaquete("paqueteSD2"));
+            c.FechaVencimiento = DateTime.Now.AddDays(20);
+            
+        }
 
         /// <summary>
         /// precargar los paquetes con distintos datos

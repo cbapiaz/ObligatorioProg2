@@ -12,18 +12,11 @@ namespace MVCApp.Controllers
         Empresa emp = Empresa.Instancia;
 
 
-        private void populate()
-        {
-            Compra c1 = emp.AgregarNuevaCompra("45042994", DateTime.Now.AddMonths(-2), emp.BuscarPaquete("paqueteHD1"));
-            Compra c2 = emp.AgregarNuevaCompra("45042994", DateTime.Now.AddMonths(-2), emp.BuscarPaquete("paqueteSD1"));
-            Compra c3 = emp.AgregarNuevaCompra("45042994", DateTime.Now.AddMonths(-2), emp.BuscarPaquete("paqueteHD2"));
-            Compra c4 = emp.AgregarNuevaCompra("45042994", DateTime.Now.AddMonths(-2), emp.BuscarPaquete("paqueteSD2"));
-        }
 
         // GET: Compra
         public ActionResult Index()
         {
-            populate();
+           // populate();
 
             ViewBag.IdCompra = 1;
 
