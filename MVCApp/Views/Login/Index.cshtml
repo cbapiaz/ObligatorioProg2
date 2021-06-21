@@ -33,10 +33,10 @@
         
         var loggedIn = '@Session["LoggedIn"]' == 'True';
         if (!loggedIn) {
-            $("#navBar").hide();
+            document.getElementById('navBar').style.display = "none";
         }
         else {
-            $("#navBar").show();
+            document.getElementById('navBar').style.display = "inline";
             location="/Canal/Index"
         }
     </script>
