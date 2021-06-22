@@ -21,14 +21,6 @@ namespace Dominio
             Id = uid++;
         }
 
-        public Compra(DateTime fecha, bool cancelada)
-        {
-            Id = uid++;
-            Fecha = fecha;
-            FechaVencimiento = fecha.AddYears(1);
-            Cancelada = cancelada;
-        }
-
         public Compra(DateTime fecha, bool cancelada, Paquete paqueteComprar)
         {
             Id = uid++;
