@@ -33,9 +33,9 @@ namespace Dominio
         public string GetDetalleCompra()
         {
             string aux = "";
-
-            aux += $"Fecha de compra: {Fecha.ToShortDateString()} | Fecha vencimiento: {FechaVencimiento.ToShortDateString()} | Cancelada: {Cancelada} | Nombre de Paqute: {PaqueteComprar.Nombre} ";
-
+            string canales = PaqueteComprar.GetCanales();
+            aux += $"Fecha de compra: {Fecha.ToShortDateString()} | Fecha vencimiento: {FechaVencimiento.ToShortDateString()} | Cancelada: {Cancelada} | Nombre de Paqute: {PaqueteComprar.Nombre} \r\n";
+            aux += $"Canales: {(String.IsNullOrEmpty(canales) ? "Sin Canales" : canales)} \r\n";
             return aux;
         }
 

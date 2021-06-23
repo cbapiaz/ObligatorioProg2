@@ -42,7 +42,7 @@ namespace MVCApp.Controllers
 
         public ActionResult MisCompras()
         {
-            ViewBag.usuarioLogin = (bool)Session["LoggedIn"];
+            ViewBag.usuarioLogin = Session["LoggedIn"]!= null && (bool)Session["LoggedIn"];
             ViewBag.rolUsuario = Session["UserRol"].ToString();
 
 
