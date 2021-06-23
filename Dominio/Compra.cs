@@ -32,7 +32,7 @@ namespace Dominio
 
         public string GetDetalleCompra()
         {
-            string aux = "";/*$"Compra {Fecha.ToString()} ";*/
+            string aux = "";
 
             aux += $"Fecha de compra: {Fecha.ToShortDateString()} | Fecha vencimiento: {FechaVencimiento.ToShortDateString()} | Cancelada: {Cancelada} | Nombre de Paqute: {PaqueteComprar.Nombre} ";
 
@@ -55,6 +55,8 @@ namespace Dominio
                 return  0;
             }
         }
+
+        
         public string NombrePaquete()
         {
             if(PaqueteComprar != null)

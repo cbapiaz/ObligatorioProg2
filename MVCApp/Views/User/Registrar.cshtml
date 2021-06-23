@@ -42,9 +42,8 @@
             <label class="control-label col-md-2">Rol</label>
 
             <div class="col-md-10">
-                <select id="rolSelect" class="form-control" name="Rol">
-                    <option value="" selected>Elija una opcion</option>
-                    <option value="@Model.GetRolCliente()">Cliente</option>
+                <select id="rolSelect" class="form-control" name="Rol" required>
+                    <option value="@Model.GetRolCliente()" selected>Cliente</option>
                     <option value="@Model.GetRolOperador()">Operador</option>
                 </select>
             </div>
@@ -53,7 +52,7 @@
         <div class="form-group" id="sectionNombre">
             <label class="control-label col-md-2">Nombre</label>
             <div class="col-md-10">
-                <input type="text" id="nombre" class="form-control" value="@Model.Nombre" name="Nombre" />
+                <input type="text" id="nombre" class="form-control" value="@Model.Nombre" name="Nombre" required/>
             </div>
         </div>
 
@@ -67,7 +66,7 @@
         <div class="form-group">
             <label class="control-label col-md-2">Password</label>
             <div class="col-md-10">
-                <input type="password" id="password" class="form-control" value="@Model.Password" name="Password" />
+                <input type="password" id="password" class="form-control" value="@Model.Password" name="Password" required/>
             </div>
         </div>
 
@@ -91,15 +90,50 @@
 @section scripts {
     <script>
         var rol = '@Model.Rol';
-
+        var rolSeleccionado = '';
         if (rol != null && rol!='') {
             var select = document.getElementById('rolSelect');
             for (i = 0; i < select.options.length; i++) {
                 if (select.options[i].value == rol) {
                     select.options[i].selected = true;
+                    rolSeleccionado = rol;
                 }
             }
         }
+        manejarSeleccionRol(rolSeleccionado);
+        document.getElementById('rolSelect').addEventListener('change', () => {
+            //console.log(elem);
+            var select = document.getElementById('rolSelect');
+            var rolSeleccionado = select.value;
+            manejarSeleccionRol(rolSeleccionado);
+
+        });
+
+        function manejarSeleccionRol(rolSeleccionado) {
+             if (rolSeleccionado != '') {
+                if (rolSeleccionado == '@Dominio.User.ROL_OPERADOR') {
+                    usuarioOperador();
+                }
+                else {
+                    usuarioNoOperador();
+                }
+
+            }
+        }
+
+        function usuarioOperador() {
+            document.getElementById('cedula').setAttribute('disabled', 'disabled');
+            document.getElementById('apellido').setAttribute('disabled', 'disabled');
+        }
+
+        function usuarioNoOperador() {
+            try {
+                document.getElementById('cedula').removeAttribute('disabled');
+                document.getElementById('apellido').removeAttribute('disabled');
+            }
+            catch (e) { }
+        }
+
     </script>
 }
 

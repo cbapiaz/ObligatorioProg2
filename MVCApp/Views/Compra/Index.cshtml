@@ -61,11 +61,11 @@
 
         var loggedIn = '@Session["LoggedIn"]' == 'True';
         if (loggedIn) {
-       //     $("navBar").show();
+            document.getElementById('navBar').style.display = 'inline';
         }
         else {
-         /*   $("navBar").hide();
+            document.getElementById('navBar').style.display = 'none';
             location = "/Login/Index";
-       */ }
+        }
     </script>
 }

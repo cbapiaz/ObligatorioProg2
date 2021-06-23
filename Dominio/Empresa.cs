@@ -48,13 +48,7 @@ namespace Dominio
         }
 
 
-        private void PreCargaUsuarios()
-        {
-            AltaUsuarioCliente(45042994, "Sebas", "Piaz", "Cba123");
-            AltaUsuarioCliente(47294379, "Mathi", "Sanchez", "Mathi123");
-            AltaUsuarioOperador("Ceci", "Pepe123");
-            AltaUsuarioOperador("Klein", "Pepe666");
-        }
+
 
 
 
@@ -64,16 +58,43 @@ namespace Dominio
 
         #region metodos
 
+        private void PreCargaUsuarios()
+        {
+            string err;
+            AltaUsuarioCliente(45042994, "Sebas", "Piaz", "Cba123", out err);
+            AltaUsuarioCliente(47294379, "Mathi", "Sanchez", "Mathi123", out err);
+            AltaUsuarioCliente(45042997, "Pepe", "Sosa", "Cba1234", out err);
+            AltaUsuarioCliente(47294378, "Jose", "Mujica", "Pepe2030", out err);
+            AltaUsuarioOperador("Ceci", "Pepe123", out err);
+            AltaUsuarioOperador("Klein", "Pepe666", out err);
+        }
+
         /**PRECARGA**/
 
         public void PreCargaCompras()
         {
            AgregarNuevaCompra("45042994", DateTime.Now.AddMonths(-2), BuscarPaquete("paqueteHD1"));
-           AgregarNuevaCompra("45042994", DateTime.Now.AddMonths(-2), BuscarPaquete("paqueteSD1"));
-           AgregarNuevaCompra("45042994", DateTime.Now.AddMonths(-2), BuscarPaquete("paqueteHD2"));
-           Compra c =AgregarNuevaCompra("45042994", DateTime.Now, BuscarPaquete("paqueteSD2"));
+           AgregarNuevaCompra("47294379", DateTime.Now.AddMonths(-2), BuscarPaquete("paqueteSD1"));
+           AgregarNuevaCompra("45042994", DateTime.Now.AddDays(20), BuscarPaquete("paqueteHD2"));
+           AgregarNuevaCompra("47294379", DateTime.Now.AddDays(20), BuscarPaquete("paqueteHD2"));
+
+            AgregarNuevaCompra("45042997", DateTime.Now.AddMonths(-2), BuscarPaquete("paqueteHD1"));
+            AgregarNuevaCompra("45042997", DateTime.Now.AddDays(-40), BuscarPaquete("paqueteHD2"));
+
+            AgregarNuevaCompra("47294378", DateTime.Now.AddMonths(-2), BuscarPaquete("paqueteSD1"));
+            AgregarNuevaCompra("47294378", DateTime.Now.AddDays(-50), BuscarPaquete("paqueteHD2"));
+
+
+            //datos compras vencen proximos 30 dias
+            Compra c =AgregarNuevaCompra("45042994", DateTime.Now, BuscarPaquete("paqueteSD4"));
             c.FechaVencimiento = DateTime.Now.AddDays(20);
-            
+
+            Compra c1 = AgregarNuevaCompra("47294379", DateTime.Now, BuscarPaquete("paqueteSD3"));
+            c1.FechaVencimiento = DateTime.Now.AddDays(20);
+
+            Compra c2 = AgregarNuevaCompra("45042997", DateTime.Now, BuscarPaquete("paqueteHD4"));
+            c2.FechaVencimiento = DateTime.Now.AddDays(20);
+
         }
 
         /// <summary>
@@ -257,14 +278,20 @@ namespace Dominio
             return null;
         }
 
-        //logica de alta de usuario
-        public bool AltaUsuario(User user)
+        /// <summary>
+        /// dado los datos de un usuario especificados en User se da de alta el usuario en el sistema
+        /// </summary>
+        /// <param name="user"></param>
+        /// <param name="err"></param>
+        /// <returns></returns>
+        public bool AltaUsuario(User user, out string err)
         {
+            err = "";
             if (user.Rol == User.ROL_CLIENTE)
             {
                 //verificar que no exista el usuario cliente con esa cedula
                 if (BuscarUsuario(user.Cedula.ToString()) == null) { 
-                    return AltaUsuarioCliente(user.Cedula, user.Nombre, user.Apellido, user.Password);
+                    return AltaUsuarioCliente(user.Cedula, user.Nombre, user.Apellido, user.Password, out err);
                 }
                 else
                 {
@@ -277,7 +304,7 @@ namespace Dominio
                 //verificar que no exista otro usuario operador
                 if (BuscarUsuario(user.Nombre) == null)
                 {
-                    return AltaUsuarioOperador(user.Nombre, user.Password);
+                    return AltaUsuarioOperador(user.Nombre, user.Password,out err);
                 }
             }
             return false;
@@ -291,17 +318,49 @@ namespace Dominio
         /// <param name="apellido"></param>
         /// <param name="password"></param>
         /// <returns></returns>
-        private bool AltaUsuarioCliente(int cedula, string nombre, string apellido, string password)
+        private bool AltaUsuarioCliente(int cedula, string nombre, string apellido, string password, out string err)
         {
-            if (User.ValidarCedula(cedula) && User.ValidarPassword(password)
-                && User.ValidarNombreApellido(nombre) && User.ValidarNombreApellido(apellido))
+            bool cedulaValida = User.ValidarCedula(cedula);
+            bool passwordValido = User.ValidarPassword(password);
+            bool nombreValido = User.ValidarNombre(nombre);
+            bool apellidoValido = User.ValidarNombre(apellido);
+            if ( cedulaValida && passwordValido 
+                && nombreValido && apellidoValido )
             {
                 User u = new User(cedula, nombre, apellido, password, User.ROL_CLIENTE);
                 Usuarios.Add(u);
+                err = "";
                 return true;
             }
             else
             {
+                err = "Error ar dar de alta usuario";
+
+                if (!cedulaValida)
+                {
+                    err = "Cedula no valida";
+                    return false;
+                }
+
+
+                if (!nombreValido)
+                {
+                    err = "Nombre no valido";
+                    return false;
+                }
+
+                if (!apellidoValido)
+                {
+                    err = "Apellido no valido";
+                    return false;
+                }
+
+                if(!passwordValido)
+                {
+                    err = "Password no tiene el formato correcto, al menos 6 caracters y una mayuscula";
+                    return false;
+                }
+
                 return false;
             }
         }
@@ -313,17 +372,28 @@ namespace Dominio
         /// <param name="nombreUsuario"></param>
         /// <param name="password"></param>
         /// <returns></returns>
-        private bool AltaUsuarioOperador(string nombreUsuario, string password)
+        private bool AltaUsuarioOperador(string nombreUsuario, string password, out string err)
         {
-            if (User.ValidarPassword(password))
+            if (User.ValidarPassword(password) && User.ValidarNombre(nombreUsuario))
             {
                 User u = new User(nombreUsuario, password, User.ROL_OPERADOR);
                 Usuarios.Add(u);
+                err = "";
                 return true;
             }
             else
             {
-                return false;
+                if (!User.ValidarNombre(nombreUsuario))
+                {
+
+                    err = "Nombre de usuario operador no valido";
+                    return false;
+                }
+                else
+                {
+                    err = "Password no tiene el formato correcto, al menos 6 caracters y una mayuscula";
+                    return false;
+                }
             }
         }
 
@@ -466,6 +536,12 @@ namespace Dominio
             }
         }
 
+        /// <summary>
+        /// actualizar compra en base a un id setea si esta cancelada o no
+        /// </summary>
+        /// <param name="idCompra"></param>
+        /// <param name="cancelada"></param>
+        /// <returns></returns>
         public bool ActualizarCompra(int idCompra, bool cancelada)
         {
             Compra compra = BuscarCompra(idCompra);
@@ -478,6 +554,11 @@ namespace Dominio
             return false;
         }
 
+        /// <summary>
+        /// dado un id de compra retorna el objeto asociado a ese id en el sistema.
+        /// </summary>
+        /// <param name="idCompra"></param>
+        /// <returns></returns>
         public Compra BuscarCompra(int idCompra)
         {
             foreach (Compra c in Compras)

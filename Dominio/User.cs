@@ -85,14 +85,19 @@ namespace Dominio
         }
 
         //validacion para nombre y apellido
-        public static bool ValidarNombreApellido(string val)
+        public static bool ValidarNombre(string val)
         {
-            return val.Length >= 2;
+            return val!=null && val.Length >= 2;
         }
 
         //validar consistencia de la constraseña
         public static bool ValidarPassword(string password)
         {
+            if(password==null)
+            {
+                return false;
+            }
+
             if (password.Length < 6)
             {
                 return false;
@@ -139,7 +144,7 @@ namespace Dominio
             var res = "";
             foreach(var c in Compras)
             {
-                res += c.GetDetalleCompra() + " | ";
+                res += c.GetDetalleCompra() + " \r\n ";
             }
             return res;
         }

@@ -57,14 +57,14 @@ namespace MVCApp.Controllers
             if (user!= null && user.Rol!=null)
             {
                 User userExistente = Empresa.Instancia.BuscarUsuario(user.NombreUsuario, user.Password);
-
+                string err = "";
                 if (userExistente != null)
                 {
                      ViewBag.ErrorMessage="Usuario ya existe";
                 }
-                else if(!Empresa.Instancia.AltaUsuario(user))
+                else if(!Empresa.Instancia.AltaUsuario(user,out err))
                 {
-                       ViewBag.ErrorMessage = "Error al dar de alta el usuario";
+                       ViewBag.ErrorMessage = err;
                 }
                 else
                 {
