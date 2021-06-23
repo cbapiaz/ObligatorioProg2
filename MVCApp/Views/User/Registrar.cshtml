@@ -7,7 +7,7 @@
 <h2>Registrar</h2>
 
 <section>
-    @if (ViewBag.ErrorMessage != null)
+    @if (ViewBag.ErrorMessage != null && ViewBag.ErrorMessage != "")
     {
         <div class="text-danger">
             <h3>* @ViewBag.ErrorMessage *</h3>

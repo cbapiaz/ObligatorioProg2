@@ -52,8 +52,8 @@ namespace MVCApp.Controllers
                 return Redirect("/paquete/index");
             }
 
-            ViewBag.ErrorMessage = null;
-            ViewBag.Message = null;
+            ViewBag.ErrorMessage = "";
+            ViewBag.Message = "";
             if (user!= null && user.Rol!=null)
             {
                 User userExistente = Empresa.Instancia.BuscarUsuario(user.NombreUsuario, user.Password);
